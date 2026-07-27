@@ -19,7 +19,7 @@
   --muted:#8A857E;
   --line:#E7E2D8;
   --line-soft:#EFEBE1;
-  --accent:#B8451E;         /* burnt sienna */
+  --accent:#B8451E;
   --accent-ink:#7A2C11;
   --accent-soft:#F5E4DA;
   --gold:#B8892A;
@@ -100,14 +100,19 @@ h1.section-title{font-family:'Fraunces',serif;font-weight:500;font-size:28px;let
 .field label{color:var(--muted);font-size:11px;letter-spacing:.06em;text-transform:uppercase;font-weight:500}
 .field .col{flex:1;display:flex;flex-direction:column;gap:2px}
 .field textarea{resize:vertical;min-height:64px;padding-top:4px}
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:10px 14px;border-radius:12px;background:var(--ink);color:#fff;font-weight:500;font-size:14px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:10px 14px;border-radius:12px;background:var(--ink);color:#fff;font-weight:500;font-size:14px;transition:opacity .15s}
 .btn.ghost{background:transparent;border:1px solid var(--line);color:var(--ink)}
 .btn.accent{background:var(--accent)}
 .btn.sm{padding:6px 10px;font-size:12px;border-radius:9px}
 .btn.block{width:100%}
 .btn.icon{width:38px;padding:0;height:38px}
+.btn:disabled{opacity:.5;pointer-events:none}
 .fab{position:fixed;right:calc(50vw - 240px);bottom:calc(96px + var(--safe-b));z-index:45;width:52px;height:52px;border-radius:16px;background:var(--ink);color:#fff;display:grid;place-items:center;box-shadow:var(--shadow-lg);font-size:18px}
 @media (max-width:560px){.fab{right:18px}}
+
+/* Spinner keyframes */
+@keyframes spin{to{transform:rotate(360deg)}}
+.fa-spin{animation:spin 1s linear infinite}
 
 /* Calendar */
 .cal-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
@@ -214,7 +219,7 @@ h1.section-title{font-family:'Fraunces',serif;font-weight:500;font-size:28px;let
 .sheet .close{position:absolute;top:16px;right:16px;color:var(--muted)}
 
 /* Toast */
-.toast{position:fixed;left:50%;bottom:calc(110px + var(--safe-b));transform:translateX(-50%);background:var(--ink);color:#fff;padding:10px 16px;border-radius:12px;font-size:13px;z-index:120;opacity:0;pointer-events:none;transition:opacity .2s}
+.toast{position:fixed;left:50%;bottom:calc(110px + var(--safe-b));transform:translateX(-50%);background:var(--ink);color:#fff;padding:10px 16px;border-radius:12px;font-size:13px;z-index:120;opacity:0;pointer-events:none;transition:opacity .2s;white-space:nowrap}
 .toast.on{opacity:1}
 
 /* Empty */
@@ -369,8 +374,11 @@ h1.section-title{font-family:'Fraunces',serif;font-weight:500;font-size:28px;let
 <script>
 /* =========================================================
    LifeOS – client (Vanilla JS)
-   Requires deployed Apps Script /exec URL. Stored in localStorage.
    ========================================================= */
+
+/* ─── 🔑 PASTE YOUR DEPLOYED APPS SCRIPT /exec URL HERE ─── */
+const WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbzZfnORtISQ3cPr8R9BegbPRWNfuhxKvVEABMl6ff2lO82PcoiQQ0Iw7wH1COhFEZmi/exec';
+/* ────────────────────────────────────────────────────────── */
 
 const $ = (q,root=document)=>root.querySelector(q);
 const $$ = (q,root=document)=>Array.from(root.querySelectorAll(q));
@@ -395,13 +403,12 @@ const QUOTES=[
   ['Compound interest is the 8th wonder of the world.','Einstein'],
 ];
 
-/* ------- API ------- */
-function getUrl(){ return localStorage.getItem('LIFEOS_URL') || ''; }
-function setUrl(u){ localStorage.setItem('LIFEOS_URL', u.trim()); }
+/* ═══════ API ═══════ */
+function getUrl(){ return WEB_APP_URL; }
 
 async function api(path, body){
   const url = getUrl();
-  if(!url){ toast('Set your Apps Script URL first'); return {ok:false, error:'no url'}; }
+  if(!url){ toast('⚠️ Set WEB_APP_URL in index.html'); return {ok:false, error:'no url'}; }
   try{
     let res;
     if(body){
@@ -419,18 +426,48 @@ async function apiUpdate(sheet,id,patch){ return api(null,{action:'update',sheet
 async function apiDelete(sheet,id){ return api(null,{action:'delete',sheet,id}); }
 async function apiUpload(base64, mimeType, filename){ return api(null,{action:'upload',base64,mimeType,filename}); }
 
-/* ------- UI helpers ------- */
-function toast(m){ const t=$('#toast'); t.textContent=m; t.classList.add('on'); clearTimeout(t._); t._=setTimeout(()=>t.classList.remove('on'),1800); }
+/* ═══════ UI helpers ═══════ */
+function toast(m){ const t=$('#toast'); t.textContent=m; t.classList.add('on'); clearTimeout(t._); t._=setTimeout(()=>t.classList.remove('on'),2200); }
 function openSheet(html){ $('#sheetBody').innerHTML=html; $('#sheet').classList.add('on'); $('#sheetBg').classList.add('on'); }
 function closeSheet(){ $('#sheet').classList.remove('on'); $('#sheetBg').classList.remove('on'); }
 $('#sheetBg').onclick=closeSheet; $('#sheetClose').onclick=closeSheet;
 function fmtDate(d){ const x=new Date(d); return x.toLocaleDateString(undefined,{weekday:'short',day:'numeric',month:'short'}); }
 function fmtMoney(n){ n=Number(n||0); return '₹' + n.toLocaleString('en-IN',{maximumFractionDigits:2}); }
-function todayISO(d=new Date()){ const x=new Date(d); x.setHours(0,0,0,0); return x.toISOString().slice(0,10); }
-function daysBetween(a,b){ const A=new Date(a); const B=new Date(b); A.setHours(0,0,0,0); B.setHours(0,0,0,0); return Math.round((B-A)/86400000); }
-function escapeHtml(s){ return String(s??'').replace(/[&<>"']/g, m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'})[m]); }
 
-/* ------- Tabs & subnav ------- */
+/* ✅ FIX: todayISO — uses LOCAL date (not UTC) so IST works correctly after 6:30 PM */
+function todayISO(d=new Date()){
+  const x = new Date(d);
+  return x.getFullYear()+'-'+String(x.getMonth()+1).padStart(2,'0')+'-'+String(x.getDate()).padStart(2,'0');
+}
+
+function daysBetween(a,b){ const A=new Date(a); const B=new Date(b); A.setHours(0,0,0,0); B.setHours(0,0,0,0); return Math.round((B-A)/86400000); }
+
+/* ✅ FIX: escapeHtml — parenthesis was in wrong place */
+function escapeHtml(s){ return String(s??'').replace(/[&<>"']/g, m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m])); }
+
+/* ✅ NEW: Drive image URL helper — works for both old uc?id= and new lh3 URLs */
+function driveImg(item, size){
+  const fid = item.fileId;
+  if(fid) return 'https://lh3.googleusercontent.com/d/' + fid + (size ? '=w'+size : '');
+  /* fallback: try to extract id from old-format URL */
+  const url = item.url || '';
+  const m = url.match(/[?&]id=([^&]+)/) || url.match(/\/d\/([^/?]+)/);
+  if(m) return 'https://lh3.googleusercontent.com/d/' + m[1] + (size ? '=w'+size : '');
+  return url; /* already a direct URL */
+}
+
+/* ✅ NEW: Loading indicator helper — shows spinner inside button during async op */
+async function withLoading(btn, asyncFn, loadText){
+  if(!btn || btn.disabled) return;
+  const orig = btn.innerHTML;
+  btn.disabled = true;
+  btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> ' + (loadText || 'Saving…');
+  try { await asyncFn(); }
+  catch(e){ toast('Error: '+String(e)); }
+  finally { btn.disabled = false; btn.innerHTML = orig; }
+}
+
+/* ═══════ Tabs & subnav ═══════ */
 const SUBNAVS = {
   home:  [['today','Today'],['week','Week'],['month','Month']],
   learn: [['spaced','Spaced repetition'],['syllabus','Syllabus']],
@@ -453,37 +490,27 @@ function switchTab(t){
 }
 $$('.tab').forEach(b=> b.onclick=()=>switchTab(b.dataset.tab));
 
-/* ------- Data sync ------- */
+/* ═══════ Data sync ═══════ */
 async function sync(){
   if(!getUrl()){ showSetup(); return; }
   toast('Syncing…');
   const r = await apiAll();
-  if(r.ok){ Object.assign(state.cache, r.data); toast('Synced'); }
-  else toast('Sync failed');
+  if(r.ok){ Object.assign(state.cache, r.data); toast('✅ Synced'); }
+  else toast('❌ Sync failed');
   renderScreen();
 }
-$('#btnSync').onclick=sync;
+$('#btnSync').onclick = ()=> withLoading($('#btnSync'), sync, '');
 
-/* ------- Setup banner ------- */
+/* ═══════ Setup banner ═══════ */
 function showSetup(){
   $('#setupBanner').innerHTML = `
     <div class="setup">
-      <b><i class="fa-solid fa-circle-info"></i> First-time setup</b>
-      Paste your Google Apps Script Web App URL (ending in <span class="mono">/exec</span>). All your data will live in your own Google Sheet.
-      <input id="urlInput" placeholder="https://script.google.com/macros/s/AKfycbxjvzViN_wis0VyngYAsUlkPAEmIPIaMSoqdorpP_EO49Df9Xa_oa7-8iQmTyaiiN6I/exec" />
-      <div style="display:flex;gap:6px">
-        <button id="urlSave"><i class="fa-solid fa-check"></i> Save & connect</button>
-      </div>
+      <b><i class="fa-solid fa-triangle-exclamation"></i> URL not set</b>
+      Open <code>index.html</code> in a text editor and paste your Apps Script <b>/exec</b> URL into the <code>WEB_APP_URL</code> constant at the top of the &lt;script&gt; block. Then reload this page.
     </div>`;
-  const inp = $('#urlInput'); inp.value = getUrl();
-  $('#urlSave').onclick = async ()=>{
-    const v = inp.value.trim();
-    if(!/\/exec($|\?)/.test(v)) return toast('URL should end in /exec');
-    setUrl(v); toast('URL saved'); $('#setupBanner').innerHTML=''; await sync();
-  };
 }
 
-/* ---------- HOME ---------- */
+/* ═══════ HOME ═══════ */
 function greetings(){
   const h = new Date().getHours();
   return h<5?'Late night': h<12?'Good morning': h<17?'Good afternoon': h<21?'Good evening':'Good night';
@@ -491,8 +518,7 @@ function greetings(){
 function tasksForDate(iso){
   const t = state.cache.Tasks.filter(x=> (x.due||'').slice(0,10)===iso);
   const l = state.cache.Learning.filter(x=> (x.reviewDates||'').split(',').includes(iso) && !(x.doneDates||'').split(',').includes(iso));
-  const p = state.cache.Projects.filter(x=> (x.due||'').slice(0,10)===iso);
-  return {tasks:t,reviews:l,projects:p};
+  return {tasks:t, reviews:l};
 }
 function renderHome(){
   $('#hdrDate').textContent = new Date().toLocaleDateString(undefined,{weekday:'long', day:'numeric', month:'long'}).toUpperCase();
@@ -509,10 +535,10 @@ function renderHome(){
   const days=[]; for(let i=0;i<7;i++){ const dt=new Date(start); dt.setDate(start.getDate()+i); days.push(dt); }
   $('#weekRange').textContent = fmtDate(days[0]) + ' – ' + fmtDate(days[6]);
   $('#weekRow').innerHTML = days.map(dt=>{
-    const iso=todayISO(dt); const info=tasksForDate(iso);
-    const has = info.tasks.length+info.reviews.length+info.projects.length>0;
-    const isT = iso===todayISO();
-    return `<div class="week-day ${isT?'today':''} ${has?'has':''}" data-iso="${iso}"><div class="d">${dt.toLocaleDateString(undefined,{weekday:'short'})}</div><div class="n">${dt.getDate()}</div><div class="dot"></div></div>`;
+    const diso=todayISO(dt); const info=tasksForDate(diso);
+    const has = info.tasks.length+info.reviews.length>0;
+    const isT = diso===todayISO();
+    return `<div class="week-day ${isT?'today':''} ${has?'has':''}" data-iso="${diso}"><div class="d">${dt.toLocaleDateString(undefined,{weekday:'short'})}</div><div class="n">${dt.getDate()}</div><div class="dot"></div></div>`;
   }).join('');
   $$('#weekRow .week-day').forEach(el=> el.onclick=()=> renderDayFeed(el.dataset.iso));
   renderDayFeed(iso);
@@ -525,11 +551,10 @@ function renderHome(){
   $('#quoteText').textContent = q.text; $('#quoteAuthor').textContent = '— ' + (q.author||'Unknown');
 }
 function renderDayFeed(iso){
-  const {tasks,reviews,projects} = tasksForDate(iso);
+  const {tasks,reviews} = tasksForDate(iso);
   const all=[
     ...tasks.map(t=>({t:t.title,k:'Task',m:t.priority||'',id:t.id,done:t.status==='done',sheet:'Tasks'})),
-    ...reviews.map(r=>({t:r.topic,k:'Review',m:r.subject||'',id:r.id,done:false,sheet:'Learning'})),
-    ...projects.map(p=>({t:p.name,k:'Project',m:p.status||'',id:p.id,done:p.status==='Completed',sheet:'Projects'}))
+    ...reviews.map(r=>({t:r.topic,k:'Review',m:r.subject||'',id:r.id,done:false,sheet:'Learning'}))
   ];
   if(!all.length){ $('#dayFeed').innerHTML=`<div class="empty"><i class="fa-regular fa-calendar-check"></i>Nothing scheduled. A blank canvas.</div>`; return; }
   $('#dayFeed').innerHTML = all.map(x=>`
@@ -543,15 +568,15 @@ function renderCalendar(){
   $('#calTitle').textContent = d.toLocaleDateString(undefined,{month:'long',year:'numeric'});
   const first = new Date(d.getFullYear(), d.getMonth(), 1);
   const startWeekday = first.getDay();
-  const days = new Date(d.getFullYear(), d.getMonth()+1, 0).getDate();
+  const daysCount = new Date(d.getFullYear(), d.getMonth()+1, 0).getDate();
   const dn=['S','M','T','W','T','F','S'];
   let html = dn.map(x=>`<div class="cal-dn">${x}</div>`).join('');
   for(let i=0;i<startWeekday;i++){ html += `<div class="cal-cell out"></div>`; }
-  for(let i=1;i<=days;i++){
+  for(let i=1;i<=daysCount;i++){
     const dt = new Date(d.getFullYear(), d.getMonth(), i);
     const iso = todayISO(dt);
     const info = tasksForDate(iso);
-    const total = info.tasks.length+info.reviews.length+info.projects.length;
+    const total = info.tasks.length+info.reviews.length;
     const isT = iso===todayISO();
     html += `<div class="cal-cell ${isT?'today':''} ${total?'has':''}"><span class="n">${i}</span>${total?`<span class="tot">${total}</span>`:''}</div>`;
   }
@@ -560,10 +585,10 @@ function renderCalendar(){
 $('#calPrev').onclick=()=>{ state.calMonth = new Date(state.calMonth.getFullYear(), state.calMonth.getMonth()-1, 1); renderCalendar(); };
 $('#calNext').onclick=()=>{ state.calMonth = new Date(state.calMonth.getFullYear(), state.calMonth.getMonth()+1, 1); renderCalendar(); };
 
-/* ---------- LEARN ---------- */
+/* ═══════ LEARN ═══════ */
 const SR_INTERVALS = [1,3,5,7,15,30,60,90];
 function computeReviews(startISO){
-  const s = new Date(startISO);
+  const s = new Date(startISO+'T00:00:00');
   return SR_INTERVALS.map(n=>{ const x=new Date(s); x.setDate(s.getDate()+n); return todayISO(x); }).join(',');
 }
 function renderLearn(){
@@ -629,7 +654,7 @@ function renderLearn(){
   bindCommonActions(el);
 }
 
-/* ---------- TASKS ---------- */
+/* ═══════ TASKS ═══════ */
 function renderTasks(){
   const el=$('#tasks-body');
   if(state.sub.tasks==='today'){
@@ -676,7 +701,7 @@ function taskItem(t){
     <div class="ck" data-role="task-toggle" data-id="${t.id}"><i class="fa-solid fa-check"></i></div>
     <div style="flex:1"><div class="t">${escapeHtml(t.title)}</div>
       <div class="m">
-        ${t.due?`<span class="chip">${new Date(t.due).toLocaleDateString(undefined,{day:'2-digit',month:'short'})}</span>`:''}
+        ${t.due?`<span class="chip">${new Date(t.due+'T00:00:00').toLocaleDateString(undefined,{day:'2-digit',month:'short'})}</span>`:''}
         ${t.priority?`<span class="chip ${t.priority==='high'?'r':(t.priority==='low'?'g':'gd')}">${t.priority}</span>`:''}
         ${t.notes?`<span>${escapeHtml(t.notes).slice(0,60)}</span>`:''}
       </div>
@@ -703,16 +728,16 @@ function openProject(id){
       <button class="btn ghost" id="pDel"><i class="fa-solid fa-trash"></i> Delete</button>
       <button class="btn block" id="pSave">Save changes</button>
     </div>`);
-  $('#pAddRemark').onclick=async ()=>{
-    const t=$('#pRemark').value.trim(); if(!t) return;
+  $('#pAddRemark').onclick=()=> withLoading($('#pAddRemark'), async ()=>{
+    const t=$('#pRemark').value.trim(); if(!t){ toast('Enter a remark'); return; }
     remarks.unshift({ts:new Date().toISOString(), text:t});
     await apiUpdate('Projects', id, {remarks:JSON.stringify(remarks)});
     p.remarks = JSON.stringify(remarks); openProject(id); toast('Remark saved');
-  };
-  $('#pSave').onclick=async ()=>{
+  });
+  $('#pSave').onclick=()=> withLoading($('#pSave'), async ()=>{
     const patch = {status:$('#pStatus').value, description:$('#pDesc').value};
     Object.assign(p, patch); await apiUpdate('Projects',id,patch); toast('Saved'); closeSheet(); renderScreen();
-  };
+  });
   $('#pDel').onclick=async ()=>{
     if(!confirm('Delete project?')) return;
     await apiDelete('Projects',id);
@@ -722,7 +747,7 @@ function openProject(id){
 }
 function safeParse(s,f){ try{ return JSON.parse(s); }catch{ return f; } }
 
-/* ---------- NOTES ---------- */
+/* ═══════ NOTES ═══════ */
 function allTags(){
   const t = new Set();
   state.cache.Notes.forEach(n=> (n.tags||'').split(',').map(x=>x.trim()).filter(Boolean).forEach(x=>t.add(x)));
@@ -748,7 +773,7 @@ function renderNotes(){
             const img = atts.find(a=>(a.mimeType||'').startsWith('image/'));
             return `<div class="note-card" data-role="note-open" data-id="${n.id}">
               <h4>${escapeHtml(n.title||'Untitled')}</h4>
-              ${img?`<img class="att" src="${img.url}" alt="">`:''}
+              ${img?`<img class="att" src="${driveImg(img,400)}" alt="" loading="lazy">`:''}
               <p>${escapeHtml(n.body||'')}</p>
               ${n.tags?`<div class="tgs">${n.tags.split(',').map(t=>`<span class="chip">#${escapeHtml(t.trim())}</span>`).join('')}</div>`:''}
             </div>`;
@@ -758,7 +783,7 @@ function renderNotes(){
       </div>`;
     $$('[data-role="note-open"]').forEach(b=> b.onclick=()=> openNote(b.dataset.id));
   } else {
-    // gallery
+    // ✅ GALLERY — uses driveImg() for reliable preview
     const groups = allGroups();
     if(!groups.includes(state.galGroup)) state.galGroup='All';
     const q = state.gallerySearch.toLowerCase();
@@ -776,11 +801,13 @@ function renderNotes(){
           ${groups.map(g=>`<button class="g ${state.galGroup===g?'on':''}" data-g="${escapeHtml(g)}">${escapeHtml(g)}</button>`).join('')}
         </div>
         <div class="gal-grid mt-12">
-          ${imgs.map(i=>`<div class="cell" data-role="img-open" data-id="${i.id}"><img src="${i.url}" alt=""/>${i.remarks?`<div class="info">${escapeHtml(i.remarks).slice(0,20)}</div>`:''}</div>`).join('')}
+          ${imgs.map(i=>`<div class="cell" data-role="img-open" data-id="${i.id}"><img src="${driveImg(i,400)}" alt="" loading="lazy"/>${i.remarks?`<div class="info">${escapeHtml(i.remarks).slice(0,20)}</div>`:''}</div>`).join('')}
         </div>
         ${!imgs.length?`<div class="empty"><i class="fa-regular fa-image"></i>No images here.</div>`:''}
       </div>`;
-    $('#galSearch').oninput = (e)=>{ state.gallerySearch=e.target.value; renderNotes(); };
+    /* ✅ FIX: debounced search so DOM doesn't flicker on every keystroke */
+    let searchTimer;
+    $('#galSearch').oninput = (e)=>{ clearTimeout(searchTimer); searchTimer=setTimeout(()=>{ state.gallerySearch=e.target.value; renderNotes(); },300); };
     $$('.gal-groups .g').forEach(b=> b.onclick=()=>{ state.galGroup=b.dataset.g; renderNotes(); });
     $$('[data-role="img-open"]').forEach(b=> b.onclick=()=> openImage(b.dataset.id));
   }
@@ -798,7 +825,7 @@ function openNote(id){
     <datalist id="tagList">${tags.map(t=>`<option value="${escapeHtml(t)}">`).join('')}</datalist>
     <div class="mt-12"><b style="font-family:Fraunces;font-weight:500;font-size:16px">Attachments</b>
       <div id="attList" style="display:flex;gap:6px;flex-wrap:wrap;margin-top:6px">
-        ${atts.map((a,i)=>`<div class="chip">${a.mimeType&&a.mimeType.startsWith('image/')?'<i class="fa-regular fa-image"></i>':a.mimeType==='audio/webm'?'<i class="fa-solid fa-microphone"></i>':'<i class="fa-regular fa-file"></i>'} <a href="${a.url}" target="_blank">${escapeHtml(a.name||'file')}</a> <button data-role="att-del" data-i="${i}" style="color:var(--red);padding-left:6px"><i class="fa-solid fa-xmark"></i></button></div>`).join('')}
+        ${atts.map((a,i)=>`<div class="chip">${a.mimeType&&a.mimeType.startsWith('image/')?'<i class="fa-regular fa-image"></i>':a.mimeType==='audio/webm'?'<i class="fa-solid fa-microphone"></i>':'<i class="fa-regular fa-file"></i>'} <a href="${driveImg(a)}" target="_blank">${escapeHtml(a.name||'file')}</a> <button data-role="att-del" data-i="${i}" style="color:var(--red);padding-left:6px"><i class="fa-solid fa-xmark"></i></button></div>`).join('')}
       </div>
       <div style="display:flex;gap:6px;margin-top:10px;flex-wrap:wrap">
         <label class="btn ghost sm"><i class="fa-solid fa-image"></i> Image <input type="file" accept="image/*" capture="environment" id="nImg" hidden></label>
@@ -828,12 +855,12 @@ function openNote(id){
   $$('[data-role="att-del"]').forEach(b=> b.onclick=()=>{ atts.splice(+b.dataset.i,1); n.attachments=JSON.stringify(atts); openNote(id); });
 
   // audio recording
-  let rec=null, chunks=[];
+  let mediaStream=null, rec=null, chunks=[];
   $('#nRec').onclick = async ()=>{
     if(!rec){
       try{
-        const stream = await navigator.mediaDevices.getUserMedia({audio:true});
-        rec = new MediaRecorder(stream);
+        mediaStream = await navigator.mediaDevices.getUserMedia({audio:true});
+        rec = new MediaRecorder(mediaStream);
         rec.ondataavailable = e=> chunks.push(e.data);
         rec.onstop = async ()=>{
           const blob = new Blob(chunks, {type:'audio/webm'}); chunks=[];
@@ -842,16 +869,16 @@ function openNote(id){
           const r = await apiUpload(b64, 'audio/webm', 'audio-'+Date.now()+'.webm');
           if(r.ok){ atts.push({...r.data, mimeType:'audio/webm'}); n.attachments=JSON.stringify(atts); openNote(id); }
         };
-        rec.start(); $('#nRecTxt').textContent='Stop';
+        rec.start(); $('#nRecTxt').textContent='Stop ●';
       }catch(e){ toast('Mic denied'); }
     } else {
-      rec.stop(); rec.stream.getTracks().forEach(t=>t.stop()); rec=null; $('#nRecTxt').textContent='Record';
+      rec.stop(); if(mediaStream) mediaStream.getTracks().forEach(t=>t.stop()); rec=null; mediaStream=null; $('#nRecTxt').textContent='Record';
     }
   };
-  $('#nSave').onclick = async ()=>{
+  $('#nSave').onclick = ()=> withLoading($('#nSave'), async ()=>{
     const patch = {title:$('#nT').value, body:$('#nB').value, tags:$('#nTg').value, attachments:JSON.stringify(atts)};
     Object.assign(n,patch); await apiUpdate('Notes',id,patch); toast('Saved'); closeSheet(); renderScreen();
-  };
+  });
   $('#nDel').onclick = async ()=>{ if(!confirm('Delete note?')) return; await apiDelete('Notes',id); state.cache.Notes=state.cache.Notes.filter(x=>x.id!==id); closeSheet(); renderScreen(); };
 }
 
@@ -860,7 +887,7 @@ function openImage(id){
   const groups = allGroups();
   openSheet(`
     <h3>Image</h3>
-    <img src="${i.url}" style="width:100%;border-radius:12px;margin-top:8px"/>
+    <img src="${driveImg(i)}" style="width:100%;border-radius:12px;margin-top:8px" loading="lazy"/>
     <div class="field mt-8"><div class="col"><label>Group</label>
       <select id="iGr">${groups.map(g=>`<option ${i.groupName===g?'selected':''}>${escapeHtml(g)}</option>`).join('')}<option value="__new">＋ New group…</option></select>
     </div></div>
@@ -868,19 +895,19 @@ function openImage(id){
     <div class="field mt-8"><div class="col"><label>Tags</label><input id="iTg" list="tagList" value="${escapeHtml(i.tags||'')}"></div></div>
     <datalist id="tagList">${allTags().map(t=>`<option value="${escapeHtml(t)}">`).join('')}</datalist>
     <div style="display:flex;gap:8px;flex-wrap:wrap" class="mt-16">
-      <a class="btn ghost sm" href="${i.url}" target="_blank" download><i class="fa-solid fa-download"></i> Download</a>
+      <a class="btn ghost sm" href="${driveImg(i)}" target="_blank" download><i class="fa-solid fa-download"></i> Download</a>
       <button class="btn ghost sm" id="iDel"><i class="fa-solid fa-trash"></i> Delete</button>
       <button class="btn block" id="iSave">Save</button>
     </div>`);
   $('#iGr').onchange=(e)=>{ if(e.target.value==='__new'){ const g=prompt('New group name'); if(g){ const o=document.createElement('option'); o.value=g; o.textContent=g; o.selected=true; e.target.insertBefore(o, e.target.querySelector('[value=__new]')); } else e.target.value=i.groupName||'Default'; } };
-  $('#iSave').onclick=async ()=>{ const patch={groupName:$('#iGr').value,remarks:$('#iRm').value,tags:$('#iTg').value}; Object.assign(i,patch); await apiUpdate('Images',id,patch); toast('Saved'); closeSheet(); renderScreen(); };
+  $('#iSave').onclick=()=> withLoading($('#iSave'), async ()=>{ const patch={groupName:$('#iGr').value,remarks:$('#iRm').value,tags:$('#iTg').value}; Object.assign(i,patch); await apiUpdate('Images',id,patch); toast('Saved'); closeSheet(); renderScreen(); });
   $('#iDel').onclick=async ()=>{ if(!confirm('Delete image record?')) return; await apiDelete('Images',id); state.cache.Images=state.cache.Images.filter(x=>x.id!==id); closeSheet(); renderScreen(); };
 }
 
 function fileToB64(f){ return new Promise(res=>{ const r=new FileReader(); r.onload=()=> res(String(r.result).split(',')[1]); r.readAsDataURL(f); }); }
 function blobToB64(b){ return new Promise(res=>{ const r=new FileReader(); r.onload=()=> res(String(r.result).split(',')[1]); r.readAsDataURL(b); }); }
 
-/* ---------- MONEY ---------- */
+/* ═══════ MONEY ═══════ */
 const DEFAULT_ACCOUNTS = ['Cash','Bank A/c 1','Bank A/c 2','Bank A/c 3','Bank A/c 4','UPI'];
 function accountBalances(){
   const map={}; DEFAULT_ACCOUNTS.forEach(a=> map[a]=0);
@@ -888,10 +915,8 @@ function accountBalances(){
   state.cache.Finance.forEach(f=>{
     const amt=Number(f.amount||0);
     if(!(f.account in map)) map[f.account]=0;
-    if(f.type==='income'||f.type==='savings-in') map[f.account]+=amt;
-    else if(f.type==='expense'||f.type==='future'||f.type==='savings-out') map[f.account]-=amt;
-    else if(f.type==='transfer-in') map[f.account]+=amt;
-    else if(f.type==='transfer-out') map[f.account]-=amt;
+    if(f.type==='income'||f.type==='savings-in'||f.type==='transfer-in') map[f.account]+=amt;
+    else if(f.type==='expense'||f.type==='future'||f.type==='savings-out'||f.type==='transfer-out') map[f.account]-=amt;
   });
   return map;
 }
@@ -933,7 +958,7 @@ function renderMoney(){
   bindCommonActions(el);
 }
 function financeItem(f){
-  const color = f.type==='income'||f.type==='savings-in'?'g':(f.type==='expense'||f.type==='future'?'r':'b');
+  const color = f.type==='income'||f.type==='savings-in'||f.type==='transfer-in'?'g':(f.type==='expense'||f.type==='future'?'r':'b');
   const sign = color==='g'?'+':(color==='r'?'−':'');
   return `<div class="item">
     <div style="flex:1"><div class="t">${escapeHtml(f.category||f.type)}</div>
@@ -943,7 +968,7 @@ function financeItem(f){
   </div>`;
 }
 
-/* --- Calculator --- */
+/* ── Calculator ── */
 let calcState = { expr:'', res:'0' };
 function calcHTML(){
   const hist = state.cache.Calc.slice().reverse().slice(0,6);
@@ -951,7 +976,6 @@ function calcHTML(){
     <div class="card">
       <div class="calc-display"><div class="expr" id="cExpr">${escapeHtml(calcState.expr||' ')}</div><div class="res" id="cRes">${escapeHtml(calcState.res)}</div></div>
       <div class="calc-grid">
-        ${['C','⌫','%','÷','7','8','9','×','4','5','6','−','1','2','3','+','0','.','=','+'].slice(0,20).map(k=>'').join('')}
         <button class="k op" data-k="C">C</button><button class="k op" data-k="back">⌫</button><button class="k op" data-k="%">%</button><button class="k op" data-k="/">÷</button>
         <button class="k" data-k="7">7</button><button class="k" data-k="8">8</button><button class="k" data-k="9">9</button><button class="k op" data-k="*">×</button>
         <button class="k" data-k="4">4</button><button class="k" data-k="5">5</button><button class="k" data-k="6">6</button><button class="k op" data-k="-">−</button>
@@ -1004,14 +1028,16 @@ function quickCalc(type){
   apiList('Calc').then(x=>{ if(x.ok){ state.cache.Calc=x.data; } });
 }
 
-/* ---------- BODY ---------- */
+/* ═══════ BODY ═══════ */
 function renderBody(){
   const el=$('#body-body');
   if(state.sub.body==='today'){
     const today = todayISO();
     const logs = state.cache.Health.filter(h=> (h.date||'').slice(0,10)===today);
     const water = logs.filter(l=>l.type==='water').reduce((a,b)=>a+Number(b.value||0),0);
-    const office = state.cache.Office.filter(o=>o.date===today)[0];
+    /* ✅ FIX: Office lookup — compare date strings reliably */
+    const office = state.cache.Office.filter(o=> (o.date||'').slice(0,10)===today).slice(-1)[0];
+    const isIn = office && !office.outTime;
     el.innerHTML=`
       <div class="card">
         <h3>Today</h3>
@@ -1019,18 +1045,18 @@ function renderBody(){
           <div><div class="chip acc mono">${water} ml</div><div class="text-muted" style="font-size:11px;margin-top:4px">Water</div></div>
           <div><div class="chip mono">${logs.filter(l=>l.type==='meal').length}</div><div class="text-muted" style="font-size:11px;margin-top:4px">Meals</div></div>
           <div><div class="chip mono">${logs.filter(l=>l.type==='exercise').length}</div><div class="text-muted" style="font-size:11px;margin-top:4px">Workouts</div></div>
-          <div><div class="chip mono">${office?minutesToH(office.totalMinutes):'—'}</div><div class="text-muted" style="font-size:11px;margin-top:4px">Office time</div></div>
+          <div><div class="chip mono">${office && office.totalMinutes ? minutesToH(office.totalMinutes) : '—'}</div><div class="text-muted" style="font-size:11px;margin-top:4px">Office time</div></div>
         </div>
       </div>
 
       <div class="card"><div class="row"><h3>Office In/Out</h3>
-        ${office && !office.outTime?`<span class="chip g">In · ${new Date(office.inTime).toLocaleTimeString([], {hour:'2-digit',minute:'2-digit'})}</span>`:''}
+        ${isIn?`<span class="chip g">In · ${new Date(office.inTime).toLocaleTimeString([], {hour:'2-digit',minute:'2-digit'})}</span>`:''}
         </div>
         <div style="display:flex;gap:8px;margin-top:8px">
-          <button class="btn block ${office && !office.outTime?'ghost':''}" id="clockIn" ${office && !office.outTime?'disabled':''}><i class="fa-solid fa-door-open"></i> Clock in</button>
-          <button class="btn block ${!(office && !office.outTime)?'ghost':''}" id="clockOut" ${!(office && !office.outTime)?'disabled':''}><i class="fa-solid fa-door-closed"></i> Clock out</button>
+          <button class="btn block ${isIn?'ghost':''}" id="clockIn" ${isIn?'disabled':''}><i class="fa-solid fa-door-open"></i> Clock in</button>
+          <button class="btn block ${!isIn?'ghost':''}" id="clockOut" ${!isIn?'disabled':''}><i class="fa-solid fa-door-closed"></i> Clock out</button>
         </div>
-        ${state.cache.Office.slice(-5).reverse().map(o=>`<div class="item"><div style="flex:1"><div class="t">${o.date}</div><div class="m"><span>In ${o.inTime?new Date(o.inTime).toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'}):'—'}</span><span>Out ${o.outTime?new Date(o.outTime).toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'}):'—'}</span>${o.totalMinutes?`<span class="chip">${minutesToH(o.totalMinutes)}</span>`:''}</div></div></div>`).join('')}
+        ${state.cache.Office.slice(-5).reverse().map(o=>`<div class="item"><div style="flex:1"><div class="t">${(o.date||'').slice(0,10)}</div><div class="m"><span>In ${o.inTime?new Date(o.inTime).toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'}):'—'}</span><span>Out ${o.outTime?new Date(o.outTime).toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'}):'—'}</span>${o.totalMinutes?`<span class="chip">${minutesToH(o.totalMinutes)}</span>`:''}</div></div></div>`).join('')}
       </div>
 
       <div class="card"><h3>Recent logs</h3>
@@ -1040,16 +1066,34 @@ function renderBody(){
             <div class="actions"><button data-role="del" data-sheet="Health" data-id="${h.id}"><i class="fa-solid fa-trash"></i></button></div>
           </div>`).join('') : '<div class="empty">No logs today.</div>'}
       </div>`;
-    $('#clockIn').onclick = async ()=>{
-      const r=await apiAdd('Office',{date:today,inTime:new Date().toISOString()});
-      if(r.ok){ state.cache.Office.push(r.data); toast('Clocked in'); renderScreen(); }
-    };
-    $('#clockOut').onclick = async ()=>{
-      const rec = state.cache.Office.filter(o=>o.date===today && !o.outTime).slice(-1)[0]; if(!rec) return;
-      const out = new Date(); const mins = Math.round((out - new Date(rec.inTime))/60000);
-      const patch={outTime:out.toISOString(), totalMinutes:mins};
-      await apiUpdate('Office', rec.id, patch); Object.assign(rec,patch); toast('Clocked out · '+minutesToH(mins)); renderScreen();
-    };
+
+    /* ✅ FIX: Clock in with loading spinner */
+    $('#clockIn').onclick = ()=> withLoading($('#clockIn'), async ()=>{
+      const r=await apiAdd('Office',{date:today, inTime:new Date().toISOString()});
+      if(r.ok){ state.cache.Office.push(r.data); toast('✅ Clocked in'); renderScreen(); }
+      else toast('❌ Failed to clock in');
+    }, 'Clocking in…');
+
+    /* ✅ FIX: Clock out — finds the right record, calculates mins, shows loading */
+    $('#clockOut').onclick = ()=> withLoading($('#clockOut'), async ()=>{
+      /* Find the last open record for today */
+      const rec = state.cache.Office.filter(o=> (o.date||'').slice(0,10)===today && !o.outTime).slice(-1)[0];
+      if(!rec){ toast('No open clock-in found'); return; }
+      const outNow = new Date();
+      const inTime = new Date(rec.inTime);
+      const mins = Math.round((outNow - inTime) / 60000);
+      if(mins < 0){ toast('Clock error: out time is before in time'); return; }
+      const patch = { outTime: outNow.toISOString(), totalMinutes: String(mins) };
+      const r = await apiUpdate('Office', rec.id, patch);
+      if(r){
+        Object.assign(rec, patch);
+        toast('✅ Clocked out · ' + minutesToH(mins));
+        renderScreen();
+      } else {
+        toast('❌ Failed to clock out');
+      }
+    }, 'Clocking out…');
+
   } else if(state.sub.body==='journal'){
     const entries = state.cache.Journal.slice().sort((a,b)=>(b.created||'').localeCompare(a.created||''));
     el.innerHTML=`
@@ -1061,11 +1105,11 @@ function renderBody(){
       <div class="card"><h3>Past entries</h3>
         ${entries.length? entries.map(e=>`<div class="item"><div style="flex:1"><div class="t">${escapeHtml(e.mood||'')} · ${new Date(e.created).toLocaleDateString()}</div><div class="m"><span style="font-family:Fraunces;font-style:italic">${escapeHtml(e.thoughts||'').slice(0,180)}</span></div></div><div class="actions"><button data-role="del" data-sheet="Journal" data-id="${e.id}"><i class="fa-solid fa-trash"></i></button></div></div>`).join('') : '<div class="empty">No entries yet.</div>'}
       </div>`;
-    $('#jSave').onclick=async ()=>{
-      const t=$('#jTxt').value.trim(); if(!t) return;
+    $('#jSave').onclick=()=> withLoading($('#jSave'), async ()=>{
+      const t=$('#jTxt').value.trim(); if(!t){ toast('Write something first'); return; }
       const r = await apiAdd('Journal',{date:todayISO(),mood:$('#jMood').value,thoughts:t});
       if(r.ok){ state.cache.Journal.push(r.data); $('#jTxt').value=''; toast('Saved'); renderScreen(); }
-    };
+    });
   } else {
     // focus
     el.innerHTML=`
@@ -1093,7 +1137,7 @@ function renderBody(){
 }
 function minutesToH(m){ m=+m||0; return Math.floor(m/60)+'h '+(m%60)+'m'; }
 
-/* ---------- Focus timer ---------- */
+/* ═══════ Focus timer ═══════ */
 async function startFocus(mins, remarks){
   state.focus.running=true; state.focus.paused=false;
   state.focus.endsAt = Date.now() + mins*60000;
@@ -1115,7 +1159,7 @@ function tickFocus(){
   const m = String(Math.floor(rem/60)).padStart(2,'0'), s=String(rem%60).padStart(2,'0');
   $('#focusClock').textContent = m+':'+s;
   if(rem<=0){ endFocus(true); return; }
-  setTimeout(tickFocus, 500);
+  requestAnimationFrame(()=> setTimeout(tickFocus, 500));
 }
 async function endFocus(completed){
   state.focus.running=false; $('#focusCover').classList.remove('on'); if(document.fullscreenElement) document.exitFullscreen().catch(()=>{});
@@ -1129,29 +1173,29 @@ $('#focusPause').onclick=()=>{
   else { state.focus.paused=true; $('#focusPause').textContent='Resume'; }
 };
 
-/* ---------- Common actions ---------- */
+/* ═══════ Common actions ═══════ */
 function bindCommonActions(root){
   $$('[data-role="task-toggle"]', root).forEach(b=> b.onclick=async ()=>{
     const t=state.cache.Tasks.find(x=>x.id===b.dataset.id);
     const ns = t.status==='done'?'open':'done';
     const patch = {status:ns, completed: ns==='done'? new Date().toISOString():''};
-    Object.assign(t,patch); await apiUpdate('Tasks',t.id,patch); renderScreen();
+    Object.assign(t,patch); toast('Saving…'); await apiUpdate('Tasks',t.id,patch); renderScreen();
   });
   $$('[data-role="del"]', root).forEach(b=> b.onclick=async ()=>{
     if(!confirm('Delete?')) return;
     const s=b.dataset.sheet, id=b.dataset.id;
-    await apiDelete(s,id); state.cache[s]=state.cache[s].filter(x=>x.id!==id); renderScreen();
+    toast('Deleting…'); await apiDelete(s,id); state.cache[s]=state.cache[s].filter(x=>x.id!==id); renderScreen();
   });
   $$('[data-role="mark-done"]', root).forEach(b=> b.onclick=async ()=>{
     const l=state.cache.Learning.find(x=>x.id===b.dataset.id);
     const done=(l.doneDates||'').split(',').filter(Boolean);
     if(!done.includes(b.dataset.date)) done.push(b.dataset.date);
-    l.doneDates = done.join(','); await apiUpdate('Learning',l.id,{doneDates:l.doneDates});
+    l.doneDates = done.join(','); toast('Saving…'); await apiUpdate('Learning',l.id,{doneDates:l.doneDates});
     toast('Review marked done'); renderScreen();
   });
 }
 
-/* ---------- FAB / Add flows ---------- */
+/* ═══════ FAB / Add flows ═══════ */
 $('#fab').onclick = ()=>{
   const t=state.tab, s=state.sub[t];
   if(t==='home') return openAddTask();
@@ -1183,11 +1227,11 @@ function openAddTask(){
     </div>
     <div class="field mt-8"><div class="col"><label>Notes</label><textarea id="tN"></textarea></div></div>
     <button class="btn accent block mt-16" id="tSave">Save task</button>`);
-  $('#tSave').onclick=async ()=>{
-    const title=$('#tT').value.trim(); if(!title) return toast('Title required');
+  $('#tSave').onclick=()=> withLoading($('#tSave'), async ()=>{
+    const title=$('#tT').value.trim(); if(!title){ toast('Title required'); return; }
     const r=await apiAdd('Tasks',{title, due:$('#tD').value, priority:$('#tP').value, notes:$('#tN').value, status:'open'});
     if(r.ok){ state.cache.Tasks.push(r.data); toast('Saved'); closeSheet(); renderScreen(); }
-  };
+  });
 }
 function openAddProject(){
   openSheet(`
@@ -1196,11 +1240,11 @@ function openAddProject(){
     <div class="field mt-8"><div class="col"><label>Status</label><select id="pS"><option>Pending</option><option>In-Progress</option><option>Completed</option></select></div></div>
     <div class="field mt-8"><div class="col"><label>Description</label><textarea id="pDe"></textarea></div></div>
     <button class="btn accent block mt-16" id="pSv">Save project</button>`);
-  $('#pSv').onclick=async ()=>{
-    const name=$('#pN').value.trim(); if(!name) return;
+  $('#pSv').onclick=()=> withLoading($('#pSv'), async ()=>{
+    const name=$('#pN').value.trim(); if(!name){ toast('Name required'); return; }
     const r=await apiAdd('Projects',{name, status:$('#pS').value, description:$('#pDe').value, remarks:'[]'});
     if(r.ok){ state.cache.Projects.push(r.data); closeSheet(); renderScreen(); }
-  };
+  });
 }
 function openAddLearn(){
   const subjects = optionsFrom(state.cache.Learning,'subject');
@@ -1212,12 +1256,12 @@ function openAddLearn(){
     <div class="field mt-8"><div class="col"><label>Notes</label><textarea id="lN"></textarea></div></div>
     <p class="text-muted" style="font-size:12px;margin-top:8px">Reviews scheduled for +1, +3, +5, +7, +15, +30, +60, +90 days.</p>
     <button class="btn accent block mt-8" id="lSv">Add topic</button>`);
-  $('#lSv').onclick=async ()=>{
-    const t=$('#lT').value.trim(); if(!t) return;
+  $('#lSv').onclick=()=> withLoading($('#lSv'), async ()=>{
+    const t=$('#lT').value.trim(); if(!t){ toast('Topic required'); return; }
     const start=todayISO();
     const r=await apiAdd('Learning',{topic:t, subject:$('#lS').value, notes:$('#lN').value, startDate:start, reviewDates:computeReviews(start), doneDates:''});
     if(r.ok){ state.cache.Learning.push(r.data); closeSheet(); renderScreen(); toast('Topic added'); }
-  };
+  });
 }
 function openAddSyllabus(){
   const subjects=optionsFrom(state.cache.Syllabus,'subject');
@@ -1229,11 +1273,11 @@ function openAddSyllabus(){
     <div class="field mt-8"><div class="col"><label>Sub-topic</label><input id="sSub"></div></div>
     <div class="field mt-8"><div class="col"><label>Notes</label><textarea id="sN"></textarea></div></div>
     <button class="btn accent block mt-8" id="sSv">Save</button>`);
-  $('#sSv').onclick=async ()=>{
-    const sub=$('#sS').value.trim(), ch=$('#sC').value.trim(); if(!sub||!ch) return;
+  $('#sSv').onclick=()=> withLoading($('#sSv'), async ()=>{
+    const sub=$('#sS').value.trim(), ch=$('#sC').value.trim(); if(!sub||!ch){ toast('Subject & chapter required'); return; }
     const r=await apiAdd('Syllabus',{subject:sub, chapter:ch, sub:$('#sSub').value, notes:$('#sN').value, status:'pending'});
     if(r.ok){ state.cache.Syllabus.push(r.data); closeSheet(); renderScreen(); }
-  };
+  });
 }
 function openAddNote(){
   const tags = allTags();
@@ -1250,12 +1294,12 @@ function openAddNote(){
     <button class="btn accent block mt-16" id="nSv">Save note</button>`);
   let pending=null;
   $('#nAtt').onchange = e=>{ pending = e.target.files[0]; $('#nAttName').textContent=pending.name; $('#nAttName').classList.remove('hidden'); };
-  $('#nSv').onclick=async ()=>{
+  $('#nSv').onclick=()=> withLoading($('#nSv'), async ()=>{
     const atts=[];
     if(pending){ toast('Uploading…'); const b64=await fileToB64(pending); const r=await apiUpload(b64,pending.type,pending.name); if(r.ok) atts.push({...r.data,mimeType:pending.type}); }
     const r=await apiAdd('Notes',{title:$('#nT').value, body:$('#nB').value, tags:$('#nTg').value, attachments:JSON.stringify(atts)});
     if(r.ok){ state.cache.Notes.push(r.data); toast('Saved'); closeSheet(); renderScreen(); }
-  };
+  });
 }
 function openAddImage(){
   const groups=allGroups(), tags=allTags();
@@ -1273,14 +1317,14 @@ function openAddImage(){
   let file=null;
   $('#gImg').onchange=e=>{ file=e.target.files[0]; $('#gImgName').textContent=file.name; $('#gImgName').classList.remove('hidden'); };
   $('#gGr').onchange=(e)=>{ if(e.target.value==='__new'){ const g=prompt('Group name'); if(g){ const o=document.createElement('option'); o.value=g; o.textContent=g; o.selected=true; e.target.insertBefore(o,e.target.querySelector('[value=__new]')); } else e.target.value=groups[0]||'Default'; } };
-  $('#gSv').onclick=async ()=>{
-    if(!file) return toast('Choose an image first');
+  $('#gSv').onclick=()=> withLoading($('#gSv'), async ()=>{
+    if(!file){ toast('Choose an image first'); return; }
     toast('Uploading…'); const b64=await fileToB64(file);
     const up = await apiUpload(b64,file.type,file.name);
-    if(!up.ok) return toast('Upload failed');
+    if(!up.ok){ toast('Upload failed'); return; }
     const r = await apiAdd('Images',{groupName:$('#gGr').value||'Default', url:up.data.url, fileId:up.data.fileId, remarks:$('#gRm').value, tags:$('#gTg').value});
     if(r.ok){ state.cache.Images.push(r.data); toast('Saved'); closeSheet(); renderScreen(); }
-  };
+  });
 }
 function openAddFinance(){
   const cats = optionsFrom(state.cache.Finance,'category');
@@ -1299,11 +1343,11 @@ function openAddFinance(){
     <div class="field mt-8"><div class="col"><label>Account</label><select id="fAcc">${accs.map(a=>`<option>${escapeHtml(a)}</option>`).join('')}</select></div></div>
     <div class="field mt-8"><div class="col"><label>Note</label><input id="fN"></div></div>
     <button class="btn accent block mt-16" id="fSv">Save transaction</button>`);
-  $('#fSv').onclick=async ()=>{
-    const amt=+$('#fA').value; if(!amt) return toast('Amount required');
+  $('#fSv').onclick=()=> withLoading($('#fSv'), async ()=>{
+    const amt=+$('#fA').value; if(!amt){ toast('Amount required'); return; }
     const r=await apiAdd('Finance',{type:$('#fT').value,category:$('#fC').value,amount:amt,account:$('#fAcc').value,note:$('#fN').value,date:$('#fD').value});
     if(r.ok){ state.cache.Finance.push(r.data); toast('Saved'); closeSheet(); renderScreen(); }
-  };
+  });
 }
 function openAddHealth(){
   const cats = ['water','meal','exercise','sleep','wakeup','travel'];
@@ -1321,13 +1365,13 @@ function openAddHealth(){
     <button class="btn accent block mt-16" id="hSv">Save</button>`);
   const toggle = ()=> $('#hMealWrap').classList.toggle('hidden', $('#hT').value!=='meal');
   $('#hT').onchange = toggle; toggle();
-  $('#hSv').onclick=async ()=>{
+  $('#hSv').onclick=()=> withLoading($('#hSv'), async ()=>{
     const r=await apiAdd('Health',{type:$('#hT').value,value:$('#hV').value,unit:$('#hU').value,meal:$('#hT').value==='meal'?$('#hMeal').value:'',note:$('#hN').value,date:todayISO()});
     if(r.ok){ state.cache.Health.push(r.data); closeSheet(); renderScreen(); toast('Logged'); }
-  };
+  });
 }
 
-/* ---------- Notifications ---------- */
+/* ═══════ Notifications ═══════ */
 function notify(title, body){
   if(!('Notification' in window)) return;
   if(Notification.permission==='granted') new Notification(title, {body, icon:'https://em-content.zobj.net/source/microsoft/379/spiral-calendar_1f5d3-fe0f.png'});
@@ -1343,12 +1387,10 @@ $('#btnNotif').onclick = requestNotif;
 function scheduleReminders(){
   if(!('Notification' in window) || Notification.permission!=='granted') return;
   const now = new Date();
-  // reminders for tasks due today (not done)
   state.cache.Tasks.forEach(t=>{
     if(t.status==='done') return;
     if(!t.due) return;
-    const d = new Date(t.due); if(isNaN(d)) return;
-    // if due date is today – notify at 9am, 3pm
+    const d = new Date(t.due+'T00:00:00'); if(isNaN(d)) return;
     if(todayISO(d)===todayISO()){
       [9,15].forEach(h=>{
         const when=new Date(); when.setHours(h,0,0,0);
@@ -1357,7 +1399,6 @@ function scheduleReminders(){
       });
     }
   });
-  // learning reviews at 10am
   const iso=todayISO();
   const due = state.cache.Learning.filter(l=>{ const rd=(l.reviewDates||'').split(','); const done=(l.doneDates||'').split(','); return rd.includes(iso) && !done.includes(iso); });
   if(due.length){
@@ -1366,7 +1407,7 @@ function scheduleReminders(){
   }
 }
 
-/* ---------- Render dispatch ---------- */
+/* ═══════ Render dispatch ═══════ */
 function renderScreen(){
   if(state.tab==='home') renderHome();
   if(state.tab==='learn') renderLearn();
@@ -1376,7 +1417,7 @@ function renderScreen(){
   if(state.tab==='body') renderBody();
 }
 
-/* ---------- Boot ---------- */
+/* ═══════ Boot ═══════ */
 (async function(){
   renderSubnav();
   if(!getUrl()) showSetup();
