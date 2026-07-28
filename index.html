@@ -1,47 +1,22 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,maximum-scale=1" />
-<meta name="theme-color" content="#F5F3EE" />
-<title>LifeOS — Personal Life Manager</title>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,maximum-scale=1"/>
+<meta name="theme-color" content="#F5F3EE"/>
+<title>LifeOS Study Edition</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700&family=Geist+Mono:wght@400;500;600&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400&display=swap" rel="stylesheet">
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
 <style>
-:root{
-  --bg:#F5F3EE;
-  --bg-elev:#FBFAF6;
-  --card:#FFFFFF;
-  --ink:#161514;
-  --ink-2:#3B3936;
-  --muted:#8A857E;
-  --line:#E7E2D8;
-  --line-soft:#EFEBE1;
-  --accent:#B8451E;
-  --accent-ink:#7A2C11;
-  --accent-soft:#F5E4DA;
-  --gold:#B8892A;
-  --green:#2F6B3A;
-  --red:#B0342B;
-  --blue:#28496B;
-  --radius:16px;
-  --radius-sm:10px;
-  --shadow:0 1px 2px rgba(20,20,15,.04), 0 8px 24px -12px rgba(20,20,15,.08);
-  --shadow-lg:0 4px 12px rgba(20,20,15,.06), 0 24px 60px -20px rgba(20,20,15,.18);
-  --safe-b:env(safe-area-inset-bottom, 0px);
-  --safe-t:env(safe-area-inset-top, 0px);
-}
+:root{--bg:#F5F3EE;--bg-elev:#FBFAF6;--card:#FFFFFF;--ink:#161514;--ink-2:#3B3936;--muted:#8A857E;--line:#E7E2D8;--line-soft:#EFEBE1;--accent:#B8451E;--accent-ink:#7A2C11;--accent-soft:#F5E4DA;--gold:#B8892A;--green:#2F6B3A;--red:#B0342B;--blue:#28496B;--radius:16px;--shadow:0 1px 2px rgba(20,20,15,.04),0 8px 24px -12px rgba(20,20,15,.08);--shadow-lg:0 4px 12px rgba(20,20,15,.06),0 24px 60px -20px rgba(20,20,15,.18);--safe-b:env(safe-area-inset-bottom,0px);--safe-t:env(safe-area-inset-top,0px)}
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
-html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);font-family:'Bricolage Grotesque',ui-sans-serif,system-ui,sans-serif;-webkit-font-smoothing:antialiased;font-feature-settings:"ss01","cv11"}
+html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);font-family:'Bricolage Grotesque',ui-sans-serif,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
 body{overscroll-behavior-y:contain;min-height:100dvh;padding-bottom:calc(84px + var(--safe-b))}
 button{font-family:inherit;color:inherit;background:none;border:0;cursor:pointer;padding:0}
 input,textarea,select{font-family:inherit;color:inherit;background:transparent;border:0;outline:0;width:100%}
-a{color:var(--accent-ink);text-decoration:none}
-::selection{background:var(--accent);color:#fff}
-
-/* Layout */
+a{color:var(--accent-ink);text-decoration:none}::selection{background:var(--accent);color:#fff}
 .wrap{max-width:520px;margin:0 auto;min-height:100dvh;position:relative}
 .appbar{position:sticky;top:0;z-index:40;background:linear-gradient(180deg,var(--bg) 78%,rgba(245,243,238,0));padding:calc(14px + var(--safe-t)) 20px 8px}
 .appbar-row{display:flex;align-items:center;justify-content:space-between;gap:10px}
@@ -49,51 +24,29 @@ a{color:var(--accent-ink);text-decoration:none}
 .brand .dot{width:10px;height:10px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 4px var(--accent-soft)}
 .brand .name{font-family:'Fraunces',serif;font-weight:500;font-size:20px;letter-spacing:-.01em}
 .brand small{font-family:'Geist Mono',monospace;font-size:10px;color:var(--muted);letter-spacing:.14em;text-transform:uppercase;display:block;margin-top:-2px}
-.pill-icon{width:38px;height:38px;border-radius:12px;background:var(--card);border:1px solid var(--line);display:grid;place-items:center;color:var(--ink-2);font-size:15px}
-.pill-icon.badge::after{content:"";position:absolute;width:8px;height:8px;background:var(--accent);border-radius:50%;transform:translate(12px,-12px);box-shadow:0 0 0 2px var(--card)}
-.pill-icon{position:relative}
-
-/* Sub tabs */
-.subnav{display:flex;gap:6px;overflow:auto;padding:6px 20px 12px;scrollbar-width:none}
-.subnav::-webkit-scrollbar{display:none}
-.subnav button{flex:0 0 auto;padding:8px 14px;border-radius:999px;font-size:13px;font-weight:500;color:var(--muted);border:1px solid transparent;letter-spacing:-.01em}
+.pill-icon{width:38px;height:38px;border-radius:12px;background:var(--card);border:1px solid var(--line);display:grid;place-items:center;color:var(--ink-2);font-size:15px;position:relative}
+.subnav{display:flex;gap:6px;overflow:auto;padding:6px 20px 12px;scrollbar-width:none}.subnav::-webkit-scrollbar{display:none}
+.subnav button{flex:0 0 auto;padding:8px 14px;border-radius:999px;font-size:13px;font-weight:500;color:var(--muted);border:1px solid transparent}
 .subnav button.on{background:var(--ink);color:#fff;border-color:var(--ink)}
-.subnav button:not(.on):hover{color:var(--ink)}
-
-/* Bottom nav */
 .tabbar{position:fixed;bottom:0;left:0;right:0;z-index:50;background:rgba(251,250,246,.86);backdrop-filter:saturate(1.4) blur(14px);-webkit-backdrop-filter:saturate(1.4) blur(14px);border-top:1px solid var(--line);padding:8px 12px calc(10px + var(--safe-b))}
 .tabbar-inner{max-width:520px;margin:0 auto;display:grid;grid-template-columns:repeat(6,1fr);gap:2px}
-.tab{display:flex;flex-direction:column;align-items:center;gap:3px;padding:8px 4px;border-radius:12px;color:var(--muted);font-size:10px;font-weight:500;letter-spacing:.02em}
-.tab i{font-size:17px}
-.tab.on{color:var(--ink)}
-.tab.on i{color:var(--accent)}
-
-/* Screen */
-.screen{padding:4px 20px 40px;display:none;animation:fade .28s ease}
-.screen.on{display:block}
+.tab{display:flex;flex-direction:column;align-items:center;gap:3px;padding:8px 4px;border-radius:12px;color:var(--muted);font-size:10px;font-weight:500}
+.tab i{font-size:17px}.tab.on{color:var(--ink)}.tab.on i{color:var(--accent)}
+.screen{padding:4px 20px 40px;display:none;animation:fade .28s ease}.screen.on{display:block}
 @keyframes fade{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
-
-/* Cards */
-.card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:16px;box-shadow:var(--shadow)}
-.card + .card{margin-top:12px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:16px;box-shadow:var(--shadow)}.card+.card{margin-top:12px}
 .card h3{margin:0 0 4px;font-family:'Fraunces',serif;font-weight:500;font-size:18px;letter-spacing:-.01em}
 .card .sub{color:var(--muted);font-size:12px;margin-top:2px}
 .row{display:flex;align-items:center;justify-content:space-between;gap:10px}
 .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:6px}
 .chip{display:inline-flex;align-items:center;gap:6px;padding:4px 9px;border-radius:999px;background:var(--line-soft);color:var(--ink-2);font-size:11px;font-weight:500}
-.chip.acc{background:var(--accent-soft);color:var(--accent-ink)}
-.chip.g{background:#E6F1E7;color:var(--green)}
-.chip.r{background:#F7DEDB;color:var(--red)}
-.chip.b{background:#DDE6F0;color:var(--blue)}
-.chip.gd{background:#F3E7C9;color:var(--gold)}
-
+.chip.acc{background:var(--accent-soft);color:var(--accent-ink)}.chip.g{background:#E6F1E7;color:var(--green)}.chip.r{background:#F7DEDB;color:var(--red)}.chip.b{background:#DDE6F0;color:var(--blue)}.chip.gd{background:#F3E7C9;color:var(--gold)}
 .money{font-family:'Geist Mono',monospace;font-weight:600;letter-spacing:-.02em}
 .mono{font-family:'Geist Mono',monospace}
 h1.section-title{font-family:'Fraunces',serif;font-weight:500;font-size:28px;letter-spacing:-.02em;margin:6px 0 2px}
 .section-sub{color:var(--muted);font-size:13px;margin:0 0 14px}
-
-/* Input */
 .field{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px 12px;display:flex;align-items:center;gap:8px}
 .field.compact{padding:8px 10px}
 .field input,.field textarea,.field select{font-size:14px}
@@ -102,104 +55,49 @@ h1.section-title{font-family:'Fraunces',serif;font-weight:500;font-size:28px;let
 .field textarea{resize:vertical;min-height:64px;padding-top:4px}
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:10px 14px;border-radius:12px;background:var(--ink);color:#fff;font-weight:500;font-size:14px;transition:opacity .15s}
 .btn.ghost{background:transparent;border:1px solid var(--line);color:var(--ink)}
-.btn.accent{background:var(--accent)}
-.btn.sm{padding:6px 10px;font-size:12px;border-radius:9px}
-.btn.block{width:100%}
-.btn.icon{width:38px;padding:0;height:38px}
-.btn:disabled{opacity:.5;pointer-events:none}
+.btn.accent{background:var(--accent)}.btn.sm{padding:6px 10px;font-size:12px;border-radius:9px}
+.btn.block{width:100%}.btn:disabled{opacity:.5;pointer-events:none}
 .fab{position:fixed;right:calc(50vw - 240px);bottom:calc(96px + var(--safe-b));z-index:45;width:52px;height:52px;border-radius:16px;background:var(--ink);color:#fff;display:grid;place-items:center;box-shadow:var(--shadow-lg);font-size:18px}
-@media (max-width:560px){.fab{right:18px}}
-
-/* Spinner keyframes */
-@keyframes spin{to{transform:rotate(360deg)}}
-.fa-spin{animation:spin 1s linear infinite}
-
-/* Calendar */
-.cal-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
-.cal-head .title{font-family:'Fraunces',serif;font-size:22px;font-weight:500;letter-spacing:-.02em}
-.cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:4px}
-.cal-dn{font-size:10px;color:var(--muted);text-align:center;padding:4px 0;letter-spacing:.08em;text-transform:uppercase}
-.cal-cell{aspect-ratio:1/1;border-radius:10px;background:var(--bg-elev);display:flex;flex-direction:column;align-items:flex-start;justify-content:space-between;padding:6px;font-size:12px;position:relative;border:1px solid transparent}
-.cal-cell.out{opacity:.35}
-.cal-cell.today{background:var(--ink);color:#fff}
-.cal-cell.has::after{content:"";position:absolute;bottom:6px;right:6px;width:5px;height:5px;background:var(--accent);border-radius:50%}
-.cal-cell.today.has::after{background:#fff}
-.cal-cell .n{font-family:'Geist Mono',monospace;font-weight:600}
-.cal-cell .tot{font-size:9px;color:var(--muted);font-family:'Geist Mono',monospace}
-.cal-cell.today .tot{color:rgba(255,255,255,.7)}
-.week-row{display:flex;gap:6px;overflow:auto;padding:2px 0 6px;scrollbar-width:none}
-.week-row::-webkit-scrollbar{display:none}
-.week-day{flex:0 0 60px;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:10px 8px;text-align:center}
-.week-day .d{font-size:10px;color:var(--muted);letter-spacing:.08em;text-transform:uppercase}
-.week-day .n{font-family:'Geist Mono',monospace;font-size:18px;font-weight:600;margin:2px 0}
-.week-day .dot{width:6px;height:6px;border-radius:50%;background:var(--line);margin:2px auto 0}
-.week-day.today{background:var(--ink);color:#fff;border-color:var(--ink)}
-.week-day.today .d,.week-day.today .n{color:#fff}
-.week-day.has .dot{background:var(--accent)}
-
-/* Item list */
-.item{display:flex;gap:10px;padding:12px 0;border-bottom:1px solid var(--line-soft)}
-.item:last-child{border-bottom:0}
+@media(max-width:560px){.fab{right:18px}}
+@keyframes spin{to{transform:rotate(360deg)}}.fa-spin{animation:spin 1s linear infinite}
+.item{display:flex;gap:10px;padding:12px 0;border-bottom:1px solid var(--line-soft)}.item:last-child{border-bottom:0}
 .item .ck{width:20px;height:20px;border-radius:6px;border:1.5px solid var(--line);flex:0 0 20px;margin-top:2px;display:grid;place-items:center;color:transparent;font-size:10px}
 .item.done .ck{background:var(--ink);border-color:var(--ink);color:#fff}
 .item.done .t{color:var(--muted);text-decoration:line-through}
 .item .t{font-weight:500;font-size:14px}
 .item .m{color:var(--muted);font-size:12px;margin-top:2px;display:flex;gap:6px;flex-wrap:wrap;align-items:center}
-.item .actions{display:flex;gap:4px;opacity:.6}
-.item .actions button{color:var(--muted);padding:4px}
-
-/* Kanban */
-.kanban{display:grid;grid-template-columns:repeat(3,minmax(200px,1fr));gap:10px;overflow-x:auto;padding-bottom:4px;scroll-snap-type:x mandatory;scrollbar-width:none}
-.kanban::-webkit-scrollbar{display:none}
-.col{background:var(--bg-elev);border:1px solid var(--line);border-radius:14px;padding:10px;scroll-snap-align:start}
-.col h4{margin:2px 4px 8px;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:600;display:flex;justify-content:space-between}
-.col .pcard{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:10px;margin-bottom:8px;font-size:13px;cursor:pointer}
-.col .pcard .n{font-weight:600;margin-bottom:2px}
-.col .pcard .d{color:var(--muted);font-size:11px}
-
-/* Notes */
+.item .actions{display:flex;gap:4px;opacity:.6}.item .actions button{color:var(--muted);padding:4px}
+.kanban{display:grid;grid-template-columns:repeat(3,minmax(200px,1fr));gap:10px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none}.kanban::-webkit-scrollbar{display:none}
+.col-k{background:var(--bg-elev);border:1px solid var(--line);border-radius:14px;padding:10px;scroll-snap-align:start}
+.col-k h4{margin:2px 4px 8px;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:600;display:flex;justify-content:space-between}
+.col-k .pcard{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:10px;margin-bottom:8px;font-size:13px;cursor:pointer}
+.col-k .pcard .n{font-weight:600;margin-bottom:2px}.col-k .pcard .d{color:var(--muted);font-size:11px}
 .notes-grid{columns:2;column-gap:10px}
 .note-card{break-inside:avoid;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px;margin-bottom:10px;cursor:pointer}
-.note-card h4{margin:0 0 4px;font-size:14px;font-weight:600;letter-spacing:-.01em}
-.note-card p{margin:0;font-size:12px;color:var(--ink-2);line-height:1.35;display:-webkit-box;-webkit-line-clamp:6;-webkit-box-orient:vertical;overflow:hidden}
+.note-card h4{margin:0 0 4px;font-size:14px;font-weight:600}
+.note-card p{margin:0;font-size:12px;color:var(--ink-2);line-height:1.35;display:-webkit-box;-webkit-line-clamp:5;-webkit-box-orient:vertical;overflow:hidden}
 .note-card .tgs{margin-top:8px;display:flex;flex-wrap:wrap;gap:4px}
-.note-card img.att{width:100%;border-radius:8px;margin-top:8px;display:block}
-
-/* Gallery */
-.gal-groups{display:flex;gap:8px;overflow:auto;padding-bottom:8px;scrollbar-width:none}
-.gal-groups::-webkit-scrollbar{display:none}
+.note-card img.att{width:100%;border-radius:8px;margin-top:8px}
+.gal-groups{display:flex;gap:8px;overflow:auto;padding-bottom:8px;scrollbar-width:none}.gal-groups::-webkit-scrollbar{display:none}
 .gal-groups .g{flex:0 0 auto;padding:8px 14px;border-radius:999px;background:var(--card);border:1px solid var(--line);font-size:12px;font-weight:500}
 .gal-groups .g.on{background:var(--ink);color:#fff;border-color:var(--ink)}
 .gal-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:4px}
-.gal-grid .cell{aspect-ratio:1/1;background:var(--line-soft);border-radius:8px;position:relative;overflow:hidden}
+.gal-grid .cell{aspect-ratio:1;background:var(--line-soft);border-radius:8px;position:relative;overflow:hidden}
 .gal-grid .cell img{width:100%;height:100%;object-fit:cover}
 .gal-grid .cell .info{position:absolute;left:6px;bottom:6px;background:rgba(0,0,0,.55);color:#fff;font-size:9px;padding:2px 5px;border-radius:5px}
-
-/* Finance */
-.acc-row{display:flex;gap:8px;overflow:auto;padding:2px 0 6px;scrollbar-width:none}
-.acc-row::-webkit-scrollbar{display:none}
-.acc-card{flex:0 0 148px;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px;position:relative}
+.acc-row{display:flex;gap:8px;overflow:auto;padding:2px 0 6px;scrollbar-width:none}.acc-row::-webkit-scrollbar{display:none}
+.acc-card{flex:0 0 148px;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px}
 .acc-card .lbl{font-size:10px;color:var(--muted);letter-spacing:.08em;text-transform:uppercase;font-weight:600}
 .acc-card .amt{font-family:'Geist Mono',monospace;font-weight:600;font-size:18px;margin-top:6px;letter-spacing:-.02em}
 .acc-card .nm{font-size:12px;color:var(--ink-2);margin-top:2px}
 .acc-card.total{background:var(--ink);color:#fff;border-color:var(--ink)}
 .acc-card.total .lbl,.acc-card.total .nm{color:rgba(255,255,255,.7)}
-
-/* Calc */
 .calc-display{background:var(--ink);color:#fff;border-radius:16px;padding:18px;text-align:right}
 .calc-display .expr{font-family:'Geist Mono',monospace;font-size:13px;color:rgba(255,255,255,.5);min-height:16px;word-break:break-all}
 .calc-display .res{font-family:'Geist Mono',monospace;font-size:34px;font-weight:600;margin-top:6px;letter-spacing:-.02em}
 .calc-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-top:12px}
 .k{padding:16px 0;background:var(--card);border:1px solid var(--line);border-radius:12px;font-family:'Geist Mono',monospace;font-size:17px;font-weight:500}
-.k.op{background:var(--bg-elev);color:var(--accent-ink)}
-.k.eq{background:var(--accent);color:#fff;border-color:var(--accent)}
-.k.fn{font-size:12px;font-family:'Bricolage Grotesque';font-weight:500}
-.quick-calcs{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px}
-.quick-calcs .q{padding:10px;background:var(--bg-elev);border:1px solid var(--line-soft);border-radius:10px;font-size:12px;text-align:left}
-.quick-calcs .q b{display:block;font-size:13px;color:var(--accent-ink)}
-.quick-calcs .q .r{font-family:'Geist Mono',monospace;font-weight:600;color:var(--ink);margin-top:2px}
-
-/* Focus */
+.k.op{background:var(--bg-elev);color:var(--accent-ink)}.k.eq{background:var(--accent);color:#fff;border-color:var(--accent)}
 .focus-cover{position:fixed;inset:0;background:#0B0B0A;color:#fff;z-index:100;display:none;flex-direction:column;align-items:center;justify-content:center;padding:40px 24px;text-align:center}
 .focus-cover.on{display:flex}
 .focus-cover .clock{font-family:'Geist Mono',monospace;font-weight:600;font-size:min(22vw,120px);letter-spacing:-.03em}
@@ -208,1223 +106,224 @@ h1.section-title{font-family:'Fraunces',serif;font-weight:500;font-size:28px;let
 .focus-cover .btn{background:#fff;color:#0B0B0A}
 .focus-cover .btn.ghost{background:transparent;border:1px solid rgba(255,255,255,.25);color:#fff}
 .focus-cover .qt{position:absolute;top:32px;left:24px;right:24px;font-family:'Fraunces',serif;font-style:italic;font-size:14px;color:rgba(255,255,255,.4)}
-
-/* Sheet / Modal */
-.sheet-bg{position:fixed;inset:0;background:rgba(20,18,15,.4);z-index:80;opacity:0;pointer-events:none;transition:opacity .25s}
-.sheet-bg.on{opacity:1;pointer-events:auto}
-.sheet{position:fixed;left:0;right:0;bottom:0;z-index:90;background:var(--card);border-radius:22px 22px 0 0;box-shadow:var(--shadow-lg);transform:translateY(100%);transition:transform .32s cubic-bezier(.2,.9,.3,1.1);max-height:92dvh;overflow:auto;padding:20px 20px calc(28px + var(--safe-b))}
-.sheet.on{transform:translateY(0)}
+.sheet-bg{position:fixed;inset:0;background:rgba(20,18,15,.4);z-index:80;opacity:0;pointer-events:none;transition:opacity .25s}.sheet-bg.on{opacity:1;pointer-events:auto}
+.sheet{position:fixed;left:0;right:0;bottom:0;z-index:90;background:var(--card);border-radius:22px 22px 0 0;box-shadow:var(--shadow-lg);transform:translateY(100%);transition:transform .32s cubic-bezier(.2,.9,.3,1.1);max-height:92dvh;overflow:auto;padding:20px 20px calc(28px + var(--safe-b))}.sheet.on{transform:translateY(0)}
 .sheet .grip{width:38px;height:4px;background:var(--line);border-radius:4px;margin:0 auto 12px}
 .sheet h3{margin:0 0 12px;font-family:'Fraunces',serif;font-weight:500;font-size:22px;letter-spacing:-.02em}
 .sheet .close{position:absolute;top:16px;right:16px;color:var(--muted)}
-
-/* Toast */
-.toast{position:fixed;left:50%;bottom:calc(110px + var(--safe-b));transform:translateX(-50%);background:var(--ink);color:#fff;padding:10px 16px;border-radius:12px;font-size:13px;z-index:120;opacity:0;pointer-events:none;transition:opacity .2s;white-space:nowrap}
-.toast.on{opacity:1}
-
-/* Empty */
-.empty{padding:36px 20px;text-align:center;color:var(--muted);font-size:13px}
-.empty i{font-size:26px;color:var(--line);margin-bottom:10px;display:block}
-
-/* Setup banner */
-.setup{background:#FFF8EB;border:1px solid #F0DDB0;color:#7A5A15;padding:12px 14px;border-radius:12px;font-size:12px;margin:8px 0}
-.setup b{display:block;margin-bottom:4px;color:#5B4210;font-family:'Bricolage Grotesque'}
-.setup input{background:#fff;border:1px solid #E7D9AF;border-radius:8px;padding:8px 10px;font-size:12px;margin-top:6px;font-family:'Geist Mono',monospace}
-.setup button{margin-top:8px;background:#7A5A15;color:#fff;padding:6px 12px;border-radius:8px;font-size:12px}
-
-/* Timeline (project remarks) */
+.toast{position:fixed;left:50%;bottom:calc(110px + var(--safe-b));transform:translateX(-50%);background:var(--ink);color:#fff;padding:10px 16px;border-radius:12px;font-size:13px;z-index:120;opacity:0;pointer-events:none;transition:opacity .2s;white-space:nowrap}.toast.on{opacity:1}
+.empty{padding:36px 20px;text-align:center;color:var(--muted);font-size:13px}.empty i{font-size:26px;color:var(--line);margin-bottom:10px;display:block}
+.setup{background:#FFF8EB;border:1px solid #F0DDB0;color:#7A5A15;padding:12px 14px;border-radius:12px;font-size:12px;margin:8px 0}.setup b{display:block;margin-bottom:4px;color:#5B4210}
 .tl{padding-left:14px;border-left:2px solid var(--line-soft);margin-top:8px}
 .tl .e{position:relative;padding:6px 0 6px 10px;font-size:12px;color:var(--ink-2)}
 .tl .e::before{content:"";width:8px;height:8px;background:var(--accent);border-radius:50%;position:absolute;left:-19px;top:11px;box-shadow:0 0 0 2px var(--card)}
 .tl .e time{display:block;font-family:'Geist Mono',monospace;font-size:10px;color:var(--muted);margin-bottom:2px}
-
-/* Utilities */
-.hidden{display:none!important}
-.spacer{height:8px}
-.divider{height:1px;background:var(--line-soft);margin:14px 0}
+.hidden{display:none!important}.mt-8{margin-top:8px}.mt-12{margin-top:12px}.mt-16{margin-top:16px}
+.text-muted{color:var(--muted)}.center{text-align:center}
 [data-role]{cursor:pointer}
-.mt-8{margin-top:8px}.mt-12{margin-top:12px}.mt-16{margin-top:16px}
-.text-muted{color:var(--muted)}
-.center{text-align:center}
+.stat-mini{background:var(--bg-elev);border:1px solid var(--line-soft);border-radius:12px;padding:10px;text-align:center}
+.stat-mini .v{font-family:'Geist Mono',monospace;font-weight:700;font-size:20px;color:var(--ink)}
+.stat-mini .l{font-size:10px;color:var(--muted);margin-top:2px;text-transform:uppercase;letter-spacing:.06em}
+.dash-img{width:100%;border-radius:14px;object-fit:cover;max-height:200px;cursor:pointer;border:1px solid var(--line)}
+.habit-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;margin-top:8px}
+.habit-cell{aspect-ratio:1;border-radius:6px;display:grid;place-items:center;font-size:10px;font-weight:600;background:var(--line-soft);color:var(--muted);cursor:pointer}
+.habit-cell.done{background:var(--green);color:#fff}.habit-cell.today{border:2px solid var(--accent)}
+.vocab-card{background:var(--bg-elev);border:1px solid var(--line);border-radius:12px;padding:10px 12px;margin-bottom:6px}
+.vocab-card .w{font-weight:700;font-size:15px;color:var(--accent-ink)}.vocab-card .mg{font-size:12px;color:var(--ink-2);margin-top:2px}
+.draw-cover{position:fixed;inset:0;background:#fff;z-index:100;display:none;flex-direction:column}.draw-cover.on{display:flex}
+.draw-toolbar{display:flex;gap:6px;padding:10px 14px;background:var(--bg);border-bottom:1px solid var(--line);align-items:center;flex-wrap:wrap}
+.draw-toolbar button{padding:6px 10px;border-radius:8px;font-size:12px;background:var(--card);border:1px solid var(--line);display:inline-flex;align-items:center;gap:4px}
+.draw-toolbar input[type=color]{width:28px;height:28px;border:0;padding:0;cursor:pointer;border-radius:6px}
+.draw-toolbar input[type=range]{width:60px}
+#drawCanvas{flex:1;touch-action:none;cursor:crosshair}
+.pin-card{background:#FFFDF5;border:1px solid #F0DDB0;border-radius:12px;padding:10px 12px;margin-bottom:8px;position:relative}
+.pin-card .pin-del{position:absolute;top:6px;right:8px;color:var(--muted);font-size:12px}
+.voice-dot{width:10px;height:10px;border-radius:50%;background:var(--red);display:inline-block;animation:pulse 1s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+.cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:4px}
+.cal-dn{font-size:10px;color:var(--muted);text-align:center;padding:4px 0;letter-spacing:.08em;text-transform:uppercase}
+.cal-cell{aspect-ratio:1;border-radius:10px;background:var(--bg-elev);display:flex;flex-direction:column;align-items:flex-start;justify-content:space-between;padding:6px;font-size:12px;position:relative;border:1px solid transparent}
+.cal-cell.out{opacity:.35}.cal-cell.today{background:var(--ink);color:#fff}
+.cal-cell.has::after{content:"";position:absolute;bottom:6px;right:6px;width:5px;height:5px;background:var(--accent);border-radius:50%}
+.cal-cell.today.has::after{background:#fff}
+.cal-cell .n{font-family:'Geist Mono',monospace;font-weight:600}
+.cal-cell .tot{font-size:9px;color:var(--muted);font-family:'Geist Mono',monospace}.cal-cell.today .tot{color:rgba(255,255,255,.7)}
+.week-row{display:flex;gap:6px;overflow:auto;padding:2px 0 6px;scrollbar-width:none}.week-row::-webkit-scrollbar{display:none}
+.week-day{flex:0 0 60px;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:10px 8px;text-align:center}
+.week-day .d{font-size:10px;color:var(--muted);letter-spacing:.08em;text-transform:uppercase}
+.week-day .n{font-family:'Geist Mono',monospace;font-size:18px;font-weight:600;margin:2px 0}
+.week-day .dot{width:6px;height:6px;border-radius:50%;background:var(--line);margin:2px auto 0}
+.week-day.today{background:var(--ink);color:#fff;border-color:var(--ink)}.week-day.today .d,.week-day.today .n{color:#fff}.week-day.has .dot{background:var(--accent)}
 </style>
 </head>
 <body>
 <div class="wrap">
-
-  <!-- App bar -->
-  <header class="appbar">
-    <div class="appbar-row">
-      <div class="brand">
-        <div class="dot"></div>
-        <div>
-          <div class="name" id="hdrTitle">Home</div>
-          <small id="hdrDate"></small>
-        </div>
-      </div>
-      <div style="display:flex;gap:8px">
-        <button class="pill-icon" id="btnNotif" title="Notifications" data-testid="btn-notif"><i class="fa-regular fa-bell"></i></button>
-        <button class="pill-icon" id="btnSync" title="Sync" data-testid="btn-sync"><i class="fa-solid fa-rotate"></i></button>
-      </div>
+  <header class="appbar"><div class="appbar-row">
+    <div class="brand"><div class="dot"></div><div><div class="name" id="hdrTitle">Home</div><small id="hdrDate"></small></div></div>
+    <div style="display:flex;gap:8px">
+      <button class="pill-icon" id="btnVoice" title="Voice"><i class="fa-solid fa-microphone"></i></button>
+      <button class="pill-icon" id="btnNotif" title="Notifications"><i class="fa-regular fa-bell"></i></button>
+      <button class="pill-icon" id="btnSync" title="Sync"><i class="fa-solid fa-rotate"></i></button>
     </div>
-    <nav class="subnav" id="subnav"></nav>
-  </header>
-
-  <!-- Screens -->
-  <section class="screen on" id="scr-home">
-    <div id="setupBanner"></div>
-    <div class="card">
-      <div class="row"><h3 id="dashGreet">Good day</h3><span class="chip acc mono" id="todayChip"></span></div>
-      <div class="sub" id="dashSub">Here's your day at a glance.</div>
-      <div class="grid-3 mt-12">
-        <div><div class="chip mono" id="stTasks">0</div><div class="text-muted" style="font-size:11px;margin-top:4px">Tasks due</div></div>
-        <div><div class="chip mono" id="stReviews">0</div><div class="text-muted" style="font-size:11px;margin-top:4px">Reviews</div></div>
-        <div><div class="chip mono" id="stProjects">0</div><div class="text-muted" style="font-size:11px;margin-top:4px">Active proj.</div></div>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="row"><h3>This week</h3><span class="text-muted" style="font-size:12px" id="weekRange"></span></div>
-      <div class="week-row mt-8" id="weekRow"></div>
-      <div id="dayFeed" class="mt-12"></div>
-    </div>
-
-    <div class="card">
-      <div class="row">
-        <h3>Month</h3>
-        <div style="display:flex;gap:4px">
-          <button class="pill-icon" id="calPrev"><i class="fa-solid fa-chevron-left"></i></button>
-          <button class="pill-icon" id="calNext"><i class="fa-solid fa-chevron-right"></i></button>
-        </div>
-      </div>
-      <div class="cal-head"><div class="title mono" id="calTitle"></div></div>
-      <div class="cal-grid" id="calGrid"></div>
-    </div>
-
-    <div class="card" id="quoteCard">
-      <div class="chip acc">Today's saying</div>
-      <p style="font-family:'Fraunces',serif;font-style:italic;font-size:18px;line-height:1.35;margin:10px 0 4px" id="quoteText">Small steps every day.</p>
-      <div class="text-muted" style="font-size:12px" id="quoteAuthor">— Unknown</div>
-    </div>
-  </section>
-
-  <section class="screen" id="scr-learn">
-    <h1 class="section-title">Learn</h1>
-    <p class="section-sub">Spaced repetition & syllabus tracking.</p>
-    <div id="learn-body"></div>
-  </section>
-
-  <section class="screen" id="scr-tasks">
-    <h1 class="section-title">Tasks</h1>
-    <p class="section-sub">Everything to do, done, and in-progress.</p>
-    <div id="tasks-body"></div>
-  </section>
-
-  <section class="screen" id="scr-notes">
-    <h1 class="section-title">Notes</h1>
-    <p class="section-sub">Ideas, media & your image vault.</p>
-    <div id="notes-body"></div>
-  </section>
-
-  <section class="screen" id="scr-money">
-    <h1 class="section-title">Money</h1>
-    <p class="section-sub">Accounts, income, expenses, calculator.</p>
-    <div id="money-body"></div>
-  </section>
-
-  <section class="screen" id="scr-body">
-    <h1 class="section-title">Body & Mind</h1>
-    <p class="section-sub">Health logs, journal & focus mode.</p>
-    <div id="body-body"></div>
-  </section>
-
-  <!-- FAB -->
-  <button class="fab" id="fab" data-testid="fab"><i class="fa-solid fa-plus"></i></button>
-
-  <!-- Bottom nav -->
-  <nav class="tabbar">
-    <div class="tabbar-inner">
-      <button class="tab on" data-tab="home"><i class="fa-solid fa-house"></i>Home</button>
-      <button class="tab" data-tab="learn"><i class="fa-solid fa-graduation-cap"></i>Learn</button>
-      <button class="tab" data-tab="tasks"><i class="fa-solid fa-list-check"></i>Tasks</button>
-      <button class="tab" data-tab="notes"><i class="fa-solid fa-book"></i>Notes</button>
-      <button class="tab" data-tab="money"><i class="fa-solid fa-indian-rupee-sign"></i>Money</button>
-      <button class="tab" data-tab="body"><i class="fa-solid fa-heart-pulse"></i>Body</button>
-    </div>
-  </nav>
+  </div><nav class="subnav" id="subnav"></nav></header>
+  <section class="screen on" id="scr-home"><div id="setupBanner"></div><div id="home-body"></div></section>
+  <section class="screen" id="scr-learn"><h1 class="section-title">📚 Learn</h1><p class="section-sub">Study timer, vocab, spaced repetition & syllabus.</p><div id="learn-body"></div></section>
+  <section class="screen" id="scr-tasks"><h1 class="section-title">Tasks</h1><p class="section-sub">Everything to do, done, and in-progress.</p><div id="tasks-body"></div></section>
+  <section class="screen" id="scr-notes"><h1 class="section-title">Notes</h1><p class="section-sub">Ideas, gallery & drawing pad.</p><div id="notes-body"></div></section>
+  <section class="screen" id="scr-money"><h1 class="section-title">Money</h1><p class="section-sub">Accounts, expenses & calculator.</p><div id="money-body"></div></section>
+  <section class="screen" id="scr-body"><h1 class="section-title">Body & Mind</h1><p class="section-sub">Health, journal, focus & habits.</p><div id="body-body"></div></section>
+  <button class="fab" id="fab"><i class="fa-solid fa-plus"></i></button>
+  <nav class="tabbar"><div class="tabbar-inner">
+    <button class="tab on" data-tab="home"><i class="fa-solid fa-house"></i>Home</button>
+    <button class="tab" data-tab="learn"><i class="fa-solid fa-graduation-cap"></i>Learn</button>
+    <button class="tab" data-tab="tasks"><i class="fa-solid fa-list-check"></i>Tasks</button>
+    <button class="tab" data-tab="notes"><i class="fa-solid fa-book"></i>Notes</button>
+    <button class="tab" data-tab="money"><i class="fa-solid fa-indian-rupee-sign"></i>Money</button>
+    <button class="tab" data-tab="body"><i class="fa-solid fa-heart-pulse"></i>Body</button>
+  </div></nav>
 </div>
-
-<!-- Focus cover -->
-<div class="focus-cover" id="focusCover">
-  <div class="qt" id="focusQt"></div>
-  <div class="clock" id="focusClock">25:00</div>
-  <div class="lbl" id="focusLbl">Deep work</div>
-  <div class="actions">
-    <button class="btn ghost" id="focusStop">End</button>
-    <button class="btn" id="focusPause">Pause</button>
-  </div>
+<div class="focus-cover" id="focusCover"><div class="qt" id="focusQt"></div><div class="clock" id="focusClock">25:00</div><div class="lbl" id="focusLbl">Study</div><div class="actions"><button class="btn ghost" id="focusStop">End</button><button class="btn" id="focusPause">Pause</button></div></div>
+<div class="draw-cover" id="drawCover">
+  <div class="draw-toolbar"><button id="drawClose"><i class="fa-solid fa-xmark"></i> Close</button><input type="color" id="drawColor" value="#161514"/><input type="range" id="drawSize" min="1" max="20" value="3"/><button id="drawEraser"><i class="fa-solid fa-eraser"></i></button><button id="drawClear"><i class="fa-solid fa-trash"></i> Clear</button><button id="drawSave" style="background:var(--accent);color:#fff;border-color:var(--accent)"><i class="fa-solid fa-save"></i> Save</button><select id="drawLoad" style="max-width:120px;font-size:12px"><option value="">Load…</option></select></div>
+  <canvas id="drawCanvas"></canvas>
 </div>
-
-<!-- Sheet -->
 <div class="sheet-bg" id="sheetBg"></div>
 <div class="sheet" id="sheet"><div class="grip"></div><button class="close" id="sheetClose"><i class="fa-solid fa-xmark"></i></button><div id="sheetBody"></div></div>
-
-<!-- Toast -->
 <div class="toast" id="toast"></div>
-
 <script>
-/* =========================================================
-   LifeOS – client (Vanilla JS)
-   ========================================================= */
-
-/* ─── 🔑 PASTE YOUR DEPLOYED APPS SCRIPT /exec URL HERE ─── */
-const WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbzZfnORtISQ3cPr8R9BegbPRWNfuhxKvVEABMl6ff2lO82PcoiQQ0Iw7wH1COhFEZmi/exec';
-/* ────────────────────────────────────────────────────────── */
-
-const $ = (q,root=document)=>root.querySelector(q);
-const $$ = (q,root=document)=>Array.from(root.querySelectorAll(q));
-const state = {
-  tab:'home',
-  sub:{home:'today',learn:'spaced',tasks:'today',notes:'notes',money:'overview',body:'today'},
-  cache:{Tasks:[],Projects:[],Notes:[],Images:[],Finance:[],Accounts:[],Learning:[],Syllabus:[],Health:[],Office:[],Journal:[],Quotes:[],Calc:[],Focus:[]},
-  calMonth:new Date(),
-  editingProject:null,
-  editingNote:null,
-  galGroup:'All',
-  gallerySearch:'',
-  focus:{running:false, paused:false, endsAt:0, remaining:0, id:null, remarks:''}
-};
-
-const QUOTES=[
-  ['Small steps every day.','Unknown'],
-  ['What gets measured, gets managed.','Peter Drucker'],
-  ['Discipline equals freedom.','Jocko Willink'],
-  ['You do not rise to the level of your goals, you fall to the level of your systems.','James Clear'],
-  ['The best time to plant a tree was 20 years ago. The next best time is now.','Chinese proverb'],
-  ['Compound interest is the 8th wonder of the world.','Einstein'],
+/* LifeOS Study Edition */
+const WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbz696gIBqyQYumIx2bVF37IaKO395mk8TtDaiJa0zOQEH-lD_iMZP38_vPpfiPahbwd/exec'; /* 🔑 PASTE /exec URL HERE */
+const $=(q,r=document)=>r.querySelector(q),$$=(q,r=document)=>Array.from(r.querySelectorAll(q));
+const state={tab:'home',sub:{home:'dashboard',learn:'spaced',tasks:'today',notes:'notes',money:'overview',body:'today'},cache:{Tasks:[],Projects:[],Notes:[],Images:[],Finance:[],Accounts:[],Learning:[],Syllabus:[],Health:[],Office:[],Journal:[],Quotes:[],Calc:[],Focus:[],Habits:[],Pins:[],Drawings:[],Locations:[],DashImage:[],Recordings:[],VocabDone:[]},calMonth:new Date(),galGroup:'All',gallerySearch:'',focus:{running:false,paused:false,endsAt:0,remaining:0,id:null,remarks:''},voiceActive:false};
+const MQ=[['Small steps every day.','Unknown'],['What gets measured, gets managed.','Drucker'],['Discipline equals freedom.','Jocko'],['You fall to the level of your systems.','James Clear'],['The best time is now.','Proverb'],['Hard work beats talent.','Tim Notke'],['Believe you can and you\'re halfway there.','Roosevelt'],['Action is the foundational key.','Picasso'],['Success is not final, failure is not fatal.','Churchill'],['The secret of getting ahead is getting started.','Twain'],['It always seems impossible until it\'s done.','Mandela'],['Quality is not an act, it is a habit.','Aristotle'],['Dream big. Start small. Act now.','Robin Sharma'],['Push yourself, no one else will.','Unknown'],['Focus on being productive, not busy.','Tim Ferriss'],['Strive for progress, not perfection.','Unknown'],['Wake up with determination.','Unknown'],['Your limitation—it\'s only your imagination.','Unknown'],['Don\'t watch the clock; keep going.','Levenson'],['The mind is everything.','Buddha']];
+const VB=[
+['Abandon','त्यागना'],['Abbreviate','संक्षेप करना'],['Abolish','समाप्त करना'],['Abrupt','अचानक'],['Absurd','बेतुका'],['Abundant','प्रचुर'],['Acclaim','प्रशंसा'],['Accomplish','पूरा करना'],['Accumulate','इकट्ठा करना'],['Accurate','सटीक'],['Accuse','आरोप लगाना'],['Acquire','प्राप्त करना'],['Adamant','अटल'],['Adequate','पर्याप्त'],['Adhere','पालन करना'],['Adjacent','निकटवर्ती'],['Admonish','चेतावनी देना'],['Adversity','विपत्ति'],['Advocate','समर्थन करना'],['Affluent','समृद्ध'],['Aggravate','बदतर करना'],['Agile','फुर्तीला'],['Alleviate','कम करना'],['Ambiguous','अस्पष्ट'],['Ambitious','महत्वाकांक्षी'],['Amend','संशोधन करना'],['Ample','पर्याप्त'],['Annihilate','नष्ट करना'],['Anonymous','गुमनाम'],['Anticipate','पूर्वानुमान'],['Apathy','उदासीनता'],['Apprehend','पकड़ना'],['Arbitrary','मनमाना'],['Arduous','कठिन'],['Arrogant','अहंकारी'],['Articulate','स्पष्ट'],['Ascend','चढ़ना'],['Assert','दावा करना'],['Astute','चतुर'],['Audacious','साहसी'],['Augment','बढ़ाना'],['Authentic','प्रामाणिक'],['Avert','टालना'],['Avid','उत्सुक'],['Baffle','भ्रमित करना'],['Benevolent','परोपकारी'],['Bias','पूर्वाग्रह'],['Bolster','सहारा देना'],['Breach','उल्लंघन'],['Brevity','संक्षिप्तता'],['Brisk','तेज़'],['Candid','स्पष्टवादी'],['Captivate','मोहित करना'],['Cautious','सतर्क'],['Cease','बंद करना'],['Censure','निंदा'],['Clandestine','गुप्त'],['Coerce','बाध्य करना'],['Coherent','सुसंगत'],['Collaborate','सहयोग'],['Commence','आरंभ'],['Compassion','करुणा'],['Compel','विवश करना'],['Competent','योग्य'],['Comply','पालन करना'],['Conceal','छुपाना'],['Concise','संक्षिप्त'],['Condemn','निंदा करना'],['Confiscate','ज़ब्त करना'],['Confront','सामना'],['Consensus','सहमति'],['Consolidate','समेकित करना'],['Conspicuous','स्पष्ट'],['Contemplate','विचार करना'],['Contempt','अवमानना'],['Contradict','खंडन करना'],['Conviction','दृढ़ विश्वास'],['Cordial','सौहार्दपूर्ण'],['Corroborate','पुष्टि करना'],['Credible','विश्वसनीय'],['Crucial','महत्वपूर्ण'],['Curtail','कम करना'],['Cynical','निंदक'],['Daunt','डराना'],['Deceive','धोखा देना'],['Decline','गिरावट'],['Dedicate','समर्पित करना'],['Defiant','विद्रोही'],['Deliberate','जानबूझकर'],['Demolish','ध्वस्त करना'],['Deplete','कम करना'],['Deprive','वंचित करना'],['Descend','उतरना'],['Deter','रोकना'],['Deviate','भटकना'],['Diligent','परिश्रमी'],['Diminish','कम होना'],['Discern','पहचानना'],['Disclose','खुलासा'],['Disdain','तिरस्कार'],['Dispel','दूर करना'],['Dispute','विवाद'],['Disrupt','बाधित करना'],['Dissent','असहमति'],['Doctrine','सिद्धांत'],['Dominate','प्रभुत्व'],['Drastic','कठोर'],['Dubious','संदिग्ध'],['Dwindle','कम होना'],['Eccentric','विलक्षण'],['Elaborate','विस्तृत'],['Eloquent','वाक्पटु'],['Elusive','मायावी'],['Eminent','प्रख्यात'],['Empathy','सहानुभूति'],['Endeavor','प्रयास'],['Endorse','समर्थन'],['Enormous','विशाल'],['Erratic','अनियमित'],['Escalate','बढ़ाना'],['Eternal','शाश्वत'],['Evade','बचना'],['Evolve','विकसित होना'],['Exaggerate','बढ़ा-चढ़ाकर'],['Excel','श्रेष्ठ होना'],['Exempt','मुक्त करना'],['Exploit','शोषण'],['Extravagant','फ़िज़ूलखर्च'],['Fabricate','गढ़ना'],['Facilitate','सुगम बनाना'],['Fallacy','भ्रांति'],['Feasible','संभव'],['Feeble','कमज़ोर'],['Fervent','उत्साही'],['Fickle','अस्थिर'],['Flaw','दोष'],['Flourish','फलना-फूलना'],['Forbid','मना करना'],['Formidable','दुर्जेय'],['Forsake','त्यागना'],['Frantic','उन्मत्त'],['Frivolous','तुच्छ'],['Frugal','मितव्ययी'],['Futile','व्यर्थ'],['Genuine','असली'],['Gratitude','कृतज्ञता'],['Gregarious','मिलनसार'],['Gullible','भोला'],['Hamper','बाधा डालना'],['Harass','परेशान करना'],['Harmony','सामंजस्य'],['Harsh','कठोर'],['Hazard','खतरा'],['Hinder','बाधा'],['Hostile','शत्रुतापूर्ण'],['Humble','विनम्र'],['Hypocrisy','पाखंड'],['Ignorant','अज्ञानी'],['Illuminate','प्रकाशित'],['Immense','विशाल'],['Impartial','निष्पक्ष'],['Impede','बाधित'],['Imperative','अनिवार्य'],['Implicit','अंतर्निहित'],['Impose','लागू करना'],['Incessant','लगातार'],['Incite','उकसाना'],['Incompetent','अयोग्य'],['Incredible','अविश्वसनीय'],['Indifferent','उदासीन'],['Indulge','लिप्त'],['Inevitable','अनिवार्य'],['Infamous','कुख्यात'],['Infer','अनुमान'],['Inherent','अंतर्निहित'],['Inhibit','रोकना'],['Innovation','नवाचार'],['Integrity','ईमानदारी'],['Intense','तीव्र'],['Intimidate','डराना'],['Intricate','जटिल'],['Invade','आक्रमण'],['Irony','विडंबना'],['Isolate','अलग करना'],['Jeopardize','खतरे में'],['Jubilant','आनंदित'],['Keen','उत्सुक'],['Lament','विलाप'],['Lavish','भव्य'],['Legitimate','वैध'],['Lenient','उदार'],['Liable','उत्तरदायी'],['Linger','रुकना'],['Lucid','स्पष्ट'],['Malice','द्वेष'],['Mandate','आदेश'],['Manifest','प्रकट'],['Meager','अल्प'],['Mediocre','साधारण'],['Migrate','प्रवास'],['Monotonous','नीरस'],['Naive','भोला'],['Neglect','उपेक्षा'],['Nimble','फुर्तीला'],['Nostalgia','पुरानी यादें'],['Notorious','कुख्यात'],['Novice','नौसिखिया'],['Nurture','पालन-पोषण'],['Obscure','अस्पष्ट'],['Obsolete','अप्रचलित'],['Obstinate','ज़िद्दी'],['Omit','छोड़ना'],['Optimistic','आशावादी'],['Overwhelm','अभिभूत'],['Pacify','शांत करना'],['Paradox','विरोधाभास'],['Peculiar','अजीब'],['Perceive','अनुभव'],['Peril','खतरा'],['Persist','दृढ़ रहना'],['Persuade','राजी करना'],['Plausible','विश्वसनीय'],['Pledge','प्रतिज्ञा'],['Ponder','विचार'],['Postpone','स्थगित'],['Potent','शक्तिशाली'],['Pragmatic','व्यावहारिक'],['Precise','सटीक'],['Predominant','प्रमुख'],['Prejudice','पूर्वाग्रह'],['Prestige','प्रतिष्ठा'],['Prevail','प्रबल होना'],['Procrastinate','टालना'],['Profound','गहन'],['Prohibit','निषेध'],['Prominent','प्रमुख'],['Prompt','तत्काल'],['Propel','प्रेरित'],['Prosper','समृद्ध होना'],['Provoke','उकसाना'],['Prudent','विवेकी'],['Pursue','पीछा करना'],['Radical','आमूल'],['Ratify','पुष्टि'],['Rebuke','डांटना'],['Reconcile','मिलाना'],['Redundant','अनावश्यक'],['Refrain','बचना'],['Refute','खंडन'],['Reluctant','अनिच्छुक'],['Remedy','उपाय'],['Repeal','रद्द करना'],['Repent','पछताना'],['Replenish','भरना'],['Resilient','लचीला'],['Resolve','संकल्प'],['Restrain','रोकना'],['Retaliate','बदला लेना'],['Reveal','प्रकट करना'],['Revoke','रद्द करना'],['Rigid','कठोर'],['Robust','मजबूत'],['Ruthless','निर्दयी'],['Salvage','बचाना'],['Sanction','मंजूरी'],['Scarce','दुर्लभ'],['Scrutinize','जांचना'],['Serene','शांत'],['Severe','गंभीर'],['Shrewd','चालाक'],['Skeptical','संशयवादी'],['Solemn','गंभीर'],['Sovereign','संप्रभु'],['Spontaneous','स्वतः'],['Stagnant','गतिहीन'],['Stimulate','प्रेरित'],['Subordinate','अधीनस्थ'],['Subtle','सूक्ष्म'],['Succumb','झुकना'],['Sufficient','पर्याप्त'],['Suppress','दबाना'],['Surge','उछाल'],['Surplus','अतिरिक्त'],['Sustain','बनाए रखना'],['Tangible','मूर्त'],['Tedious','थकाऊ'],['Tenacious','दृढ़'],['Terminate','समाप्त'],['Thrive','फलना-फूलना'],['Tolerate','सहन'],['Tranquil','शांत'],['Transparent','पारदर्शी'],['Trivial','तुच्छ'],['Turmoil','उथल-पुथल'],['Unanimous','सर्वसम्मत'],['Undermine','कमज़ोर करना'],['Urge','आग्रह'],['Vague','अस्पष्ट'],['Valid','वैध'],['Vanquish','जीतना'],['Venture','उपक्रम'],['Verify','सत्यापित'],['Versatile','बहुमुखी'],['Vibrant','जीवंत'],['Vigorous','जोशपूर्ण'],['Violate','उल्लंघन'],['Virtue','सद्गुण'],['Vivid','सजीव'],['Volatile','अस्थिर'],['Vulnerable','कमज़ोर'],['Warrant','अधिकार पत्र'],['Wary','सावधान'],['Wield','चलाना'],['Yield','उपज देना'],['Zeal','उत्साह'],['Zealous','उत्साही'],['Zenith','शिखर']
 ];
-
-/* ═══════ API ═══════ */
-function getUrl(){ return WEB_APP_URL; }
-
-async function api(path, body){
-  const url = getUrl();
-  if(!url){ toast('⚠️ Set WEB_APP_URL in index.html'); return {ok:false, error:'no url'}; }
-  try{
-    let res;
-    if(body){
-      res = await fetch(url, {method:'POST', headers:{'Content-Type':'text/plain;charset=utf-8'}, body:JSON.stringify(body)});
-    } else {
-      res = await fetch(url + '?' + path);
-    }
-    return await res.json();
-  }catch(e){ toast('Network error'); return {ok:false, error:String(e)}; }
+/* API */
+function getUrl(){return WEB_APP_URL}
+async function api(p,b){const u=getUrl();if(!u){toast('⚠️ Set WEB_APP_URL');return{ok:false}};try{let r;if(b)r=await fetch(u,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(b)});else r=await fetch(u+'?'+p);return await r.json()}catch(e){toast('Network error');return{ok:false}}}
+const apiAll=()=>api('action=all'),apiList=s=>api('action=list&sheet='+s),apiAdd=(s,r)=>api(null,{action:'add',sheet:s,row:r}),apiUpdate=(s,id,p)=>api(null,{action:'update',sheet:s,id,patch:p}),apiDelete=(s,id)=>api(null,{action:'delete',sheet:s,id}),apiUpload=(b,m,f)=>api(null,{action:'upload',base64:b,mimeType:m,filename:f});
+/* Helpers */
+function toast(m){const t=$('#toast');t.textContent=m;t.classList.add('on');clearTimeout(t._);t._=setTimeout(()=>t.classList.remove('on'),2200)}
+function openSheet(h){$('#sheetBody').innerHTML=h;$('#sheet').classList.add('on');$('#sheetBg').classList.add('on')}
+function closeSheet(){$('#sheet').classList.remove('on');$('#sheetBg').classList.remove('on')}
+$('#sheetBg').onclick=closeSheet;$('#sheetClose').onclick=closeSheet;
+function fmtMoney(n){return'₹'+Number(n||0).toLocaleString('en-IN',{maximumFractionDigits:2})}
+function todayISO(d=new Date()){const x=new Date(d);return x.getFullYear()+'-'+String(x.getMonth()+1).padStart(2,'0')+'-'+String(x.getDate()).padStart(2,'0')}
+function escapeHtml(s){return String(s??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]))}
+function driveImg(item,sz){const fid=item.fileId;if(fid)return'https://lh3.googleusercontent.com/d/'+fid+(sz?'=w'+sz:'');const u=item.url||'';const m=u.match(/[?&]id=([^&]+)/)||u.match(/\/d\/([^/?]+)/);return m?'https://lh3.googleusercontent.com/d/'+m[1]+(sz?'=w'+sz:''):u}
+async function withLoading(btn,fn,txt){if(!btn||btn.disabled)return;const o=btn.innerHTML;btn.disabled=true;btn.innerHTML='<i class="fa-solid fa-spinner fa-spin"></i> '+(txt||'Saving…');try{await fn()}catch(e){toast('Error: '+e)}finally{btn.disabled=false;btn.innerHTML=o}}
+function fileToB64(f){return new Promise(r=>{const x=new FileReader();x.onload=()=>r(String(x.result).split(',')[1]);x.readAsDataURL(f)})}
+function blobToB64(b){return new Promise(r=>{const x=new FileReader();x.onload=()=>r(String(x.result).split(',')[1]);x.readAsDataURL(b)})}
+function safeParse(s,f){try{return JSON.parse(s)}catch{return f}}
+function optionsFrom(l,k){const s=new Set();l.forEach(x=>x[k]&&s.add(x[k]));return[...s]}
+function dayOfYear(){const n=new Date(),s=new Date(n.getFullYear(),0,0);return Math.floor((n-s)/864e5)}
+function minutesToH(m){m=+m||0;return Math.floor(m/60)+'h '+(m%60)+'m'}
+function getDailyVocab(){const i=(dayOfYear()*25)%VB.length;const w=[];for(let j=0;j<25;j++)w.push(VB[(i+j)%VB.length]);return w}
+/* Tabs */
+const SUBNAVS={home:[['dashboard','Dashboard'],['location','Location'],['calendar','Calendar']],learn:[['spaced','Revision'],['syllabus','Syllabus'],['vocab','Vocabulary'],['timer','Study Timer']],tasks:[['today','Tasks'],['history','History'],['projects','Projects']],notes:[['notes','Notes'],['gallery','Gallery'],['draw','Draw Pad']],money:[['overview','Overview'],['log','Log'],['calc','Calc']],body:[['today','Logs'],['journal','Journal'],['focus','Focus'],['habits','Habits']]};
+function renderSubnav(){const items=SUBNAVS[state.tab]||[];$('#subnav').innerHTML=items.map(([k,l])=>`<button class="${state.sub[state.tab]===k?'on':''}" data-sub="${k}">${l}</button>`).join('');$$('#subnav button').forEach(b=>b.onclick=()=>{state.sub[state.tab]=b.dataset.sub;renderSubnav();renderScreen()})}
+function switchTab(t){state.tab=t;$$('.tab').forEach(b=>b.classList.toggle('on',b.dataset.tab===t));$$('.screen').forEach(s=>s.classList.toggle('on',s.id==='scr-'+t));$('#hdrTitle').textContent={home:'Home',learn:'📚 Learn',tasks:'Tasks',notes:'Notes',money:'Money',body:'Body & Mind'}[t];renderSubnav();renderScreen()}
+$$('.tab').forEach(b=>b.onclick=()=>switchTab(b.dataset.tab));
+/* Sync */
+async function sync(){if(!getUrl()){showSetup();return}toast('Syncing…');const r=await apiAll();if(r.ok){Object.assign(state.cache,r.data);toast('✅ Synced')}else toast('❌ Sync failed');renderScreen()}
+$('#btnSync').onclick=()=>withLoading($('#btnSync'),sync,'');
+function showSetup(){$('#setupBanner').innerHTML=`<div class="setup"><b>⚠️ URL not set</b>Open index.html → paste /exec URL in WEB_APP_URL → reload.</div>`}
+/* HOME */
+function greetings(){const h=new Date().getHours();return h<5?'Late night':h<12?'Good morning':h<17?'Good afternoon':h<21?'Good evening':'Good night'}
+function tasksForDate(iso){return{tasks:state.cache.Tasks.filter(x=>(x.due||'').slice(0,10)===iso),reviews:state.cache.Learning.filter(x=>(x.reviewDates||'').split(',').includes(iso)&&!(x.doneDates||'').split(',').includes(iso))}}
+function renderHome(){const el=$('#home-body');if(state.sub.home==='dashboard')renderDash(el);else if(state.sub.home==='location')renderLoc(el);else renderCal(el)}
+function renderDash(el){
+  $('#hdrDate').textContent=new Date().toLocaleDateString(undefined,{weekday:'long',day:'numeric',month:'long'}).toUpperCase();
+  const iso=todayISO(),d=tasksForDate(iso),di=state.cache.DashImage.slice(-1)[0],pins=state.cache.Pins.filter(p=>p.pinned==='true'),q=state.cache.Quotes.length?state.cache.Quotes[new Date().getDate()%state.cache.Quotes.length]:{text:MQ[new Date().getDate()%MQ.length][0],author:MQ[new Date().getDate()%MQ.length][1]};
+  const wt=state.cache.Health.filter(h=>(h.date||'').slice(0,10)===iso&&h.type==='water').reduce((a,b)=>a+Number(b.value||0),0);
+  const ft=state.cache.Focus.filter(f=>(f.startedAt||'').slice(0,10)===iso&&f.completedAt).reduce((a,b)=>a+Number(b.duration||0),0);
+  el.innerHTML=`
+    ${di?`<div class="card" style="padding:8px"><img class="dash-img" src="${driveImg(di)}"/>${di.caption?`<div class="text-muted center" style="font-size:11px;margin-top:4px">${escapeHtml(di.caption)}</div>`:''}<div class="center mt-8"><button class="btn sm ghost" id="diUpd">Update photo</button></div></div>`:`<div class="card center"><button class="btn ghost" id="diAdd"><i class="fa-solid fa-image"></i> Pin photo to dashboard</button></div>`}
+    <div class="card"><div class="row"><h3>${greetings()}</h3><span class="chip acc mono">${new Date().toLocaleDateString(undefined,{day:'2-digit',month:'short'})}</span></div><div class="sub">Full summary at a glance.</div>
+      <div class="grid-4 mt-12"><div class="stat-mini"><div class="v">${d.tasks.filter(t=>t.status!=='done').length}</div><div class="l">Tasks</div></div><div class="stat-mini"><div class="v">${d.reviews.length}</div><div class="l">Reviews</div></div><div class="stat-mini"><div class="v">${state.cache.Projects.filter(p=>p.status==='In-Progress').length}</div><div class="l">Projects</div></div><div class="stat-mini"><div class="v">${state.cache.Habits.filter(h=>h.status!=='done').length}</div><div class="l">Habits</div></div></div>
+      <div class="grid-4 mt-8"><div class="stat-mini"><div class="v">${state.cache.Notes.length}</div><div class="l">Notes</div></div><div class="stat-mini"><div class="v">${state.cache.Images.length}</div><div class="l">Images</div></div><div class="stat-mini"><div class="v">${wt}</div><div class="l">Water ml</div></div><div class="stat-mini"><div class="v">${ft}m</div><div class="l">Focus</div></div></div>
+      <div class="grid-3 mt-8"><div class="stat-mini"><div class="v">${state.cache.Finance.length}</div><div class="l">Txns</div></div><div class="stat-mini"><div class="v">${state.cache.Learning.length}</div><div class="l">Topics</div></div><div class="stat-mini"><div class="v">${state.cache.Syllabus.filter(s=>s.status==='done').length}/${state.cache.Syllabus.length}</div><div class="l">Syllabus</div></div></div></div>
+    ${state.cache.Locations.length?`<div style="font-size:11px;color:var(--muted);display:flex;align-items:center;gap:4px;margin-top:4px"><i class="fa-solid fa-location-dot"></i> ${escapeHtml((state.cache.Locations.slice(-1)[0].address||'').slice(0,60)||state.cache.Locations.slice(-1)[0].lat+','+state.cache.Locations.slice(-1)[0].lng)} · ${new Date(state.cache.Locations.slice(-1)[0].timestamp).toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'})}</div>`:''}
+    ${pins.length?`<div class="card"><div class="row"><h3>📌 Pinned</h3><button class="btn sm ghost" id="addPin"><i class="fa-solid fa-plus"></i></button></div>${pins.map(p=>`<div class="pin-card"><button class="pin-del" data-role="del" data-sheet="Pins" data-id="${p.id}"><i class="fa-solid fa-thumbtack"></i></button><div style="font-size:11px;color:var(--muted)">${escapeHtml(p.category||'Formula')}</div><div style="font-size:14px;margin-top:4px;white-space:pre-wrap">${escapeHtml(p.content)}</div></div>`).join('')}</div>`:`<div class="card center"><button class="btn ghost" id="addPin"><i class="fa-solid fa-thumbtack"></i> Pin formulas & tricky questions</button></div>`}
+    <div class="card"><div class="chip acc">💡 Motivation</div><p style="font-family:'Fraunces',serif;font-style:italic;font-size:18px;line-height:1.35;margin:10px 0 4px">${escapeHtml(q.text)}</p><div class="text-muted" style="font-size:12px">— ${escapeHtml(q.author||'Unknown')}</div></div>
+    <div class="card"><h3>Today's Vocab</h3><div class="sub">Go to Learn → Vocabulary for full list</div>${getDailyVocab().slice(0,5).map(([w,h])=>`<div style="display:flex;justify-content:space-between;padding:4px 0;border-bottom:1px solid var(--line-soft)"><span style="font-weight:600">${w}</span><span class="text-muted">${h}</span></div>`).join('')}</div>`;
+  if($('#diAdd'))$('#diAdd').onclick=uploadDI;if($('#diUpd'))$('#diUpd').onclick=uploadDI;if($('#addPin'))$('#addPin').onclick=openAddPin;bindCommonActions(el);
 }
-async function apiList(sheet){ return api('action=list&sheet='+sheet); }
-async function apiAll(){ return api('action=all'); }
-async function apiAdd(sheet,row){ return api(null,{action:'add',sheet,row}); }
-async function apiUpdate(sheet,id,patch){ return api(null,{action:'update',sheet,id,patch}); }
-async function apiDelete(sheet,id){ return api(null,{action:'delete',sheet,id}); }
-async function apiUpload(base64, mimeType, filename){ return api(null,{action:'upload',base64,mimeType,filename}); }
-
-/* ═══════ UI helpers ═══════ */
-function toast(m){ const t=$('#toast'); t.textContent=m; t.classList.add('on'); clearTimeout(t._); t._=setTimeout(()=>t.classList.remove('on'),2200); }
-function openSheet(html){ $('#sheetBody').innerHTML=html; $('#sheet').classList.add('on'); $('#sheetBg').classList.add('on'); }
-function closeSheet(){ $('#sheet').classList.remove('on'); $('#sheetBg').classList.remove('on'); }
-$('#sheetBg').onclick=closeSheet; $('#sheetClose').onclick=closeSheet;
-function fmtDate(d){ const x=new Date(d); return x.toLocaleDateString(undefined,{weekday:'short',day:'numeric',month:'short'}); }
-function fmtMoney(n){ n=Number(n||0); return '₹' + n.toLocaleString('en-IN',{maximumFractionDigits:2}); }
-
-/* ✅ FIX: todayISO — uses LOCAL date (not UTC) so IST works correctly after 6:30 PM */
-function todayISO(d=new Date()){
-  const x = new Date(d);
-  return x.getFullYear()+'-'+String(x.getMonth()+1).padStart(2,'0')+'-'+String(x.getDate()).padStart(2,'0');
-}
-
-function daysBetween(a,b){ const A=new Date(a); const B=new Date(b); A.setHours(0,0,0,0); B.setHours(0,0,0,0); return Math.round((B-A)/86400000); }
-
-/* ✅ FIX: escapeHtml — parenthesis was in wrong place */
-function escapeHtml(s){ return String(s??'').replace(/[&<>"']/g, m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m])); }
-
-/* ✅ NEW: Drive image URL helper — works for both old uc?id= and new lh3 URLs */
-function driveImg(item, size){
-  const fid = item.fileId;
-  if(fid) return 'https://lh3.googleusercontent.com/d/' + fid + (size ? '=w'+size : '');
-  /* fallback: try to extract id from old-format URL */
-  const url = item.url || '';
-  const m = url.match(/[?&]id=([^&]+)/) || url.match(/\/d\/([^/?]+)/);
-  if(m) return 'https://lh3.googleusercontent.com/d/' + m[1] + (size ? '=w'+size : '');
-  return url; /* already a direct URL */
-}
-
-/* ✅ NEW: Loading indicator helper — shows spinner inside button during async op */
-async function withLoading(btn, asyncFn, loadText){
-  if(!btn || btn.disabled) return;
-  const orig = btn.innerHTML;
-  btn.disabled = true;
-  btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> ' + (loadText || 'Saving…');
-  try { await asyncFn(); }
-  catch(e){ toast('Error: '+String(e)); }
-  finally { btn.disabled = false; btn.innerHTML = orig; }
-}
-
-/* ═══════ Tabs & subnav ═══════ */
-const SUBNAVS = {
-  home:  [['today','Today'],['week','Week'],['month','Month']],
-  learn: [['spaced','Spaced repetition'],['syllabus','Syllabus']],
-  tasks: [['today','Tasks'],['history','History'],['projects','Projects']],
-  notes: [['notes','Notes'],['gallery','Gallery']],
-  money: [['overview','Overview'],['log','Log'],['calc','Calc']],
-  body:  [['today','Logs'],['journal','Journal'],['focus','Focus']]
-};
-function renderSubnav(){
-  const items = SUBNAVS[state.tab] || [];
-  $('#subnav').innerHTML = items.map(([k,l])=>`<button class="${state.sub[state.tab]===k?'on':''}" data-sub="${k}">${l}</button>`).join('');
-  $$('#subnav button').forEach(b=> b.onclick=()=>{ state.sub[state.tab]=b.dataset.sub; renderSubnav(); renderScreen(); });
-}
-function switchTab(t){
-  state.tab = t;
-  $$('.tab').forEach(b=> b.classList.toggle('on', b.dataset.tab===t));
-  $$('.screen').forEach(s=> s.classList.toggle('on', s.id==='scr-'+t));
-  $('#hdrTitle').textContent = {home:'Home',learn:'Learn',tasks:'Tasks',notes:'Notes',money:'Money',body:'Body & Mind'}[t];
-  renderSubnav(); renderScreen();
-}
-$$('.tab').forEach(b=> b.onclick=()=>switchTab(b.dataset.tab));
-
-/* ═══════ Data sync ═══════ */
-async function sync(){
-  if(!getUrl()){ showSetup(); return; }
-  toast('Syncing…');
-  const r = await apiAll();
-  if(r.ok){ Object.assign(state.cache, r.data); toast('✅ Synced'); }
-  else toast('❌ Sync failed');
-  renderScreen();
-}
-$('#btnSync').onclick = ()=> withLoading($('#btnSync'), sync, '');
-
-/* ═══════ Setup banner ═══════ */
-function showSetup(){
-  $('#setupBanner').innerHTML = `
-    <div class="setup">
-      <b><i class="fa-solid fa-triangle-exclamation"></i> URL not set</b>
-      Open <code>index.html</code> in a text editor and paste your Apps Script <b>/exec</b> URL into the <code>WEB_APP_URL</code> constant at the top of the &lt;script&gt; block. Then reload this page.
-    </div>`;
-}
-
-/* ═══════ HOME ═══════ */
-function greetings(){
-  const h = new Date().getHours();
-  return h<5?'Late night': h<12?'Good morning': h<17?'Good afternoon': h<21?'Good evening':'Good night';
-}
-function tasksForDate(iso){
-  const t = state.cache.Tasks.filter(x=> (x.due||'').slice(0,10)===iso);
-  const l = state.cache.Learning.filter(x=> (x.reviewDates||'').split(',').includes(iso) && !(x.doneDates||'').split(',').includes(iso));
-  return {tasks:t, reviews:l};
-}
-function renderHome(){
-  $('#hdrDate').textContent = new Date().toLocaleDateString(undefined,{weekday:'long', day:'numeric', month:'long'}).toUpperCase();
-  $('#dashGreet').textContent = greetings();
-  $('#todayChip').textContent = new Date().toLocaleDateString(undefined,{day:'2-digit',month:'short'});
-  const iso = todayISO();
-  const d = tasksForDate(iso);
-  $('#stTasks').textContent = d.tasks.length;
-  $('#stReviews').textContent = d.reviews.length;
-  $('#stProjects').textContent = state.cache.Projects.filter(p=>p.status==='In-Progress').length;
-
-  // Week strip
-  const start = new Date(); start.setDate(start.getDate() - start.getDay());
-  const days=[]; for(let i=0;i<7;i++){ const dt=new Date(start); dt.setDate(start.getDate()+i); days.push(dt); }
-  $('#weekRange').textContent = fmtDate(days[0]) + ' – ' + fmtDate(days[6]);
-  $('#weekRow').innerHTML = days.map(dt=>{
-    const diso=todayISO(dt); const info=tasksForDate(diso);
-    const has = info.tasks.length+info.reviews.length>0;
-    const isT = diso===todayISO();
-    return `<div class="week-day ${isT?'today':''} ${has?'has':''}" data-iso="${diso}"><div class="d">${dt.toLocaleDateString(undefined,{weekday:'short'})}</div><div class="n">${dt.getDate()}</div><div class="dot"></div></div>`;
-  }).join('');
-  $$('#weekRow .week-day').forEach(el=> el.onclick=()=> renderDayFeed(el.dataset.iso));
-  renderDayFeed(iso);
-
-  // Month
-  renderCalendar();
-
-  // Quote
-  const q = state.cache.Quotes.length? state.cache.Quotes[new Date().getDate()%state.cache.Quotes.length] : {text:QUOTES[new Date().getDate()%QUOTES.length][0], author:QUOTES[new Date().getDate()%QUOTES.length][1]};
-  $('#quoteText').textContent = q.text; $('#quoteAuthor').textContent = '— ' + (q.author||'Unknown');
-}
-function renderDayFeed(iso){
-  const {tasks,reviews} = tasksForDate(iso);
-  const all=[
-    ...tasks.map(t=>({t:t.title,k:'Task',m:t.priority||'',id:t.id,done:t.status==='done',sheet:'Tasks'})),
-    ...reviews.map(r=>({t:r.topic,k:'Review',m:r.subject||'',id:r.id,done:false,sheet:'Learning'}))
-  ];
-  if(!all.length){ $('#dayFeed').innerHTML=`<div class="empty"><i class="fa-regular fa-calendar-check"></i>Nothing scheduled. A blank canvas.</div>`; return; }
-  $('#dayFeed').innerHTML = all.map(x=>`
-    <div class="item ${x.done?'done':''}">
-      <div class="ck"><i class="fa-solid fa-check"></i></div>
-      <div style="flex:1"><div class="t">${escapeHtml(x.t)}</div><div class="m"><span class="chip">${x.k}</span>${x.m?`<span>${escapeHtml(x.m)}</span>`:''}</div></div>
-    </div>`).join('');
-}
-function renderCalendar(){
-  const d = state.calMonth;
-  $('#calTitle').textContent = d.toLocaleDateString(undefined,{month:'long',year:'numeric'});
-  const first = new Date(d.getFullYear(), d.getMonth(), 1);
-  const startWeekday = first.getDay();
-  const daysCount = new Date(d.getFullYear(), d.getMonth()+1, 0).getDate();
-  const dn=['S','M','T','W','T','F','S'];
-  let html = dn.map(x=>`<div class="cal-dn">${x}</div>`).join('');
-  for(let i=0;i<startWeekday;i++){ html += `<div class="cal-cell out"></div>`; }
-  for(let i=1;i<=daysCount;i++){
-    const dt = new Date(d.getFullYear(), d.getMonth(), i);
-    const iso = todayISO(dt);
-    const info = tasksForDate(iso);
-    const total = info.tasks.length+info.reviews.length;
-    const isT = iso===todayISO();
-    html += `<div class="cal-cell ${isT?'today':''} ${total?'has':''}"><span class="n">${i}</span>${total?`<span class="tot">${total}</span>`:''}</div>`;
-  }
-  $('#calGrid').innerHTML = html;
-}
-$('#calPrev').onclick=()=>{ state.calMonth = new Date(state.calMonth.getFullYear(), state.calMonth.getMonth()-1, 1); renderCalendar(); };
-$('#calNext').onclick=()=>{ state.calMonth = new Date(state.calMonth.getFullYear(), state.calMonth.getMonth()+1, 1); renderCalendar(); };
-
-/* ═══════ LEARN ═══════ */
-const SR_INTERVALS = [1,3,5,7,15,30,60,90];
-function computeReviews(startISO){
-  const s = new Date(startISO+'T00:00:00');
-  return SR_INTERVALS.map(n=>{ const x=new Date(s); x.setDate(s.getDate()+n); return todayISO(x); }).join(',');
-}
-function renderLearn(){
-  const el=$('#learn-body');
-  if(state.sub.learn==='spaced'){
-    const today = todayISO();
-    const due = state.cache.Learning.filter(l=>{
-      const rd = (l.reviewDates||'').split(',');
-      const done = (l.doneDates||'').split(',');
-      return rd.some(d=> d<=today && !done.includes(d));
-    });
-    el.innerHTML = `
-      <div class="card">
-        <div class="row"><h3>Due today</h3><span class="chip acc">${due.length}</span></div>
-        ${due.length? due.map(l=>{
-          const rd=(l.reviewDates||'').split(',').filter(Boolean);
-          const done=(l.doneDates||'').split(',').filter(Boolean);
-          const nextDue = rd.find(d=> d<=today && !done.includes(d));
-          const idx = rd.indexOf(nextDue);
-          return `<div class="item">
-            <div class="ck"><i class="fa-solid fa-check"></i></div>
-            <div style="flex:1"><div class="t">${escapeHtml(l.topic)}</div><div class="m"><span class="chip">${escapeHtml(l.subject||'General')}</span><span class="chip gd">Rep ${idx+1}/${SR_INTERVALS.length}</span><span>Due ${nextDue}</span></div></div>
-            <div class="actions"><button data-role="mark-done" data-id="${l.id}" data-date="${nextDue}"><i class="fa-solid fa-check-double"></i></button></div>
-          </div>`;
-        }).join('') : `<div class="empty"><i class="fa-regular fa-lightbulb"></i>No reviews due. Add a new topic to start.</div>`}
-      </div>
-
-      <div class="card">
-        <h3>All topics</h3>
-        <div class="sub">Auto-scheduled at 1, 3, 5, 7, 15, 30, 60, 90 days.</div>
-        ${state.cache.Learning.length? state.cache.Learning.map(l=>{
-          const rd=(l.reviewDates||'').split(',').filter(Boolean);
-          const done=(l.doneDates||'').split(',').filter(Boolean);
-          const pct = rd.length? Math.round(done.length/rd.length*100):0;
-          return `<div class="item"><div style="flex:1"><div class="t">${escapeHtml(l.topic)}</div><div class="m"><span class="chip">${escapeHtml(l.subject||'General')}</span><span class="chip">${pct}% reviewed</span><span>Started ${l.startDate}</span></div></div>
-          <div class="actions"><button data-role="del" data-sheet="Learning" data-id="${l.id}"><i class="fa-solid fa-trash"></i></button></div></div>`;
-        }).join('') : `<div class="empty">No topics yet.</div>`}
-      </div>`;
-  } else {
-    // syllabus
-    const grouped = {};
-    state.cache.Syllabus.forEach(s=>{ (grouped[s.subject]||(grouped[s.subject]=[])).push(s); });
-    el.innerHTML = `
-      <div class="card">
-        <h3>Syllabus tracker</h3>
-        <div class="sub">Chapters and sub-topics with completion status.</div>
-        ${Object.keys(grouped).length? Object.keys(grouped).map(sub=>`
-          <div class="mt-12"><div class="chip acc">${escapeHtml(sub)}</div>
-            ${grouped[sub].map(c=>`
-              <div class="item">
-                <div class="ck ${c.status==='done'?'':''}" data-role="syl-toggle" data-id="${c.id}" style="${c.status==='done'?'background:var(--ink);color:#fff;border-color:var(--ink)':''}"><i class="fa-solid fa-check"></i></div>
-                <div style="flex:1"><div class="t">${escapeHtml(c.chapter)}${c.sub?` <span class="text-muted" style="font-weight:400"> · ${escapeHtml(c.sub)}</span>`:''}</div>${c.notes?`<div class="m">${escapeHtml(c.notes)}</div>`:''}</div>
-                <div class="actions"><button data-role="del" data-sheet="Syllabus" data-id="${c.id}"><i class="fa-solid fa-trash"></i></button></div>
-              </div>`).join('')}
-          </div>`).join('') : `<div class="empty"><i class="fa-solid fa-book-open"></i>No chapters yet.</div>`}
-      </div>`;
-    $$('[data-role="syl-toggle"]').forEach(b=> b.onclick=async ()=>{
-      const c = state.cache.Syllabus.find(x=>x.id===b.dataset.id);
-      const ns = c.status==='done'?'pending':'done';
-      c.status=ns; await apiUpdate('Syllabus',c.id,{status:ns}); renderScreen();
-    });
-  }
-  bindCommonActions(el);
-}
-
-/* ═══════ TASKS ═══════ */
-function renderTasks(){
-  const el=$('#tasks-body');
-  if(state.sub.tasks==='today'){
-    const iso = todayISO();
-    const today = state.cache.Tasks.filter(t=> (t.due||'').slice(0,10)===iso || (!t.due && t.status!=='done'));
-    const upcoming = state.cache.Tasks.filter(t=> t.status!=='done' && (t.due||'')>iso).sort((a,b)=>a.due>b.due?1:-1);
-    el.innerHTML = `
-      <div class="card">
-        <div class="row"><h3>Today</h3><span class="chip acc">${today.filter(t=>t.status!=='done').length} open</span></div>
-        ${today.length? today.map(taskItem).join('') : `<div class="empty"><i class="fa-regular fa-square-check"></i>No tasks for today.</div>`}
-      </div>
-      <div class="card"><h3>Upcoming</h3>
-        ${upcoming.length? upcoming.map(taskItem).join('') : `<div class="empty">No upcoming tasks.</div>`}
-      </div>`;
-  } else if(state.sub.tasks==='history'){
-    const done = state.cache.Tasks.filter(t=>t.status==='done').sort((a,b)=>(b.completed||'').localeCompare(a.completed||''));
-    el.innerHTML = `<div class="card"><h3>Completed history</h3>
-      ${done.length? done.map(taskItem).join('') : `<div class="empty">Nothing completed yet.</div>`}</div>`;
-  } else {
-    // projects kanban
-    const groups={'Pending':[],'In-Progress':[],'Completed':[]};
-    state.cache.Projects.forEach(p=> (groups[p.status]||(groups['Pending'])).push(p));
-    el.innerHTML = `
-      <div class="card">
-        <h3>Projects</h3>
-        <div class="sub">Kanban with timestamped remarks & issue log.</div>
-        <div class="kanban mt-12">
-          ${Object.keys(groups).map(k=>`
-            <div class="col"><h4>${k}<span>${groups[k].length}</span></h4>
-              ${groups[k].map(p=>`
-                <div class="pcard" data-role="proj-open" data-id="${p.id}">
-                  <div class="n">${escapeHtml(p.name)}</div>
-                  ${p.description?`<div class="d">${escapeHtml(p.description).slice(0,80)}</div>`:''}
-                </div>`).join('')}
-            </div>`).join('')}
-        </div>
-      </div>`;
-    $$('[data-role="proj-open"]').forEach(b=> b.onclick=()=> openProject(b.dataset.id));
-  }
-  bindCommonActions(el);
-}
-function taskItem(t){
-  return `<div class="item ${t.status==='done'?'done':''}">
-    <div class="ck" data-role="task-toggle" data-id="${t.id}"><i class="fa-solid fa-check"></i></div>
-    <div style="flex:1"><div class="t">${escapeHtml(t.title)}</div>
-      <div class="m">
-        ${t.due?`<span class="chip">${new Date(t.due+'T00:00:00').toLocaleDateString(undefined,{day:'2-digit',month:'short'})}</span>`:''}
-        ${t.priority?`<span class="chip ${t.priority==='high'?'r':(t.priority==='low'?'g':'gd')}">${t.priority}</span>`:''}
-        ${t.notes?`<span>${escapeHtml(t.notes).slice(0,60)}</span>`:''}
-      </div>
-    </div>
-    <div class="actions"><button data-role="del" data-sheet="Tasks" data-id="${t.id}"><i class="fa-solid fa-trash"></i></button></div>
-  </div>`;
-}
-function openProject(id){
-  const p = state.cache.Projects.find(x=>x.id===id); if(!p) return;
-  state.editingProject = id;
-  const remarks = safeParse(p.remarks, []);
-  openSheet(`
-    <h3>${escapeHtml(p.name)}</h3>
-    <div class="field mt-8"><div class="col"><label>Status</label>
-      <select id="pStatus"><option ${p.status==='Pending'?'selected':''}>Pending</option><option ${p.status==='In-Progress'?'selected':''}>In-Progress</option><option ${p.status==='Completed'?'selected':''}>Completed</option></select>
-    </div></div>
-    <div class="field mt-8"><div class="col"><label>Description</label><textarea id="pDesc">${escapeHtml(p.description||'')}</textarea></div></div>
-    <div class="mt-16"><b style="font-family:Fraunces;font-weight:500;font-size:16px">Remarks / Issues</b>
-      <div class="tl" id="pTl">${remarks.length? remarks.map(r=>`<div class="e"><time>${new Date(r.ts).toLocaleString()}</time>${escapeHtml(r.text)}</div>`).join('') : `<div class="text-muted" style="font-size:12px">No remarks yet.</div>`}</div>
-      <div class="field mt-8"><div class="col"><label>New remark</label><textarea id="pRemark" placeholder="Log an issue, update, blocker…"></textarea></div></div>
-      <button class="btn accent block mt-8" id="pAddRemark"><i class="fa-solid fa-plus"></i> Add timestamped remark</button>
-    </div>
-    <div style="display:flex;gap:8px" class="mt-16">
-      <button class="btn ghost" id="pDel"><i class="fa-solid fa-trash"></i> Delete</button>
-      <button class="btn block" id="pSave">Save changes</button>
-    </div>`);
-  $('#pAddRemark').onclick=()=> withLoading($('#pAddRemark'), async ()=>{
-    const t=$('#pRemark').value.trim(); if(!t){ toast('Enter a remark'); return; }
-    remarks.unshift({ts:new Date().toISOString(), text:t});
-    await apiUpdate('Projects', id, {remarks:JSON.stringify(remarks)});
-    p.remarks = JSON.stringify(remarks); openProject(id); toast('Remark saved');
-  });
-  $('#pSave').onclick=()=> withLoading($('#pSave'), async ()=>{
-    const patch = {status:$('#pStatus').value, description:$('#pDesc').value};
-    Object.assign(p, patch); await apiUpdate('Projects',id,patch); toast('Saved'); closeSheet(); renderScreen();
-  });
-  $('#pDel').onclick=async ()=>{
-    if(!confirm('Delete project?')) return;
-    await apiDelete('Projects',id);
-    state.cache.Projects = state.cache.Projects.filter(x=>x.id!==id);
-    closeSheet(); renderScreen();
-  };
-}
-function safeParse(s,f){ try{ return JSON.parse(s); }catch{ return f; } }
-
-/* ═══════ NOTES ═══════ */
-function allTags(){
-  const t = new Set();
-  state.cache.Notes.forEach(n=> (n.tags||'').split(',').map(x=>x.trim()).filter(Boolean).forEach(x=>t.add(x)));
-  state.cache.Images.forEach(n=> (n.tags||'').split(',').map(x=>x.trim()).filter(Boolean).forEach(x=>t.add(x)));
-  return [...t];
-}
-function allGroups(){
-  const g = new Set(['Default']);
-  state.cache.Images.forEach(i=> i.groupName && g.add(i.groupName));
-  return [...g];
-}
-function renderNotes(){
-  const el=$('#notes-body');
-  if(state.sub.notes==='notes'){
-    const tags = allTags();
-    el.innerHTML=`
-      <div class="card">
-        <div class="row"><h3>Your notes</h3><span class="chip">${state.cache.Notes.length}</span></div>
-        ${tags.length?`<div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:8px">${tags.map(t=>`<span class="chip acc">#${escapeHtml(t)}</span>`).join('')}</div>`:''}
-        <div class="notes-grid mt-12">
-          ${state.cache.Notes.map(n=>{
-            const atts = safeParse(n.attachments,[]);
-            const img = atts.find(a=>(a.mimeType||'').startsWith('image/'));
-            return `<div class="note-card" data-role="note-open" data-id="${n.id}">
-              <h4>${escapeHtml(n.title||'Untitled')}</h4>
-              ${img?`<img class="att" src="${driveImg(img,400)}" alt="" loading="lazy">`:''}
-              <p>${escapeHtml(n.body||'')}</p>
-              ${n.tags?`<div class="tgs">${n.tags.split(',').map(t=>`<span class="chip">#${escapeHtml(t.trim())}</span>`).join('')}</div>`:''}
-            </div>`;
-          }).join('')}
-        </div>
-        ${!state.cache.Notes.length?`<div class="empty"><i class="fa-regular fa-note-sticky"></i>No notes yet.</div>`:''}
-      </div>`;
-    $$('[data-role="note-open"]').forEach(b=> b.onclick=()=> openNote(b.dataset.id));
-  } else {
-    // ✅ GALLERY — uses driveImg() for reliable preview
-    const groups = allGroups();
-    if(!groups.includes(state.galGroup)) state.galGroup='All';
-    const q = state.gallerySearch.toLowerCase();
-    const imgs = state.cache.Images.filter(i=>{
-      const inGroup = state.galGroup==='All' || i.groupName===state.galGroup;
-      const match = !q || [i.remarks,i.tags,i.groupName].some(x=> (x||'').toLowerCase().includes(q));
-      return inGroup && match;
-    });
-    el.innerHTML=`
-      <div class="card">
-        <div class="row"><h3>Gallery</h3><span class="chip">${imgs.length}</span></div>
-        <div class="field compact mt-8"><i class="fa-solid fa-magnifying-glass text-muted"></i><input id="galSearch" placeholder="Search remarks, tags, groups…" value="${escapeHtml(state.gallerySearch)}"/></div>
-        <div class="gal-groups mt-8">
-          <button class="g ${state.galGroup==='All'?'on':''}" data-g="All">All</button>
-          ${groups.map(g=>`<button class="g ${state.galGroup===g?'on':''}" data-g="${escapeHtml(g)}">${escapeHtml(g)}</button>`).join('')}
-        </div>
-        <div class="gal-grid mt-12">
-          ${imgs.map(i=>`<div class="cell" data-role="img-open" data-id="${i.id}"><img src="${driveImg(i,400)}" alt="" loading="lazy"/>${i.remarks?`<div class="info">${escapeHtml(i.remarks).slice(0,20)}</div>`:''}</div>`).join('')}
-        </div>
-        ${!imgs.length?`<div class="empty"><i class="fa-regular fa-image"></i>No images here.</div>`:''}
-      </div>`;
-    /* ✅ FIX: debounced search so DOM doesn't flicker on every keystroke */
-    let searchTimer;
-    $('#galSearch').oninput = (e)=>{ clearTimeout(searchTimer); searchTimer=setTimeout(()=>{ state.gallerySearch=e.target.value; renderNotes(); },300); };
-    $$('.gal-groups .g').forEach(b=> b.onclick=()=>{ state.galGroup=b.dataset.g; renderNotes(); });
-    $$('[data-role="img-open"]').forEach(b=> b.onclick=()=> openImage(b.dataset.id));
-  }
-  bindCommonActions(el);
-}
-function openNote(id){
-  const n = state.cache.Notes.find(x=>x.id===id); if(!n) return;
-  const atts = safeParse(n.attachments,[]);
-  const tags = allTags();
-  openSheet(`
-    <h3>Edit note</h3>
-    <div class="field mt-8"><div class="col"><label>Title</label><input id="nT" value="${escapeHtml(n.title||'')}"></div></div>
-    <div class="field mt-8"><div class="col"><label>Body</label><textarea id="nB" style="min-height:120px">${escapeHtml(n.body||'')}</textarea></div></div>
-    <div class="field mt-8"><div class="col"><label>Tags (comma separated)</label><input id="nTg" list="tagList" value="${escapeHtml(n.tags||'')}"></div></div>
-    <datalist id="tagList">${tags.map(t=>`<option value="${escapeHtml(t)}">`).join('')}</datalist>
-    <div class="mt-12"><b style="font-family:Fraunces;font-weight:500;font-size:16px">Attachments</b>
-      <div id="attList" style="display:flex;gap:6px;flex-wrap:wrap;margin-top:6px">
-        ${atts.map((a,i)=>`<div class="chip">${a.mimeType&&a.mimeType.startsWith('image/')?'<i class="fa-regular fa-image"></i>':a.mimeType==='audio/webm'?'<i class="fa-solid fa-microphone"></i>':'<i class="fa-regular fa-file"></i>'} <a href="${driveImg(a)}" target="_blank">${escapeHtml(a.name||'file')}</a> <button data-role="att-del" data-i="${i}" style="color:var(--red);padding-left:6px"><i class="fa-solid fa-xmark"></i></button></div>`).join('')}
-      </div>
-      <div style="display:flex;gap:6px;margin-top:10px;flex-wrap:wrap">
-        <label class="btn ghost sm"><i class="fa-solid fa-image"></i> Image <input type="file" accept="image/*" capture="environment" id="nImg" hidden></label>
-        <label class="btn ghost sm"><i class="fa-solid fa-file-pdf"></i> PDF <input type="file" accept="application/pdf" id="nPdf" hidden></label>
-        <label class="btn ghost sm"><i class="fa-solid fa-paperclip"></i> Any file <input type="file" id="nFile" hidden></label>
-        <button class="btn ghost sm" id="nRec"><i class="fa-solid fa-microphone"></i> <span id="nRecTxt">Record</span></button>
-        <button class="btn ghost sm" id="nLink"><i class="fa-solid fa-link"></i> Link</button>
-      </div>
-    </div>
-    <div style="display:flex;gap:8px" class="mt-16">
-      <button class="btn ghost" id="nDel"><i class="fa-solid fa-trash"></i> Delete</button>
-      <button class="btn block" id="nSave">Save</button>
-    </div>`);
-
-  const uploadAndAttach = async (file)=>{
-    if(!file) return;
-    toast('Uploading '+file.name+'…');
-    const b64 = await fileToB64(file);
-    const r = await apiUpload(b64, file.type, file.name);
-    if(r.ok){ atts.push({...r.data, mimeType:file.type}); toast('Uploaded'); openNote(id); n.attachments=JSON.stringify(atts); }
-    else toast('Upload failed');
-  };
-  $('#nImg').onchange = e=> uploadAndAttach(e.target.files[0]);
-  $('#nPdf').onchange = e=> uploadAndAttach(e.target.files[0]);
-  $('#nFile').onchange = e=> uploadAndAttach(e.target.files[0]);
-  $('#nLink').onclick = ()=>{ const u=prompt('Paste link'); if(u){ atts.push({url:u,name:u,mimeType:'text/uri-list'}); openNote(id); n.attachments=JSON.stringify(atts); } };
-  $$('[data-role="att-del"]').forEach(b=> b.onclick=()=>{ atts.splice(+b.dataset.i,1); n.attachments=JSON.stringify(atts); openNote(id); });
-
-  // audio recording
-  let mediaStream=null, rec=null, chunks=[];
-  $('#nRec').onclick = async ()=>{
-    if(!rec){
-      try{
-        mediaStream = await navigator.mediaDevices.getUserMedia({audio:true});
-        rec = new MediaRecorder(mediaStream);
-        rec.ondataavailable = e=> chunks.push(e.data);
-        rec.onstop = async ()=>{
-          const blob = new Blob(chunks, {type:'audio/webm'}); chunks=[];
-          const b64 = await blobToB64(blob);
-          toast('Uploading audio…');
-          const r = await apiUpload(b64, 'audio/webm', 'audio-'+Date.now()+'.webm');
-          if(r.ok){ atts.push({...r.data, mimeType:'audio/webm'}); n.attachments=JSON.stringify(atts); openNote(id); }
-        };
-        rec.start(); $('#nRecTxt').textContent='Stop ●';
-      }catch(e){ toast('Mic denied'); }
-    } else {
-      rec.stop(); if(mediaStream) mediaStream.getTracks().forEach(t=>t.stop()); rec=null; mediaStream=null; $('#nRecTxt').textContent='Record';
-    }
-  };
-  $('#nSave').onclick = ()=> withLoading($('#nSave'), async ()=>{
-    const patch = {title:$('#nT').value, body:$('#nB').value, tags:$('#nTg').value, attachments:JSON.stringify(atts)};
-    Object.assign(n,patch); await apiUpdate('Notes',id,patch); toast('Saved'); closeSheet(); renderScreen();
-  });
-  $('#nDel').onclick = async ()=>{ if(!confirm('Delete note?')) return; await apiDelete('Notes',id); state.cache.Notes=state.cache.Notes.filter(x=>x.id!==id); closeSheet(); renderScreen(); };
-}
-
-function openImage(id){
-  const i = state.cache.Images.find(x=>x.id===id); if(!i) return;
-  const groups = allGroups();
-  openSheet(`
-    <h3>Image</h3>
-    <img src="${driveImg(i)}" style="width:100%;border-radius:12px;margin-top:8px" loading="lazy"/>
-    <div class="field mt-8"><div class="col"><label>Group</label>
-      <select id="iGr">${groups.map(g=>`<option ${i.groupName===g?'selected':''}>${escapeHtml(g)}</option>`).join('')}<option value="__new">＋ New group…</option></select>
-    </div></div>
-    <div class="field mt-8"><div class="col"><label>Remarks</label><textarea id="iRm">${escapeHtml(i.remarks||'')}</textarea></div></div>
-    <div class="field mt-8"><div class="col"><label>Tags</label><input id="iTg" list="tagList" value="${escapeHtml(i.tags||'')}"></div></div>
-    <datalist id="tagList">${allTags().map(t=>`<option value="${escapeHtml(t)}">`).join('')}</datalist>
-    <div style="display:flex;gap:8px;flex-wrap:wrap" class="mt-16">
-      <a class="btn ghost sm" href="${driveImg(i)}" target="_blank" download><i class="fa-solid fa-download"></i> Download</a>
-      <button class="btn ghost sm" id="iDel"><i class="fa-solid fa-trash"></i> Delete</button>
-      <button class="btn block" id="iSave">Save</button>
-    </div>`);
-  $('#iGr').onchange=(e)=>{ if(e.target.value==='__new'){ const g=prompt('New group name'); if(g){ const o=document.createElement('option'); o.value=g; o.textContent=g; o.selected=true; e.target.insertBefore(o, e.target.querySelector('[value=__new]')); } else e.target.value=i.groupName||'Default'; } };
-  $('#iSave').onclick=()=> withLoading($('#iSave'), async ()=>{ const patch={groupName:$('#iGr').value,remarks:$('#iRm').value,tags:$('#iTg').value}; Object.assign(i,patch); await apiUpdate('Images',id,patch); toast('Saved'); closeSheet(); renderScreen(); });
-  $('#iDel').onclick=async ()=>{ if(!confirm('Delete image record?')) return; await apiDelete('Images',id); state.cache.Images=state.cache.Images.filter(x=>x.id!==id); closeSheet(); renderScreen(); };
-}
-
-function fileToB64(f){ return new Promise(res=>{ const r=new FileReader(); r.onload=()=> res(String(r.result).split(',')[1]); r.readAsDataURL(f); }); }
-function blobToB64(b){ return new Promise(res=>{ const r=new FileReader(); r.onload=()=> res(String(r.result).split(',')[1]); r.readAsDataURL(b); }); }
-
-/* ═══════ MONEY ═══════ */
-const DEFAULT_ACCOUNTS = ['Cash','Bank A/c 1','Bank A/c 2','Bank A/c 3','Bank A/c 4','UPI'];
-function accountBalances(){
-  const map={}; DEFAULT_ACCOUNTS.forEach(a=> map[a]=0);
-  state.cache.Accounts.forEach(a=> map[a.name]=Number(a.balance||0));
-  state.cache.Finance.forEach(f=>{
-    const amt=Number(f.amount||0);
-    if(!(f.account in map)) map[f.account]=0;
-    if(f.type==='income'||f.type==='savings-in'||f.type==='transfer-in') map[f.account]+=amt;
-    else if(f.type==='expense'||f.type==='future'||f.type==='savings-out'||f.type==='transfer-out') map[f.account]-=amt;
-  });
-  return map;
-}
-function renderMoney(){
-  const el=$('#money-body');
-  const bal = accountBalances();
-  const total = Object.values(bal).reduce((a,b)=>a+b,0);
-  if(state.sub.money==='overview'){
-    const income = state.cache.Finance.filter(f=>f.type==='income').reduce((a,b)=>a+Number(b.amount||0),0);
-    const expense = state.cache.Finance.filter(f=>f.type==='expense'||f.type==='future').reduce((a,b)=>a+Number(b.amount||0),0);
-    const savings = state.cache.Finance.filter(f=>f.type==='savings-in').reduce((a,b)=>a+Number(b.amount||0),0);
-    el.innerHTML=`
-      <div class="acc-row">
-        <div class="acc-card total"><div class="lbl">Net worth</div><div class="amt">${fmtMoney(total)}</div><div class="nm">All accounts</div></div>
-        ${Object.entries(bal).map(([n,v])=>`
-          <div class="acc-card"><div class="lbl">${escapeHtml(n)}</div><div class="amt">${fmtMoney(v)}</div><div class="nm">${n==='Cash'?'Cash in hand':n==='UPI'?'UPI wallets':'Balance'}</div></div>`).join('')}
-      </div>
-      <div class="grid-3 mt-16">
-        <div class="card" style="padding:14px"><div class="chip g">Income</div><div class="money mt-8" style="font-size:18px">${fmtMoney(income)}</div></div>
-        <div class="card" style="padding:14px"><div class="chip r">Expenses</div><div class="money mt-8" style="font-size:18px">${fmtMoney(expense)}</div></div>
-        <div class="card" style="padding:14px"><div class="chip b">Savings</div><div class="money mt-8" style="font-size:18px">${fmtMoney(savings)}</div></div>
-      </div>
-      <div class="card mt-16">
-        <div class="row"><h3>Recent</h3><button class="btn sm ghost" id="mLogAll">See log</button></div>
-        ${state.cache.Finance.slice().sort((a,b)=>(b.created||'').localeCompare(a.created||'')).slice(0,8).map(financeItem).join('') || `<div class="empty">No entries yet.</div>`}
-      </div>`;
-    $('#mLogAll').onclick=()=>{ state.sub.money='log'; renderSubnav(); renderScreen(); };
-  } else if(state.sub.money==='log'){
-    const entries = state.cache.Finance.slice().sort((a,b)=>(b.created||'').localeCompare(a.created||''));
-    el.innerHTML=`
-      <div class="card"><h3>All transactions</h3>
-        ${entries.map(financeItem).join('') || `<div class="empty">No entries yet.</div>`}
-      </div>`;
-  } else {
-    // calc
-    el.innerHTML = calcHTML();
-    bindCalc();
-  }
-  bindCommonActions(el);
-}
-function financeItem(f){
-  const color = f.type==='income'||f.type==='savings-in'||f.type==='transfer-in'?'g':(f.type==='expense'||f.type==='future'?'r':'b');
-  const sign = color==='g'?'+':(color==='r'?'−':'');
-  return `<div class="item">
-    <div style="flex:1"><div class="t">${escapeHtml(f.category||f.type)}</div>
-      <div class="m"><span class="chip ${color}">${f.type}</span><span class="chip">${escapeHtml(f.account||'-')}</span><span>${(f.date||'').slice(0,10)}</span>${f.note?`<span>${escapeHtml(f.note)}</span>`:''}</div></div>
-    <div class="money" style="color:${color==='g'?'var(--green)':color==='r'?'var(--red)':'var(--blue)'}">${sign}${fmtMoney(f.amount)}</div>
-    <div class="actions"><button data-role="del" data-sheet="Finance" data-id="${f.id}"><i class="fa-solid fa-trash"></i></button></div>
-  </div>`;
-}
-
-/* ── Calculator ── */
-let calcState = { expr:'', res:'0' };
-function calcHTML(){
-  const hist = state.cache.Calc.slice().reverse().slice(0,6);
-  return `
-    <div class="card">
-      <div class="calc-display"><div class="expr" id="cExpr">${escapeHtml(calcState.expr||' ')}</div><div class="res" id="cRes">${escapeHtml(calcState.res)}</div></div>
-      <div class="calc-grid">
-        <button class="k op" data-k="C">C</button><button class="k op" data-k="back">⌫</button><button class="k op" data-k="%">%</button><button class="k op" data-k="/">÷</button>
-        <button class="k" data-k="7">7</button><button class="k" data-k="8">8</button><button class="k" data-k="9">9</button><button class="k op" data-k="*">×</button>
-        <button class="k" data-k="4">4</button><button class="k" data-k="5">5</button><button class="k" data-k="6">6</button><button class="k op" data-k="-">−</button>
-        <button class="k" data-k="1">1</button><button class="k" data-k="2">2</button><button class="k" data-k="3">3</button><button class="k op" data-k="+">+</button>
-        <button class="k" data-k="0">0</button><button class="k" data-k=".">.</button><button class="k op" data-k="(">(</button><button class="k eq" data-k="=">=</button>
-      </div>
-      <div class="mt-12"><b style="font-family:Fraunces;font-weight:500;font-size:16px">Quick calc (retail / commercial)</b>
-        <p class="text-muted" style="font-size:12px;margin:4px 0 8px">Convert prices per Dozen / Kg / Unit, and inventory Days of Cover.</p>
-        <div class="quick-calcs">
-          <button class="q" data-q="rsdz-to-rsunit"><b>Rs/Dozen → Rs/Unit</b><span class="text-muted" style="font-size:11px">↑ input dozen price</span><div class="r" id="qA">—</div></button>
-          <button class="q" data-q="rskg-to-rsunit"><b>Rs/Kg → Rs/Unit (g)</b><span class="text-muted" style="font-size:11px">↑ input kg price + grams/unit</span><div class="r" id="qB">—</div></button>
-          <button class="q" data-q="rsunit-to-rsdz"><b>Rs/Unit → Rs/Dozen</b><span class="text-muted" style="font-size:11px">↑ input unit price</span><div class="r" id="qC">—</div></button>
-          <button class="q" data-q="rsunit-to-rskg"><b>Rs/Unit → Rs/Kg</b><span class="text-muted" style="font-size:11px">↑ input unit price + g/unit</span><div class="r" id="qD">—</div></button>
-          <button class="q" data-q="doc"><b>Days of Cover</b><span class="text-muted" style="font-size:11px">Stock ÷ daily run-rate</span><div class="r" id="qE">—</div></button>
-          <button class="q" data-q="margin"><b>Margin %</b><span class="text-muted" style="font-size:11px">((SP − CP) ÷ SP) × 100</span><div class="r" id="qF">—</div></button>
-        </div>
-      </div>
-      <div class="mt-16"><b style="font-family:Fraunces;font-weight:500;font-size:16px">History</b>
-        ${hist.length? hist.map(h=>`<div class="item"><div style="flex:1"><div class="mono" style="font-size:13px">${escapeHtml(h.expression)}</div><div class="m"><span class="chip">${escapeHtml(h.category||'calc')}</span><span>${new Date(h.created).toLocaleString()}</span></div></div><div class="money">${escapeHtml(h.result)}</div></div>`).join('') : '<div class="empty">No history yet.</div>'}
-      </div>
-    </div>`;
-}
-function bindCalc(){
-  $$('.calc-grid .k').forEach(b=> b.onclick=()=>{
-    const k=b.dataset.k;
-    if(k==='C'){ calcState={expr:'',res:'0'}; }
-    else if(k==='back'){ calcState.expr = calcState.expr.slice(0,-1); }
-    else if(k==='='){
-      try{
-        const exp = calcState.expr.replace(/×/g,'*').replace(/÷/g,'/').replace(/−/g,'-');
-        const r = Function('"use strict";return ('+exp+')')();
-        calcState.res = String(r);
-        apiAdd('Calc',{expression:calcState.expr, result:String(r), category:'calc'}).then(()=> apiList('Calc').then(x=>{ if(x.ok) state.cache.Calc=x.data; renderScreen(); }));
-        calcState.expr = '';
-      }catch{ toast('Invalid expression'); }
-    }
-    else calcState.expr += k;
-    $('#cExpr').textContent = calcState.expr || ' ';
-    $('#cRes').textContent = calcState.res;
-  });
-  $$('.quick-calcs .q').forEach(b=> b.onclick=()=> quickCalc(b.dataset.q));
-}
-function quickCalc(type){
-  if(type==='rsdz-to-rsunit'){ const x=+prompt('Rs per Dozen?'); if(!x) return; const r=(x/12).toFixed(2); $('#qA').textContent=`= ₹${r} / unit`; apiAdd('Calc',{expression:`${x} Rs/Dozen`,result:`₹${r}/unit`,category:'Rs/Dozen→Rs/unit'}); }
-  if(type==='rskg-to-rsunit'){ const x=+prompt('Rs per Kg?'); const g=+prompt('Grams per unit?'); if(!x||!g) return; const r=((x*g)/1000).toFixed(2); $('#qB').textContent=`= ₹${r} / unit (${g}g)`; apiAdd('Calc',{expression:`${x} Rs/Kg × ${g}g`,result:`₹${r}/unit`,category:'Rs/Kg→Rs/unit'}); }
-  if(type==='rsunit-to-rsdz'){ const x=+prompt('Rs per Unit?'); if(!x) return; const r=(x*12).toFixed(2); $('#qC').textContent=`= ₹${r} / dozen`; apiAdd('Calc',{expression:`${x} Rs/Unit`,result:`₹${r}/dozen`,category:'Rs/Unit→Rs/Dozen'}); }
-  if(type==='rsunit-to-rskg'){ const x=+prompt('Rs per Unit?'); const g=+prompt('Grams per unit?'); if(!x||!g) return; const r=((x*1000)/g).toFixed(2); $('#qD').textContent=`= ₹${r} / kg`; apiAdd('Calc',{expression:`${x} Rs/Unit (${g}g)`,result:`₹${r}/kg`,category:'Rs/Unit→Rs/Kg'}); }
-  if(type==='doc'){ const s=+prompt('Current stock (units)?'); const d=+prompt('Daily run-rate (units/day)?'); if(!s||!d) return; const r=(s/d).toFixed(1); $('#qE').textContent=`= ${r} days`; apiAdd('Calc',{expression:`Stock ${s} ÷ ${d}/day`,result:`${r} days`,category:'DaysOfCover'}); }
-  if(type==='margin'){ const cp=+prompt('Cost price?'); const sp=+prompt('Selling price?'); if(!cp||!sp) return; const r=(((sp-cp)/sp)*100).toFixed(2); $('#qF').textContent=`= ${r}%`; apiAdd('Calc',{expression:`(${sp}-${cp})/${sp}*100`,result:`${r}%`,category:'Margin'}); }
-  apiList('Calc').then(x=>{ if(x.ok){ state.cache.Calc=x.data; } });
-}
-
-/* ═══════ BODY ═══════ */
-function renderBody(){
-  const el=$('#body-body');
-  if(state.sub.body==='today'){
-    const today = todayISO();
-    const logs = state.cache.Health.filter(h=> (h.date||'').slice(0,10)===today);
-    const water = logs.filter(l=>l.type==='water').reduce((a,b)=>a+Number(b.value||0),0);
-    /* ✅ FIX: Office lookup — compare date strings reliably */
-    const office = state.cache.Office.filter(o=> (o.date||'').slice(0,10)===today).slice(-1)[0];
-    const isIn = office && !office.outTime;
-    el.innerHTML=`
-      <div class="card">
-        <h3>Today</h3>
-        <div class="grid-2 mt-8">
-          <div><div class="chip acc mono">${water} ml</div><div class="text-muted" style="font-size:11px;margin-top:4px">Water</div></div>
-          <div><div class="chip mono">${logs.filter(l=>l.type==='meal').length}</div><div class="text-muted" style="font-size:11px;margin-top:4px">Meals</div></div>
-          <div><div class="chip mono">${logs.filter(l=>l.type==='exercise').length}</div><div class="text-muted" style="font-size:11px;margin-top:4px">Workouts</div></div>
-          <div><div class="chip mono">${office && office.totalMinutes ? minutesToH(office.totalMinutes) : '—'}</div><div class="text-muted" style="font-size:11px;margin-top:4px">Office time</div></div>
-        </div>
-      </div>
-
-      <div class="card"><div class="row"><h3>Office In/Out</h3>
-        ${isIn?`<span class="chip g">In · ${new Date(office.inTime).toLocaleTimeString([], {hour:'2-digit',minute:'2-digit'})}</span>`:''}
-        </div>
-        <div style="display:flex;gap:8px;margin-top:8px">
-          <button class="btn block ${isIn?'ghost':''}" id="clockIn" ${isIn?'disabled':''}><i class="fa-solid fa-door-open"></i> Clock in</button>
-          <button class="btn block ${!isIn?'ghost':''}" id="clockOut" ${!isIn?'disabled':''}><i class="fa-solid fa-door-closed"></i> Clock out</button>
-        </div>
-        ${state.cache.Office.slice(-5).reverse().map(o=>`<div class="item"><div style="flex:1"><div class="t">${(o.date||'').slice(0,10)}</div><div class="m"><span>In ${o.inTime?new Date(o.inTime).toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'}):'—'}</span><span>Out ${o.outTime?new Date(o.outTime).toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'}):'—'}</span>${o.totalMinutes?`<span class="chip">${minutesToH(o.totalMinutes)}</span>`:''}</div></div></div>`).join('')}
-      </div>
-
-      <div class="card"><h3>Recent logs</h3>
-        ${logs.length? logs.slice().reverse().map(h=>`
-          <div class="item">
-            <div style="flex:1"><div class="t">${escapeHtml(h.type)}${h.meal?` · ${escapeHtml(h.meal)}`:''}</div><div class="m"><span>${h.value||''} ${escapeHtml(h.unit||'')}</span>${h.note?`<span>${escapeHtml(h.note)}</span>`:''}</div></div>
-            <div class="actions"><button data-role="del" data-sheet="Health" data-id="${h.id}"><i class="fa-solid fa-trash"></i></button></div>
-          </div>`).join('') : '<div class="empty">No logs today.</div>'}
-      </div>`;
-
-    /* ✅ FIX: Clock in with loading spinner */
-    $('#clockIn').onclick = ()=> withLoading($('#clockIn'), async ()=>{
-      const r=await apiAdd('Office',{date:today, inTime:new Date().toISOString()});
-      if(r.ok){ state.cache.Office.push(r.data); toast('✅ Clocked in'); renderScreen(); }
-      else toast('❌ Failed to clock in');
-    }, 'Clocking in…');
-
-    /* ✅ FIX: Clock out — finds the right record, calculates mins, shows loading */
-    $('#clockOut').onclick = ()=> withLoading($('#clockOut'), async ()=>{
-      /* Find the last open record for today */
-      const rec = state.cache.Office.filter(o=> (o.date||'').slice(0,10)===today && !o.outTime).slice(-1)[0];
-      if(!rec){ toast('No open clock-in found'); return; }
-      const outNow = new Date();
-      const inTime = new Date(rec.inTime);
-      const mins = Math.round((outNow - inTime) / 60000);
-      if(mins < 0){ toast('Clock error: out time is before in time'); return; }
-      const patch = { outTime: outNow.toISOString(), totalMinutes: String(mins) };
-      const r = await apiUpdate('Office', rec.id, patch);
-      if(r){
-        Object.assign(rec, patch);
-        toast('✅ Clocked out · ' + minutesToH(mins));
-        renderScreen();
-      } else {
-        toast('❌ Failed to clock out');
-      }
-    }, 'Clocking out…');
-
-  } else if(state.sub.body==='journal'){
-    const entries = state.cache.Journal.slice().sort((a,b)=>(b.created||'').localeCompare(a.created||''));
-    el.innerHTML=`
-      <div class="card"><h3>Today's journal</h3>
-        <div class="field mt-8"><div class="col"><label>Mood</label><select id="jMood"><option>😊 Great</option><option>🙂 Good</option><option>😐 Ok</option><option>😔 Low</option><option>😤 Frustrated</option></select></div></div>
-        <div class="field mt-8"><div class="col"><label>Thoughts / feelings</label><textarea id="jTxt" style="min-height:100px" placeholder="What's on your mind?"></textarea></div></div>
-        <button class="btn accent block mt-8" id="jSave"><i class="fa-solid fa-check"></i> Save entry</button>
-      </div>
-      <div class="card"><h3>Past entries</h3>
-        ${entries.length? entries.map(e=>`<div class="item"><div style="flex:1"><div class="t">${escapeHtml(e.mood||'')} · ${new Date(e.created).toLocaleDateString()}</div><div class="m"><span style="font-family:Fraunces;font-style:italic">${escapeHtml(e.thoughts||'').slice(0,180)}</span></div></div><div class="actions"><button data-role="del" data-sheet="Journal" data-id="${e.id}"><i class="fa-solid fa-trash"></i></button></div></div>`).join('') : '<div class="empty">No entries yet.</div>'}
-      </div>`;
-    $('#jSave').onclick=()=> withLoading($('#jSave'), async ()=>{
-      const t=$('#jTxt').value.trim(); if(!t){ toast('Write something first'); return; }
-      const r = await apiAdd('Journal',{date:todayISO(),mood:$('#jMood').value,thoughts:t});
-      if(r.ok){ state.cache.Journal.push(r.data); $('#jTxt').value=''; toast('Saved'); renderScreen(); }
-    });
-  } else {
-    // focus
-    el.innerHTML=`
-      <div class="card">
-        <h3>Focus mode</h3>
-        <div class="sub">Full-screen countdown. Set what you want to do — it saves when the timer completes.</div>
-        <div class="grid-2 mt-12">
-          <button class="btn ghost" data-fdur="15">15 min</button>
-          <button class="btn ghost" data-fdur="25">25 min</button>
-          <button class="btn ghost" data-fdur="45">45 min</button>
-          <button class="btn ghost" data-fdur="60">60 min</button>
-        </div>
-        <div class="field mt-12"><div class="col"><label>Custom minutes</label><input id="fCustom" type="number" min="1" max="600" placeholder="e.g. 30"></div>
-          <button class="btn sm accent" id="fStart">Start</button>
-        </div>
-        <div class="field mt-8"><div class="col"><label>Remarks — what to do</label><textarea id="fRem" placeholder="Write a chapter, review MBO dashboard, finish invoice…"></textarea></div></div>
-      </div>
-      <div class="card"><h3>Recent sessions</h3>
-        ${state.cache.Focus.slice().reverse().slice(0,10).map(f=>`<div class="item"><div style="flex:1"><div class="t">${escapeHtml(f.remarks||'Focus session')}</div><div class="m"><span class="chip">${f.duration} min</span><span>${new Date(f.startedAt).toLocaleString()}</span>${f.completedAt?`<span class="chip g">completed</span>`:'<span class="chip r">ended</span>'}</div></div></div>`).join('') || '<div class="empty">No sessions yet.</div>'}
-      </div>`;
-    $$('[data-fdur]').forEach(b=> b.onclick=()=> startFocus(+b.dataset.fdur, $('#fRem').value));
-    $('#fStart').onclick=()=>{ const m=+$('#fCustom').value; if(m>0) startFocus(m,$('#fRem').value); };
-  }
-  bindCommonActions(el);
-}
-function minutesToH(m){ m=+m||0; return Math.floor(m/60)+'h '+(m%60)+'m'; }
-
-/* ═══════ Focus timer ═══════ */
-async function startFocus(mins, remarks){
-  state.focus.running=true; state.focus.paused=false;
-  state.focus.endsAt = Date.now() + mins*60000;
-  state.focus.remaining = mins*60;
-  state.focus.remarks = remarks || '';
-  state.focus.duration = mins;
-  const started = new Date().toISOString();
-  const r = await apiAdd('Focus', {duration:mins, remarks:remarks, startedAt:started});
-  state.focus.id = r.ok? r.data.id : null;
-  $('#focusLbl').textContent = remarks || 'Deep work';
-  $('#focusQt').textContent = QUOTES[Math.floor(Math.random()*QUOTES.length)][0];
-  $('#focusCover').classList.add('on'); if(document.documentElement.requestFullscreen) document.documentElement.requestFullscreen().catch(()=>{});
-  tickFocus();
-}
-function tickFocus(){
-  if(!state.focus.running){ return; }
-  const rem = state.focus.paused? state.focus.remaining : Math.max(0, Math.round((state.focus.endsAt - Date.now())/1000));
-  state.focus.remaining = rem;
-  const m = String(Math.floor(rem/60)).padStart(2,'0'), s=String(rem%60).padStart(2,'0');
-  $('#focusClock').textContent = m+':'+s;
-  if(rem<=0){ endFocus(true); return; }
-  requestAnimationFrame(()=> setTimeout(tickFocus, 500));
-}
-async function endFocus(completed){
-  state.focus.running=false; $('#focusCover').classList.remove('on'); if(document.fullscreenElement) document.exitFullscreen().catch(()=>{});
-  if(state.focus.id) await apiUpdate('Focus', state.focus.id, {completedAt: completed? new Date().toISOString():'', remarks: state.focus.remarks});
-  if(completed){ notify('Focus complete', state.focus.remarks || 'Time to stretch.'); toast('Session logged'); }
-  sync();
-}
-$('#focusStop').onclick=()=> endFocus(false);
-$('#focusPause').onclick=()=>{
-  if(state.focus.paused){ state.focus.endsAt = Date.now() + state.focus.remaining*1000; state.focus.paused=false; $('#focusPause').textContent='Pause'; tickFocus(); }
-  else { state.focus.paused=true; $('#focusPause').textContent='Resume'; }
-};
-
-/* ═══════ Common actions ═══════ */
-function bindCommonActions(root){
-  $$('[data-role="task-toggle"]', root).forEach(b=> b.onclick=async ()=>{
-    const t=state.cache.Tasks.find(x=>x.id===b.dataset.id);
-    const ns = t.status==='done'?'open':'done';
-    const patch = {status:ns, completed: ns==='done'? new Date().toISOString():''};
-    Object.assign(t,patch); toast('Saving…'); await apiUpdate('Tasks',t.id,patch); renderScreen();
-  });
-  $$('[data-role="del"]', root).forEach(b=> b.onclick=async ()=>{
-    if(!confirm('Delete?')) return;
-    const s=b.dataset.sheet, id=b.dataset.id;
-    toast('Deleting…'); await apiDelete(s,id); state.cache[s]=state.cache[s].filter(x=>x.id!==id); renderScreen();
-  });
-  $$('[data-role="mark-done"]', root).forEach(b=> b.onclick=async ()=>{
-    const l=state.cache.Learning.find(x=>x.id===b.dataset.id);
-    const done=(l.doneDates||'').split(',').filter(Boolean);
-    if(!done.includes(b.dataset.date)) done.push(b.dataset.date);
-    l.doneDates = done.join(','); toast('Saving…'); await apiUpdate('Learning',l.id,{doneDates:l.doneDates});
-    toast('Review marked done'); renderScreen();
-  });
-}
-
-/* ═══════ FAB / Add flows ═══════ */
-$('#fab').onclick = ()=>{
-  const t=state.tab, s=state.sub[t];
-  if(t==='home') return openAddTask();
-  if(t==='tasks' && s==='projects') return openAddProject();
-  if(t==='tasks') return openAddTask();
-  if(t==='learn' && s==='syllabus') return openAddSyllabus();
-  if(t==='learn') return openAddLearn();
-  if(t==='notes' && s==='gallery') return openAddImage();
-  if(t==='notes') return openAddNote();
-  if(t==='money' && s==='calc') return toast('Use the calculator above');
-  if(t==='money') return openAddFinance();
-  if(t==='body' && s==='journal') return toast('Use the form above');
-  if(t==='body' && s==='focus') return toast('Pick a duration above');
-  if(t==='body') return openAddHealth();
-};
-
-function optionsFrom(list, key){
-  const s = new Set(); list.forEach(x=> x[key] && s.add(x[key]));
-  return [...s];
-}
-
-function openAddTask(){
-  openSheet(`
-    <h3>New task</h3>
-    <div class="field mt-8"><div class="col"><label>Title</label><input id="tT" placeholder="What needs to be done?"></div></div>
-    <div class="grid-2 mt-8">
-      <div class="field"><div class="col"><label>Due</label><input id="tD" type="date" value="${todayISO()}"></div></div>
-      <div class="field"><div class="col"><label>Priority</label><select id="tP"><option>low</option><option selected>normal</option><option>high</option></select></div></div>
-    </div>
-    <div class="field mt-8"><div class="col"><label>Notes</label><textarea id="tN"></textarea></div></div>
-    <button class="btn accent block mt-16" id="tSave">Save task</button>`);
-  $('#tSave').onclick=()=> withLoading($('#tSave'), async ()=>{
-    const title=$('#tT').value.trim(); if(!title){ toast('Title required'); return; }
-    const r=await apiAdd('Tasks',{title, due:$('#tD').value, priority:$('#tP').value, notes:$('#tN').value, status:'open'});
-    if(r.ok){ state.cache.Tasks.push(r.data); toast('Saved'); closeSheet(); renderScreen(); }
-  });
-}
-function openAddProject(){
-  openSheet(`
-    <h3>New project</h3>
-    <div class="field mt-8"><div class="col"><label>Name</label><input id="pN"></div></div>
-    <div class="field mt-8"><div class="col"><label>Status</label><select id="pS"><option>Pending</option><option>In-Progress</option><option>Completed</option></select></div></div>
-    <div class="field mt-8"><div class="col"><label>Description</label><textarea id="pDe"></textarea></div></div>
-    <button class="btn accent block mt-16" id="pSv">Save project</button>`);
-  $('#pSv').onclick=()=> withLoading($('#pSv'), async ()=>{
-    const name=$('#pN').value.trim(); if(!name){ toast('Name required'); return; }
-    const r=await apiAdd('Projects',{name, status:$('#pS').value, description:$('#pDe').value, remarks:'[]'});
-    if(r.ok){ state.cache.Projects.push(r.data); closeSheet(); renderScreen(); }
-  });
-}
-function openAddLearn(){
-  const subjects = optionsFrom(state.cache.Learning,'subject');
-  openSheet(`
-    <h3>New learn topic</h3>
-    <div class="field mt-8"><div class="col"><label>Topic</label><input id="lT"></div></div>
-    <div class="field mt-8"><div class="col"><label>Subject</label><input id="lS" list="subj"></div></div>
-    <datalist id="subj">${subjects.map(s=>`<option value="${escapeHtml(s)}">`).join('')}</datalist>
-    <div class="field mt-8"><div class="col"><label>Notes</label><textarea id="lN"></textarea></div></div>
-    <p class="text-muted" style="font-size:12px;margin-top:8px">Reviews scheduled for +1, +3, +5, +7, +15, +30, +60, +90 days.</p>
-    <button class="btn accent block mt-8" id="lSv">Add topic</button>`);
-  $('#lSv').onclick=()=> withLoading($('#lSv'), async ()=>{
-    const t=$('#lT').value.trim(); if(!t){ toast('Topic required'); return; }
-    const start=todayISO();
-    const r=await apiAdd('Learning',{topic:t, subject:$('#lS').value, notes:$('#lN').value, startDate:start, reviewDates:computeReviews(start), doneDates:''});
-    if(r.ok){ state.cache.Learning.push(r.data); closeSheet(); renderScreen(); toast('Topic added'); }
-  });
-}
-function openAddSyllabus(){
-  const subjects=optionsFrom(state.cache.Syllabus,'subject');
-  openSheet(`
-    <h3>Add chapter</h3>
-    <div class="field mt-8"><div class="col"><label>Subject</label><input id="sS" list="subjs" placeholder="e.g. History, Haryana GK"></div></div>
-    <datalist id="subjs">${subjects.map(s=>`<option value="${escapeHtml(s)}">`).join('')}</datalist>
-    <div class="field mt-8"><div class="col"><label>Chapter</label><input id="sC"></div></div>
-    <div class="field mt-8"><div class="col"><label>Sub-topic</label><input id="sSub"></div></div>
-    <div class="field mt-8"><div class="col"><label>Notes</label><textarea id="sN"></textarea></div></div>
-    <button class="btn accent block mt-8" id="sSv">Save</button>`);
-  $('#sSv').onclick=()=> withLoading($('#sSv'), async ()=>{
-    const sub=$('#sS').value.trim(), ch=$('#sC').value.trim(); if(!sub||!ch){ toast('Subject & chapter required'); return; }
-    const r=await apiAdd('Syllabus',{subject:sub, chapter:ch, sub:$('#sSub').value, notes:$('#sN').value, status:'pending'});
-    if(r.ok){ state.cache.Syllabus.push(r.data); closeSheet(); renderScreen(); }
-  });
-}
-function openAddNote(){
-  const tags = allTags();
-  openSheet(`
-    <h3>New note</h3>
-    <div class="field mt-8"><div class="col"><label>Title</label><input id="nT"></div></div>
-    <div class="field mt-8"><div class="col"><label>Body</label><textarea id="nB" style="min-height:100px"></textarea></div></div>
-    <div class="field mt-8"><div class="col"><label>Tags</label><input id="nTg" list="tagList" placeholder="idea, work, personal"></div></div>
-    <datalist id="tagList">${tags.map(t=>`<option value="${escapeHtml(t)}">`).join('')}</datalist>
-    <div style="display:flex;gap:6px;margin-top:10px;flex-wrap:wrap">
-      <label class="btn ghost sm"><i class="fa-solid fa-image"></i> Attach image <input type="file" accept="image/*" capture="environment" id="nAtt" hidden></label>
-      <span id="nAttName" class="chip hidden"></span>
-    </div>
-    <button class="btn accent block mt-16" id="nSv">Save note</button>`);
-  let pending=null;
-  $('#nAtt').onchange = e=>{ pending = e.target.files[0]; $('#nAttName').textContent=pending.name; $('#nAttName').classList.remove('hidden'); };
-  $('#nSv').onclick=()=> withLoading($('#nSv'), async ()=>{
-    const atts=[];
-    if(pending){ toast('Uploading…'); const b64=await fileToB64(pending); const r=await apiUpload(b64,pending.type,pending.name); if(r.ok) atts.push({...r.data,mimeType:pending.type}); }
-    const r=await apiAdd('Notes',{title:$('#nT').value, body:$('#nB').value, tags:$('#nTg').value, attachments:JSON.stringify(atts)});
-    if(r.ok){ state.cache.Notes.push(r.data); toast('Saved'); closeSheet(); renderScreen(); }
-  });
-}
-function openAddImage(){
-  const groups=allGroups(), tags=allTags();
-  openSheet(`
-    <h3>Add to gallery</h3>
-    <label class="btn ghost sm mt-8"><i class="fa-solid fa-camera"></i> Take / choose photo <input type="file" accept="image/*" capture="environment" id="gImg" hidden></label>
-    <span id="gImgName" class="chip hidden mt-8"></span>
-    <div class="field mt-8"><div class="col"><label>Group</label>
-      <select id="gGr">${groups.map(g=>`<option>${escapeHtml(g)}</option>`).join('')}<option value="__new">＋ New group…</option></select>
-    </div></div>
-    <div class="field mt-8"><div class="col"><label>Remarks</label><textarea id="gRm"></textarea></div></div>
-    <div class="field mt-8"><div class="col"><label>Tags</label><input id="gTg" list="tagList"></div></div>
-    <datalist id="tagList">${tags.map(t=>`<option value="${escapeHtml(t)}">`).join('')}</datalist>
-    <button class="btn accent block mt-16" id="gSv">Save</button>`);
-  let file=null;
-  $('#gImg').onchange=e=>{ file=e.target.files[0]; $('#gImgName').textContent=file.name; $('#gImgName').classList.remove('hidden'); };
-  $('#gGr').onchange=(e)=>{ if(e.target.value==='__new'){ const g=prompt('Group name'); if(g){ const o=document.createElement('option'); o.value=g; o.textContent=g; o.selected=true; e.target.insertBefore(o,e.target.querySelector('[value=__new]')); } else e.target.value=groups[0]||'Default'; } };
-  $('#gSv').onclick=()=> withLoading($('#gSv'), async ()=>{
-    if(!file){ toast('Choose an image first'); return; }
-    toast('Uploading…'); const b64=await fileToB64(file);
-    const up = await apiUpload(b64,file.type,file.name);
-    if(!up.ok){ toast('Upload failed'); return; }
-    const r = await apiAdd('Images',{groupName:$('#gGr').value||'Default', url:up.data.url, fileId:up.data.fileId, remarks:$('#gRm').value, tags:$('#gTg').value});
-    if(r.ok){ state.cache.Images.push(r.data); toast('Saved'); closeSheet(); renderScreen(); }
-  });
-}
-function openAddFinance(){
-  const cats = optionsFrom(state.cache.Finance,'category');
-  const accs = ['Cash','Bank A/c 1','Bank A/c 2','Bank A/c 3','Bank A/c 4','UPI', ...optionsFrom(state.cache.Accounts,'name')].filter((v,i,a)=>a.indexOf(v)===i);
-  openSheet(`
-    <h3>New transaction</h3>
-    <div class="field mt-8"><div class="col"><label>Type</label><select id="fT">
-      <option value="income">Income</option><option value="expense" selected>Expense</option><option value="savings-in">Savings (in)</option><option value="savings-out">Savings (out)</option><option value="future">Future expense</option><option value="transfer-in">Transfer in</option><option value="transfer-out">Transfer out</option>
-    </select></div></div>
-    <div class="grid-2 mt-8">
-      <div class="field"><div class="col"><label>Amount</label><input id="fA" type="number" step="0.01"></div></div>
-      <div class="field"><div class="col"><label>Date</label><input id="fD" type="date" value="${todayISO()}"></div></div>
-    </div>
-    <div class="field mt-8"><div class="col"><label>Category</label><input id="fC" list="catList" placeholder="Groceries, Salary…"></div></div>
-    <datalist id="catList">${cats.map(c=>`<option value="${escapeHtml(c)}">`).join('')}</datalist>
-    <div class="field mt-8"><div class="col"><label>Account</label><select id="fAcc">${accs.map(a=>`<option>${escapeHtml(a)}</option>`).join('')}</select></div></div>
-    <div class="field mt-8"><div class="col"><label>Note</label><input id="fN"></div></div>
-    <button class="btn accent block mt-16" id="fSv">Save transaction</button>`);
-  $('#fSv').onclick=()=> withLoading($('#fSv'), async ()=>{
-    const amt=+$('#fA').value; if(!amt){ toast('Amount required'); return; }
-    const r=await apiAdd('Finance',{type:$('#fT').value,category:$('#fC').value,amount:amt,account:$('#fAcc').value,note:$('#fN').value,date:$('#fD').value});
-    if(r.ok){ state.cache.Finance.push(r.data); toast('Saved'); closeSheet(); renderScreen(); }
-  });
-}
-function openAddHealth(){
-  const cats = ['water','meal','exercise','sleep','wakeup','travel'];
-  const meals = ['Breakfast','Lunch','Dinner','Snacks','Brunch','Pre-workout','Post-workout'];
-  openSheet(`
-    <h3>Log entry</h3>
-    <div class="field mt-8"><div class="col"><label>Type</label><select id="hT">${cats.map(c=>`<option>${c}</option>`).join('')}</select></div></div>
-    <div id="hMealWrap" class="field mt-8 hidden"><div class="col"><label>Meal</label><select id="hMeal">${meals.map(m=>`<option>${m}</option>`).join('')}</select></div></div>
-    <div class="grid-2 mt-8">
-      <div class="field"><div class="col"><label>Value</label><input id="hV" placeholder="250, 30 min, 7 hrs…"></div></div>
-      <div class="field"><div class="col"><label>Unit</label><input id="hU" list="unitList" placeholder="ml, min, hr, km"></div></div>
-    </div>
-    <datalist id="unitList"><option value="ml"><option value="min"><option value="hr"><option value="km"><option value="kcal"></datalist>
-    <div class="field mt-8"><div class="col"><label>Note</label><input id="hN"></div></div>
-    <button class="btn accent block mt-16" id="hSv">Save</button>`);
-  const toggle = ()=> $('#hMealWrap').classList.toggle('hidden', $('#hT').value!=='meal');
-  $('#hT').onchange = toggle; toggle();
-  $('#hSv').onclick=()=> withLoading($('#hSv'), async ()=>{
-    const r=await apiAdd('Health',{type:$('#hT').value,value:$('#hV').value,unit:$('#hU').value,meal:$('#hT').value==='meal'?$('#hMeal').value:'',note:$('#hN').value,date:todayISO()});
-    if(r.ok){ state.cache.Health.push(r.data); closeSheet(); renderScreen(); toast('Logged'); }
-  });
-}
-
-/* ═══════ Notifications ═══════ */
-function notify(title, body){
-  if(!('Notification' in window)) return;
-  if(Notification.permission==='granted') new Notification(title, {body, icon:'https://em-content.zobj.net/source/microsoft/379/spiral-calendar_1f5d3-fe0f.png'});
-}
-async function requestNotif(){
-  if(!('Notification' in window)) return toast('Notifications unsupported');
-  const p = await Notification.requestPermission();
-  toast('Notifications ' + p);
-  scheduleReminders();
-}
-$('#btnNotif').onclick = requestNotif;
-
-function scheduleReminders(){
-  if(!('Notification' in window) || Notification.permission!=='granted') return;
-  const now = new Date();
-  state.cache.Tasks.forEach(t=>{
-    if(t.status==='done') return;
-    if(!t.due) return;
-    const d = new Date(t.due+'T00:00:00'); if(isNaN(d)) return;
-    if(todayISO(d)===todayISO()){
-      [9,15].forEach(h=>{
-        const when=new Date(); when.setHours(h,0,0,0);
-        const ms = when - now;
-        if(ms>0 && ms < 24*3600*1000) setTimeout(()=> notify('Task due today', t.title), ms);
-      });
-    }
-  });
-  const iso=todayISO();
-  const due = state.cache.Learning.filter(l=>{ const rd=(l.reviewDates||'').split(','); const done=(l.doneDates||'').split(','); return rd.includes(iso) && !done.includes(iso); });
-  if(due.length){
-    const when=new Date(); when.setHours(10,0,0,0);
-    const ms=when-now; if(ms>0) setTimeout(()=> notify(`${due.length} review${due.length>1?'s':''} due today`, due.map(l=>l.topic).slice(0,3).join(', ')), ms);
-  }
-}
-
-/* ═══════ Render dispatch ═══════ */
-function renderScreen(){
-  if(state.tab==='home') renderHome();
-  if(state.tab==='learn') renderLearn();
-  if(state.tab==='tasks') renderTasks();
-  if(state.tab==='notes') renderNotes();
-  if(state.tab==='money') renderMoney();
-  if(state.tab==='body') renderBody();
-}
-
-/* ═══════ Boot ═══════ */
-(async function(){
-  renderSubnav();
-  if(!getUrl()) showSetup();
-  else await sync();
-  renderScreen();
-  scheduleReminders();
-})();
-</script>
-</body>
-</html>
+function uploadDI(){openSheet(`<h3>Dashboard Photo</h3><label class="btn ghost block mt-8"><i class="fa-solid fa-image"></i> Choose photo <input type="file" accept="image/*" id="diF" hidden></label><span id="diN" class="chip hidden mt-8"></span><div class="field mt-8"><div class="col"><label>Caption</label><input id="diC"></div></div><button class="btn accent block mt-16" id="diS">Save</button>`);let f=null;$('#diF').onchange=e=>{f=e.target.files[0];$('#diN').textContent=f.name;$('#diN').classList.remove('hidden')};$('#diS').onclick=()=>withLoading($('#diS'),async()=>{if(!f)return toast('Choose photo');const b=await fileToB64(f),u=await apiUpload(b,f.type,f.name);if(!u.ok)return toast('Upload failed');const r=await apiAdd('DashImage',{url:u.data.url,fileId:u.data.fileId,caption:$('#diC').value});if(r.ok){state.cache.DashImage.push(r.data);toast('Saved');closeSheet();renderScreen()}})}
+function openAddPin(){openSheet(`<h3>📌 Pin Formula</h3><div class="field mt-8"><div class="col"><label>Category</label><input id="pinC" placeholder="Maths, GK…"></div></div><div class="field mt-8"><div class="col"><label>Content</label><textarea id="pinT" style="min-height:80px" placeholder="Speed = Distance / Time"></textarea></div></div><button class="btn accent block mt-16" id="pinS">Pin</button>`);$('#pinS').onclick=()=>withLoading($('#pinS'),async()=>{const c=$('#pinT').value.trim();if(!c)return;const r=await apiAdd('Pins',{type:'formula',content:c,category:$('#pinC').value,pinned:'true'});if(r.ok){state.cache.Pins.push(r.data);toast('Pinned');closeSheet();renderScreen()}})}
+/* Location */
+function renderLoc(el){const locs=state.cache.Locations.slice().reverse().slice(0,20);el.innerHTML=`<div class="card"><div class="row"><h3>📍 Location Log</h3><button class="btn sm accent" id="locNow"><i class="fa-solid fa-location-crosshairs"></i> Track</button></div><div class="sub">Auto-tracks hourly. Last ${locs.length} entries.</div>${locs.length?locs.map(l=>`<div class="item"><div style="flex:1"><div class="t">${escapeHtml((l.address||'').slice(0,80)||l.lat+', '+l.lng)}</div><div class="m">${new Date(l.timestamp).toLocaleString()}</div></div></div>`).join(''):'<div class="empty"><i class="fa-solid fa-location-dot"></i>No locations yet.</div>'}</div>`;$('#locNow').onclick=()=>withLoading($('#locNow'),trackLoc,'Tracking…')}
+async function trackLoc(){if(!navigator.geolocation)return toast('Not supported');return new Promise(res=>{navigator.geolocation.getCurrentPosition(async pos=>{let addr='';try{const r=await fetch(`https://nominatim.openstreetmap.org/reverse?lat=${pos.coords.latitude}&lon=${pos.coords.longitude}&format=json`);addr=(await r.json()).display_name||''}catch{}const row={lat:String(pos.coords.latitude),lng:String(pos.coords.longitude),address:addr.slice(0,200),timestamp:new Date().toISOString()};const r2=await apiAdd('Locations',row);if(r2.ok){state.cache.Locations.push(r2.data);toast('📍 Saved');renderScreen()};res()},()=>{toast('Location denied');res()},{enableHighAccuracy:true})})}
+setInterval(()=>{if(getUrl())trackLoc()},36e5);
+/* Calendar */
+function renderCal(el){const d=state.calMonth,t=d.toLocaleDateString(undefined,{month:'long',year:'numeric'}),f=new Date(d.getFullYear(),d.getMonth(),1),sw=f.getDay(),dc=new Date(d.getFullYear(),d.getMonth()+1,0).getDate();let h=['S','M','T','W','T','F','S'].map(x=>`<div class="cal-dn">${x}</div>`).join('');for(let i=0;i<sw;i++)h+=`<div class="cal-cell out"></div>`;for(let i=1;i<=dc;i++){const dt=new Date(d.getFullYear(),d.getMonth(),i),iso=todayISO(dt),info=tasksForDate(iso),tot=info.tasks.length+info.reviews.length,isT=iso===todayISO();h+=`<div class="cal-cell ${isT?'today':''} ${tot?'has':''}"><span class="n">${i}</span>${tot?`<span class="tot">${tot}</span>`:''}</div>`}el.innerHTML=`<div class="card"><div class="row"><h3>Month</h3><div style="display:flex;gap:4px"><button class="pill-icon" id="calP"><i class="fa-solid fa-chevron-left"></i></button><button class="pill-icon" id="calN"><i class="fa-solid fa-chevron-right"></i></button></div></div><div class="mono" style="font-size:20px;margin:8px 0">${t}</div><div class="cal-grid">${h}</div></div>`;$('#calP').onclick=()=>{state.calMonth=new Date(state.calMonth.getFullYear(),state.calMonth.getMonth()-1,1);renderScreen()};$('#calN').onclick=()=>{state.calMonth=new Date(state.calMonth.getFullYear(),state.calMonth.getMonth()+1,1);renderScreen()}}
+/* LEARN */
+const SR=[1,3,5,7,15,30,60,90];
+function compRev(s){const d=new Date(s+'T00:00:00');return SR.map(n=>{const x=new Date(d);x.setDate(d.getDate()+n);return todayISO(x)}).join(',')}
+function renderLearn(){const el=$('#learn-body');if(state.sub.learn==='spaced')renderSpaced(el);else if(state.sub.learn==='syllabus')renderSyl(el);else if(state.sub.learn==='vocab')renderVocab(el);else renderStudyTimer(el)}
+function renderSpaced(el){const today=todayISO(),due=state.cache.Learning.filter(l=>{const rd=(l.reviewDates||'').split(','),dn=(l.doneDates||'').split(',');return rd.some(d=>d<=today&&!dn.includes(d))});el.innerHTML=`<div class="card"><div class="row"><h3>Due today</h3><span class="chip acc">${due.length}</span></div>${due.length?due.map(l=>{const rd=(l.reviewDates||'').split(',').filter(Boolean),dn=(l.doneDates||'').split(',').filter(Boolean),nd=rd.find(d=>d<=today&&!dn.includes(d)),idx=rd.indexOf(nd);return`<div class="item"><div class="ck"><i class="fa-solid fa-check"></i></div><div style="flex:1"><div class="t">${escapeHtml(l.topic)}</div><div class="m"><span class="chip">${escapeHtml(l.subject||'General')}</span><span class="chip gd">Rep ${idx+1}/${SR.length}</span></div></div><div class="actions"><button data-role="mark-done" data-id="${l.id}" data-date="${nd}"><i class="fa-solid fa-check-double"></i></button></div></div>`}).join(''):'<div class="empty"><i class="fa-regular fa-lightbulb"></i>No reviews due.</div>'}</div><div class="card"><h3>All topics</h3>${state.cache.Learning.length?state.cache.Learning.map(l=>{const rd=(l.reviewDates||'').split(',').filter(Boolean),dn=(l.doneDates||'').split(',').filter(Boolean),pct=rd.length?Math.round(dn.length/rd.length*100):0;return`<div class="item"><div style="flex:1"><div class="t">${escapeHtml(l.topic)}</div><div class="m"><span class="chip">${pct}%</span><span class="chip">${escapeHtml(l.subject||'')}</span></div></div><div class="actions"><button data-role="del" data-sheet="Learning" data-id="${l.id}"><i class="fa-solid fa-trash"></i></button></div></div>`}).join(''):'<div class="empty">No topics.</div>'}</div>`;bindCommonActions(el)}
+function renderSyl(el){const gr={};state.cache.Syllabus.forEach(s=>{(gr[s.subject]||(gr[s.subject]=[])).push(s)});el.innerHTML=`<div class="card"><h3>Syllabus</h3>${Object.keys(gr).length?Object.keys(gr).map(sub=>`<div class="mt-12"><div class="chip acc">${escapeHtml(sub)}</div>${gr[sub].map(c=>`<div class="item"><div class="ck" data-role="syl-toggle" data-id="${c.id}" style="${c.status==='done'?'background:var(--ink);color:#fff;border-color:var(--ink)':''}"><i class="fa-solid fa-check"></i></div><div style="flex:1"><div class="t">${escapeHtml(c.chapter)}${c.sub?` <span class="text-muted">· ${escapeHtml(c.sub)}</span>`:''}</div></div><div class="actions"><button data-role="del" data-sheet="Syllabus" data-id="${c.id}"><i class="fa-solid fa-trash"></i></button></div></div>`).join('')}</div>`).join(''):'<div class="empty">No chapters.</div>'}</div>`;$$('[data-role="syl-toggle"]').forEach(b=>b.onclick=async()=>{const c=state.cache.Syllabus.find(x=>x.id===b.dataset.id);const ns=c.status==='done'?'pending':'done';c.status=ns;await apiUpdate('Syllabus',c.id,{status:ns});renderScreen()});bindCommonActions(el)}
+function renderVocab(el){const words=getDailyVocab();el.innerHTML=`<div class="card"><div class="row"><h3>📖 Daily 25 Words</h3><span class="chip acc">Day #${dayOfYear()}</span></div><div class="sub">SSC vocabulary. New set daily.</div>${words.map(([w,h],i)=>`<div class="vocab-card"><div class="w">${i+1}. ${w}</div><div class="mg">→ ${h}</div></div>`).join('')}</div>`}
+function renderStudyTimer(el){el.innerHTML=`<div class="card"><h3>⏳ Study Timer</h3><div class="sub">Full-screen countdown for focused study.</div><div class="grid-2 mt-12"><button class="btn ghost" data-sdur="25">25 min</button><button class="btn ghost" data-sdur="45">45 min</button><button class="btn ghost" data-sdur="60">60 min</button><button class="btn ghost" data-sdur="120">2 hours</button></div><div class="field mt-12"><div class="col"><label>Custom min</label><input id="stC" type="number" min="1" max="600"></div><button class="btn sm accent" id="stS">Start</button></div><div class="field mt-8"><div class="col"><label>Subject</label><input id="stSub" placeholder="Maths Ch5, English…"></div></div></div>`;$$('[data-sdur]').forEach(b=>b.onclick=()=>startFocus(+b.dataset.sdur,$('#stSub').value));$('#stS').onclick=()=>{const m=+$('#stC').value;if(m>0)startFocus(m,$('#stSub').value)}}
+/* TASKS */
+function renderTasks(){const el=$('#tasks-body');if(state.sub.tasks==='today'){const iso=todayISO(),today=state.cache.Tasks.filter(t=>(t.due||'').slice(0,10)===iso||(!t.due&&t.status!=='done')),up=state.cache.Tasks.filter(t=>t.status!=='done'&&(t.due||'')>iso).sort((a,b)=>a.due>b.due?1:-1);el.innerHTML=`<div class="card"><div class="row"><h3>Today</h3><span class="chip acc">${today.filter(t=>t.status!=='done').length} open</span></div>${today.length?today.map(taskItem).join(''):'<div class="empty">No tasks.</div>'}</div><div class="card"><h3>Upcoming</h3>${up.length?up.map(taskItem).join(''):'<div class="empty">None.</div>'}</div>`}else if(state.sub.tasks==='history'){el.innerHTML=`<div class="card"><h3>Completed</h3>${state.cache.Tasks.filter(t=>t.status==='done').sort((a,b)=>(b.completed||'').localeCompare(a.completed||'')).map(taskItem).join('')||'<div class="empty">Nothing yet.</div>'}</div>`}else{const g={'Pending':[],'In-Progress':[],'Completed':[]};state.cache.Projects.forEach(p=>(g[p.status]||(g['Pending'])).push(p));el.innerHTML=`<div class="card"><h3>Projects</h3><div class="kanban mt-12">${Object.keys(g).map(k=>`<div class="col-k"><h4>${k}<span>${g[k].length}</span></h4>${g[k].map(p=>`<div class="pcard" data-role="proj-open" data-id="${p.id}"><div class="n">${escapeHtml(p.name)}</div>${p.description?`<div class="d">${escapeHtml(p.description).slice(0,80)}</div>`:''}</div>`).join('')}</div>`).join('')}</div></div>`;$$('[data-role="proj-open"]').forEach(b=>b.onclick=()=>openProj(b.dataset.id))}bindCommonActions(el)}
+function taskItem(t){return`<div class="item ${t.status==='done'?'done':''}"><div class="ck" data-role="task-toggle" data-id="${t.id}"><i class="fa-solid fa-check"></i></div><div style="flex:1"><div class="t">${escapeHtml(t.title)}</div><div class="m">${t.due?`<span class="chip">${new Date(t.due+'T00:00:00').toLocaleDateString(undefined,{day:'2-digit',month:'short'})}</span>`:''}${t.priority?`<span class="chip ${t.priority==='high'?'r':t.priority==='low'?'g':'gd'}">${t.priority}</span>`:''}</div></div><div class="actions"><button data-role="del" data-sheet="Tasks" data-id="${t.id}"><i class="fa-solid fa-trash"></i></button></div></div>`}
+function openProj(id){const p=state.cache.Projects.find(x=>x.id===id);if(!p)return;const rm=safeParse(p.remarks,[]);openSheet(`<h3>${escapeHtml(p.name)}</h3><div class="field mt-8"><div class="col"><label>Status</label><select id="pSt"><option ${p.status==='Pending'?'selected':''}>Pending</option><option ${p.status==='In-Progress'?'selected':''}>In-Progress</option><option ${p.status==='Completed'?'selected':''}>Completed</option></select></div></div><div class="field mt-8"><div class="col"><label>Description</label><textarea id="pDe">${escapeHtml(p.description||'')}</textarea></div></div><div class="mt-16"><b style="font-family:Fraunces;font-size:16px">Remarks</b><div class="tl">${rm.length?rm.map(r=>`<div class="e"><time>${new Date(r.ts).toLocaleString()}</time>${escapeHtml(r.text)}</div>`).join(''):'<div class="text-muted" style="font-size:12px">None.</div>'}</div><div class="field mt-8"><div class="col"><label>New remark</label><textarea id="pRm"></textarea></div></div><button class="btn accent block mt-8" id="pAR"><i class="fa-solid fa-plus"></i> Add</button></div><div style="display:flex;gap:8px" class="mt-16"><button class="btn ghost" id="pDl"><i class="fa-solid fa-trash"></i></button><button class="btn block" id="pSv">Save</button></div>`);$('#pAR').onclick=()=>withLoading($('#pAR'),async()=>{const t=$('#pRm').value.trim();if(!t)return;rm.unshift({ts:new Date().toISOString(),text:t});await apiUpdate('Projects',id,{remarks:JSON.stringify(rm)});p.remarks=JSON.stringify(rm);openProj(id);toast('Saved')});$('#pSv').onclick=()=>withLoading($('#pSv'),async()=>{const patch={status:$('#pSt').value,description:$('#pDe').value};Object.assign(p,patch);await apiUpdate('Projects',id,patch);toast('Saved');closeSheet();renderScreen()});$('#pDl').onclick=async()=>{if(!confirm('Delete?'))return;await apiDelete('Projects',id);state.cache.Projects=state.cache.Projects.filter(x=>x.id!==id);closeSheet();renderScreen()}}
+/* NOTES */
+function allTags(){const t=new Set();state.cache.Notes.forEach(n=>(n.tags||'').split(',').map(x=>x.trim()).filter(Boolean).forEach(x=>t.add(x)));return[...t]}
+function allGroups(){const g=new Set(['Default']);state.cache.Images.forEach(i=>i.groupName&&g.add(i.groupName));return[...g]}
+function renderNotes(){const el=$('#notes-body');if(state.sub.notes==='notes'){el.innerHTML=`<div class="card"><div class="row"><h3>Notes</h3><span class="chip">${state.cache.Notes.length}</span></div><div class="notes-grid mt-12">${state.cache.Notes.map(n=>{const atts=safeParse(n.attachments,[]),img=atts.find(a=>(a.mimeType||'').startsWith('image/'));return`<div class="note-card" data-role="note-open" data-id="${n.id}"><h4>${escapeHtml(n.title||'Untitled')}</h4>${img?`<img class="att" src="${driveImg(img,400)}" loading="lazy">`:''}
+<p>${escapeHtml(n.body||'')}</p>${n.tags?`<div class="tgs">${n.tags.split(',').map(t=>`<span class="chip">#${escapeHtml(t.trim())}</span>`).join('')}</div>`:''}</div>`}).join('')}</div>${!state.cache.Notes.length?'<div class="empty">No notes yet.</div>':''}</div>`;$$('[data-role="note-open"]').forEach(b=>b.onclick=()=>openNote(b.dataset.id))}else if(state.sub.notes==='gallery'){const groups=allGroups();if(!groups.includes(state.galGroup))state.galGroup='All';const q=state.gallerySearch.toLowerCase(),imgs=state.cache.Images.filter(i=>{const inG=state.galGroup==='All'||i.groupName===state.galGroup;return inG&&(!q||[i.remarks,i.tags,i.groupName].some(x=>(x||'').toLowerCase().includes(q)))});el.innerHTML=`<div class="card"><div class="row"><h3>Gallery</h3><span class="chip">${imgs.length}</span></div><div class="field compact mt-8"><i class="fa-solid fa-magnifying-glass text-muted"></i><input id="galS" placeholder="Search…" value="${escapeHtml(state.gallerySearch)}"/></div><div class="gal-groups mt-8"><button class="g ${state.galGroup==='All'?'on':''}" data-g="All">All</button>${groups.map(g=>`<button class="g ${state.galGroup===g?'on':''}" data-g="${escapeHtml(g)}">${escapeHtml(g)}</button>`).join('')}</div><div class="gal-grid mt-12">${imgs.map(i=>`<div class="cell" data-role="img-open" data-id="${i.id}"><img src="${driveImg(i,400)}" loading="lazy"/>${i.remarks?`<div class="info">${escapeHtml(i.remarks).slice(0,20)}</div>`:''}</div>`).join('')}</div>${!imgs.length?'<div class="empty"><i class="fa-regular fa-image"></i>No images.</div>':''}</div>`;let st;$('#galS').oninput=e=>{clearTimeout(st);st=setTimeout(()=>{state.gallerySearch=e.target.value;renderNotes()},300)};$$('.gal-groups .g').forEach(b=>b.onclick=()=>{state.galGroup=b.dataset.g;renderNotes()});$$('[data-role="img-open"]').forEach(b=>b.onclick=()=>openImg(b.dataset.id))}else{el.innerHTML=`<div class="card center"><h3>🎨 Drawing Pad</h3><div class="sub">Full-screen canvas to draw and save.</div><button class="btn accent mt-12" id="openDraw"><i class="fa-solid fa-palette"></i> Open</button></div><div class="card"><h3>Saved</h3>${state.cache.Drawings.length?state.cache.Drawings.slice().reverse().map(d=>`<div class="item"><div style="flex:1"><div class="t">${escapeHtml(d.name||'Drawing')}</div><div class="m">${new Date(d.created).toLocaleString()}</div></div><div class="actions"><button onclick="loadDraw('${d.id}')"><i class="fa-solid fa-pen"></i></button><button data-role="del" data-sheet="Drawings" data-id="${d.id}"><i class="fa-solid fa-trash"></i></button></div></div>`).join(''):'<div class="empty">No drawings.</div>'}</div>`;$('#openDraw').onclick=()=>openDrawPad()}bindCommonActions(el)}
+function openNote(id){const n=state.cache.Notes.find(x=>x.id===id);if(!n)return;const atts=safeParse(n.attachments,[]);openSheet(`<h3>Edit note</h3><div class="field mt-8"><div class="col"><label>Title</label><input id="nT" value="${escapeHtml(n.title||'')}"></div></div><div class="field mt-8"><div class="col"><label>Body</label><textarea id="nB" style="min-height:120px">${escapeHtml(n.body||'')}</textarea></div></div><div class="field mt-8"><div class="col"><label>Tags</label><input id="nTg" value="${escapeHtml(n.tags||'')}"></div></div><div style="display:flex;gap:8px" class="mt-16"><button class="btn ghost" id="nDl"><i class="fa-solid fa-trash"></i></button><button class="btn block" id="nSv">Save</button></div>`);$('#nSv').onclick=()=>withLoading($('#nSv'),async()=>{const patch={title:$('#nT').value,body:$('#nB').value,tags:$('#nTg').value,attachments:JSON.stringify(atts)};Object.assign(n,patch);await apiUpdate('Notes',id,patch);toast('Saved');closeSheet();renderScreen()});$('#nDl').onclick=async()=>{if(!confirm('Delete?'))return;await apiDelete('Notes',id);state.cache.Notes=state.cache.Notes.filter(x=>x.id!==id);closeSheet();renderScreen()}}
+function openImg(id){const i=state.cache.Images.find(x=>x.id===id);if(!i)return;const groups=allGroups();openSheet(`<h3>Image</h3><img src="${driveImg(i)}" style="width:100%;border-radius:12px;margin-top:8px" loading="lazy"/><div class="field mt-8"><div class="col"><label>Group</label><select id="iGr">${groups.map(g=>`<option ${i.groupName===g?'selected':''}>${escapeHtml(g)}</option>`).join('')}<option value="__new">＋ New</option></select></div></div><div class="field mt-8"><div class="col"><label>Remarks</label><textarea id="iRm">${escapeHtml(i.remarks||'')}</textarea></div></div><div class="field mt-8"><div class="col"><label>Tags</label><input id="iTg" value="${escapeHtml(i.tags||'')}"></div></div><div style="display:flex;gap:8px" class="mt-16"><button class="btn ghost" id="iDl"><i class="fa-solid fa-trash"></i></button><button class="btn block" id="iSv">Save</button></div>`);$('#iGr').onchange=e=>{if(e.target.value==='__new'){const g=prompt('Group name');if(g){const o=document.createElement('option');o.value=g;o.textContent=g;o.selected=true;e.target.insertBefore(o,e.target.querySelector('[value=__new]'))}else e.target.value=i.groupName||'Default'}};$('#iSv').onclick=()=>withLoading($('#iSv'),async()=>{const patch={groupName:$('#iGr').value,remarks:$('#iRm').value,tags:$('#iTg').value};Object.assign(i,patch);await apiUpdate('Images',id,patch);toast('Saved');closeSheet();renderScreen()});$('#iDl').onclick=async()=>{if(!confirm('Delete?'))return;await apiDelete('Images',id);state.cache.Images=state.cache.Images.filter(x=>x.id!==id);closeSheet();renderScreen()}}
+/* DRAW PAD */
+let drawCtx=null,drawing=false,drawMode='pen';
+function openDrawPad(dataUrl){const cv=$('#drawCanvas'),cover=$('#drawCover');cover.classList.add('on');cv.width=window.innerWidth;cv.height=window.innerHeight-50;drawCtx=cv.getContext('2d');drawCtx.fillStyle='#fff';drawCtx.fillRect(0,0,cv.width,cv.height);if(dataUrl){const img=new Image();img.onload=()=>drawCtx.drawImage(img,0,0);img.src=dataUrl}drawCtx.lineCap='round';drawCtx.lineJoin='round';drawMode='pen';$('#drawLoad').innerHTML=`<option value="">Load…</option>${state.cache.Drawings.map(d=>`<option value="${d.id}">${escapeHtml(d.name||'Drawing')}</option>`).join('')}`}
+function initDraw(){const cv=$('#drawCanvas'),getP=e=>{const r=cv.getBoundingClientRect(),t=e.touches?e.touches[0]:e;return[t.clientX-r.left,t.clientY-r.top]};const start=e=>{e.preventDefault();drawing=true;drawCtx.beginPath();const[x,y]=getP(e);drawCtx.moveTo(x,y)};const move=e=>{if(!drawing)return;e.preventDefault();const[x,y]=getP(e);drawCtx.strokeStyle=drawMode==='eraser'?'#ffffff':$('#drawColor').value;drawCtx.lineWidth=drawMode==='eraser'?20:+$('#drawSize').value;drawCtx.lineTo(x,y);drawCtx.stroke()};const end=()=>{drawing=false};cv.addEventListener('mousedown',start);cv.addEventListener('mousemove',move);cv.addEventListener('mouseup',end);cv.addEventListener('touchstart',start,{passive:false});cv.addEventListener('touchmove',move,{passive:false});cv.addEventListener('touchend',end);$('#drawClose').onclick=()=>$('#drawCover').classList.remove('on');$('#drawEraser').onclick=()=>{drawMode=drawMode==='eraser'?'pen':'eraser';$('#drawEraser').style.background=drawMode==='eraser'?'var(--accent-soft)':''};$('#drawClear').onclick=()=>{drawCtx.fillStyle='#fff';drawCtx.fillRect(0,0,$('#drawCanvas').width,$('#drawCanvas').height)};$('#drawSave').onclick=async()=>{const name=prompt('Name?','Drawing-'+Date.now());if(!name)return;toast('Saving…');const du=$('#drawCanvas').toDataURL('image/png');const r=await apiAdd('Drawings',{name,dataUrl:du});if(r.ok){state.cache.Drawings.push(r.data);toast('Saved');$('#drawCover').classList.remove('on');renderScreen()}};$('#drawLoad').onchange=e=>{if(e.target.value)loadDraw(e.target.value)}}
+function loadDraw(id){const d=state.cache.Drawings.find(x=>x.id===id);if(d)openDrawPad(d.dataUrl)}
+/* MONEY */
+const DA=['Cash','Bank A/c 1','Bank A/c 2','Bank A/c 3','Bank A/c 4','UPI'];
+function accBal(){const m={};DA.forEach(a=>m[a]=0);state.cache.Accounts.forEach(a=>m[a.name]=Number(a.balance||0));state.cache.Finance.forEach(f=>{const amt=Number(f.amount||0);if(!(f.account in m))m[f.account]=0;if(f.type==='income'||f.type==='savings-in'||f.type==='transfer-in')m[f.account]+=amt;else if(f.type==='expense'||f.type==='future'||f.type==='savings-out'||f.type==='transfer-out')m[f.account]-=amt});return m}
+function renderMoney(){const el=$('#money-body'),bal=accBal(),total=Object.values(bal).reduce((a,b)=>a+b,0);if(state.sub.money==='overview'){const inc=state.cache.Finance.filter(f=>f.type==='income').reduce((a,b)=>a+Number(b.amount||0),0),exp=state.cache.Finance.filter(f=>f.type==='expense'||f.type==='future').reduce((a,b)=>a+Number(b.amount||0),0);el.innerHTML=`<div class="acc-row"><div class="acc-card total"><div class="lbl">Net</div><div class="amt">${fmtMoney(total)}</div></div>${Object.entries(bal).map(([n,v])=>`<div class="acc-card"><div class="lbl">${escapeHtml(n)}</div><div class="amt">${fmtMoney(v)}</div></div>`).join('')}</div><div class="grid-2 mt-16"><div class="card" style="padding:14px"><div class="chip g">Income</div><div class="money mt-8" style="font-size:18px">${fmtMoney(inc)}</div></div><div class="card" style="padding:14px"><div class="chip r">Expense</div><div class="money mt-8" style="font-size:18px">${fmtMoney(exp)}</div></div></div><div class="card mt-16"><div class="row"><h3>Recent</h3><button class="btn sm ghost" id="mLA">See all</button></div>${state.cache.Finance.slice().sort((a,b)=>(b.created||'').localeCompare(a.created||'')).slice(0,8).map(finItem).join('')||'<div class="empty">No entries.</div>'}</div>`;$('#mLA').onclick=()=>{state.sub.money='log';renderSubnav();renderScreen()}}else if(state.sub.money==='log'){el.innerHTML=`<div class="card"><h3>All transactions</h3>${state.cache.Finance.slice().sort((a,b)=>(b.created||'').localeCompare(a.created||'')).map(finItem).join('')||'<div class="empty">No entries.</div>'}</div>`}else{el.innerHTML=calcHTML();bindCalc()}bindCommonActions(el)}
+function finItem(f){const c=f.type==='income'||f.type==='savings-in'?'g':(f.type==='expense'||f.type==='future'?'r':'b'),s=c==='g'?'+':c==='r'?'−':'';return`<div class="item"><div style="flex:1"><div class="t">${escapeHtml(f.category||f.type)}</div><div class="m"><span class="chip ${c}">${f.type}</span><span>${(f.date||'').slice(0,10)}</span></div></div><div class="money" style="color:${c==='g'?'var(--green)':c==='r'?'var(--red)':'var(--blue)'}">${s}${fmtMoney(f.amount)}</div><div class="actions"><button data-role="del" data-sheet="Finance" data-id="${f.id}"><i class="fa-solid fa-trash"></i></button></div></div>`}
+let calcSt={expr:'',res:'0'};
+function calcHTML(){return`<div class="card"><div class="calc-display"><div class="expr" id="cE">${escapeHtml(calcSt.expr||' ')}</div><div class="res" id="cR">${escapeHtml(calcSt.res)}</div></div><div class="calc-grid"><button class="k op" data-k="C">C</button><button class="k op" data-k="back">⌫</button><button class="k op" data-k="%">%</button><button class="k op" data-k="/">÷</button><button class="k" data-k="7">7</button><button class="k" data-k="8">8</button><button class="k" data-k="9">9</button><button class="k op" data-k="*">×</button><button class="k" data-k="4">4</button><button class="k" data-k="5">5</button><button class="k" data-k="6">6</button><button class="k op" data-k="-">−</button><button class="k" data-k="1">1</button><button class="k" data-k="2">2</button><button class="k" data-k="3">3</button><button class="k op" data-k="+">+</button><button class="k" data-k="0">0</button><button class="k" data-k=".">.</button><button class="k op" data-k="(">(</button><button class="k eq" data-k="=">=</button></div></div>`}
+function bindCalc(){$$('.calc-grid .k').forEach(b=>b.onclick=()=>{const k=b.dataset.k;if(k==='C')calcSt={expr:'',res:'0'};else if(k==='back')calcSt.expr=calcSt.expr.slice(0,-1);else if(k==='='){try{const x=calcSt.expr.replace(/×/g,'*').replace(/÷/g,'/').replace(/−/g,'-'),r=Function('"use strict";return ('+x+')')();calcSt.res=String(r);apiAdd('Calc',{expression:calcSt.expr,result:String(r),category:'calc'});calcSt.expr=''}catch{toast('Invalid')}}else calcSt.expr+=k;$('#cE').textContent=calcSt.expr||' ';$('#cR').textContent=calcSt.res})}
+/* BODY */
+function renderBody(){const el=$('#body-body');if(state.sub.body==='today'){const today=todayISO(),logs=state.cache.Health.filter(h=>(h.date||'').slice(0,10)===today),water=logs.filter(l=>l.type==='water').reduce((a,b)=>a+Number(b.value||0),0),office=state.cache.Office.filter(o=>(o.date||'').slice(0,10)===today).slice(-1)[0],isIn=office&&!office.outTime;el.innerHTML=`<div class="card"><h3>Today</h3><div class="grid-2 mt-8"><div><div class="chip acc mono">${water} ml</div><div class="text-muted" style="font-size:11px;margin-top:4px">Water</div></div><div><div class="chip mono">${logs.filter(l=>l.type==='meal').length}</div><div class="text-muted" style="font-size:11px;margin-top:4px">Meals</div></div></div></div><div class="card"><div class="row"><h3>Office</h3>${isIn?'<span class="chip g">In</span>':''}</div><div style="display:flex;gap:8px;margin-top:8px"><button class="btn block ${isIn?'ghost':''}" id="cIn" ${isIn?'disabled':''}><i class="fa-solid fa-door-open"></i> In</button><button class="btn block ${!isIn?'ghost':''}" id="cOut" ${!isIn?'disabled':''}><i class="fa-solid fa-door-closed"></i> Out</button></div>${state.cache.Office.slice(-5).reverse().map(o=>`<div class="item"><div style="flex:1"><div class="t">${(o.date||'').slice(0,10)}</div><div class="m"><span>In ${o.inTime?new Date(o.inTime).toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'}):'—'}</span><span>Out ${o.outTime?new Date(o.outTime).toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'}):'—'}</span>${o.totalMinutes?`<span class="chip">${minutesToH(o.totalMinutes)}</span>`:''}</div></div></div>`).join('')}</div><div class="card"><h3>Logs</h3>${logs.length?logs.slice().reverse().map(h=>`<div class="item"><div style="flex:1"><div class="t">${escapeHtml(h.type)}${h.meal?' · '+escapeHtml(h.meal):''}</div><div class="m"><span>${h.value||''} ${escapeHtml(h.unit||'')}</span></div></div><div class="actions"><button data-role="del" data-sheet="Health" data-id="${h.id}"><i class="fa-solid fa-trash"></i></button></div></div>`).join(''):'<div class="empty">No logs.</div>'}</div>`;$('#cIn').onclick=()=>withLoading($('#cIn'),async()=>{const r=await apiAdd('Office',{date:today,inTime:new Date().toISOString()});if(r.ok){state.cache.Office.push(r.data);toast('✅ In');renderScreen()}},'In…');$('#cOut').onclick=()=>withLoading($('#cOut'),async()=>{const rec=state.cache.Office.filter(o=>(o.date||'').slice(0,10)===today&&!o.outTime).slice(-1)[0];if(!rec)return toast('No open record');const out=new Date(),mins=Math.round((out-new Date(rec.inTime))/6e4);await apiUpdate('Office',rec.id,{outTime:out.toISOString(),totalMinutes:String(mins)});Object.assign(rec,{outTime:out.toISOString(),totalMinutes:String(mins)});toast('✅ Out · '+minutesToH(mins));renderScreen()},'Out…')}else if(state.sub.body==='journal'){const entries=state.cache.Journal.slice().sort((a,b)=>(b.created||'').localeCompare(a.created||''));el.innerHTML=`<div class="card"><h3>Journal</h3><div class="field mt-8"><div class="col"><label>Mood</label><select id="jM"><option>😊 Great</option><option>🙂 Good</option><option>😐 Ok</option><option>😔 Low</option><option>😤 Frustrated</option></select></div></div><div class="field mt-8"><div class="col"><label>Thoughts</label><textarea id="jT" style="min-height:100px"></textarea></div></div><button class="btn accent block mt-8" id="jS">Save</button></div><div class="card"><h3>Past</h3>${entries.length?entries.map(e=>`<div class="item"><div style="flex:1"><div class="t">${escapeHtml(e.mood||'')} · ${new Date(e.created).toLocaleDateString()}</div><div class="m"><span style="font-family:Fraunces;font-style:italic">${escapeHtml(e.thoughts||'').slice(0,180)}</span></div></div><div class="actions"><button data-role="del" data-sheet="Journal" data-id="${e.id}"><i class="fa-solid fa-trash"></i></button></div></div>`).join(''):'<div class="empty">No entries.</div>'}</div>`;$('#jS').onclick=()=>withLoading($('#jS'),async()=>{const t=$('#jT').value.trim();if(!t)return;const r=await apiAdd('Journal',{date:todayISO(),mood:$('#jM').value,thoughts:t});if(r.ok){state.cache.Journal.push(r.data);$('#jT').value='';toast('Saved');renderScreen()}})}else if(state.sub.body==='focus'){el.innerHTML=`<div class="card"><h3>Focus</h3><div class="grid-2 mt-12"><button class="btn ghost" data-fdur="15">15m</button><button class="btn ghost" data-fdur="25">25m</button><button class="btn ghost" data-fdur="45">45m</button><button class="btn ghost" data-fdur="60">60m</button></div><div class="field mt-12"><div class="col"><label>Custom min</label><input id="fC" type="number"></div><button class="btn sm accent" id="fS">Go</button></div><div class="field mt-8"><div class="col"><label>Remarks</label><textarea id="fR"></textarea></div></div></div><div class="card"><h3>Sessions</h3>${state.cache.Focus.slice().reverse().slice(0,10).map(f=>`<div class="item"><div style="flex:1"><div class="t">${escapeHtml(f.remarks||'Focus')}</div><div class="m"><span class="chip">${f.duration}m</span>${f.completedAt?'<span class="chip g">done</span>':'<span class="chip r">ended</span>'}</div></div></div>`).join('')||'<div class="empty">None.</div>'}</div>`;$$('[data-fdur]').forEach(b=>b.onclick=()=>startFocus(+b.dataset.fdur,$('#fR').value));$('#fS').onclick=()=>{const m=+$('#fC').value;if(m>0)startFocus(m,$('#fR').value)}}else renderHabits(el);bindCommonActions(el)}
+/* HABITS */
+function renderHabits(el){const habits=state.cache.Habits;el.innerHTML=`<div class="card"><div class="row"><h3>🔥 21-Day Challenges</h3><button class="btn sm accent" id="addH"><i class="fa-solid fa-plus"></i></button></div><div class="sub">Build any habit. 21 days to make it stick.</div>${habits.length?habits.map(h=>{const start=new Date(h.startDate+'T00:00:00'),days=safeParse(h.days,[]),streak=days.length,done=streak>=21;let grid='';for(let i=0;i<21;i++){const d=new Date(start);d.setDate(start.getDate()+i);const iso=todayISO(d),isDn=days.includes(iso),isT=iso===todayISO();grid+=`<div class="habit-cell ${isDn?'done':''} ${isT?'today':''}" data-habit="${h.id}" data-day="${iso}">${i+1}</div>`}return`<div class="card mt-8"><div class="row"><div class="t">${escapeHtml(h.name)}</div>${done?'<span class="chip g">✅ Complete!</span>':`<span class="chip gd">${streak}/21</span>`}</div><div class="habit-grid">${grid}</div><div class="text-muted" style="font-size:11px;margin-top:6px">Started ${h.startDate}</div></div>`}).join(''):'<div class="empty"><i class="fa-solid fa-fire"></i>No habits. Start one!</div>'}</div>`;$('#addH').onclick=()=>{openSheet(`<h3>New 21-Day Challenge</h3><div class="field mt-8"><div class="col"><label>Habit</label><input id="hbN" placeholder="Wake 5AM, Read 30min…"></div></div><button class="btn accent block mt-16" id="hbS">Start</button>`);$('#hbS').onclick=()=>withLoading($('#hbS'),async()=>{const n=$('#hbN').value.trim();if(!n)return;const r=await apiAdd('Habits',{name:n,startDate:todayISO(),days:'[]',streak:'0',status:'active'});if(r.ok){state.cache.Habits.push(r.data);toast('🔥 Started!');closeSheet();renderScreen()}})};$$('.habit-cell').forEach(c=>c.onclick=async()=>{const h=state.cache.Habits.find(x=>x.id===c.dataset.habit);if(!h)return;const days=safeParse(h.days,[]),day=c.dataset.day;if(day>todayISO())return toast('Future date');if(days.includes(day))days.splice(days.indexOf(day),1);else days.push(day);h.days=JSON.stringify(days);h.streak=String(days.length);await apiUpdate('Habits',h.id,{days:h.days,streak:h.streak,status:days.length>=21?'done':'active'});renderScreen()})}
+/* FOCUS TIMER */
+function startFocus(mins,remarks){state.focus.running=true;state.focus.paused=false;state.focus.endsAt=Date.now()+mins*6e4;state.focus.remaining=mins*60;state.focus.remarks=remarks||'Study';state.focus.duration=mins;apiAdd('Focus',{duration:mins,remarks:remarks||'Study',startedAt:new Date().toISOString()}).then(r=>{state.focus.id=r.ok?r.data.id:null});$('#focusLbl').textContent=remarks||'Study session';$('#focusQt').textContent=MQ[Math.floor(Math.random()*MQ.length)][0];$('#focusCover').classList.add('on');if(document.documentElement.requestFullscreen)document.documentElement.requestFullscreen().catch(()=>{});tickFocus()}
+function tickFocus(){if(!state.focus.running)return;const rem=state.focus.paused?state.focus.remaining:Math.max(0,Math.round((state.focus.endsAt-Date.now())/1000));state.focus.remaining=rem;$('#focusClock').textContent=String(Math.floor(rem/60)).padStart(2,'0')+':'+String(rem%60).padStart(2,'0');if(rem<=0){endFocus(true);return}requestAnimationFrame(()=>setTimeout(tickFocus,500))}
+async function endFocus(ok){state.focus.running=false;$('#focusCover').classList.remove('on');if(document.fullscreenElement)document.exitFullscreen().catch(()=>{});if(state.focus.id)await apiUpdate('Focus',state.focus.id,{completedAt:ok?new Date().toISOString():'',remarks:state.focus.remarks});if(ok)toast('✅ Session complete');sync()}
+$('#focusStop').onclick=()=>endFocus(false);
+$('#focusPause').onclick=()=>{if(state.focus.paused){state.focus.endsAt=Date.now()+state.focus.remaining*1000;state.focus.paused=false;$('#focusPause').textContent='Pause';tickFocus()}else{state.focus.paused=true;$('#focusPause').textContent='Resume'}};
+/* COMMON ACTIONS */
+function bindCommonActions(root){$$('[data-role="task-toggle"]',root).forEach(b=>b.onclick=async()=>{const t=state.cache.Tasks.find(x=>x.id===b.dataset.id),ns=t.status==='done'?'open':'done',patch={status:ns,completed:ns==='done'?new Date().toISOString():''};Object.assign(t,patch);toast('Saving…');await apiUpdate('Tasks',t.id,patch);renderScreen()});$$('[data-role="del"]',root).forEach(b=>b.onclick=async()=>{if(!confirm('Delete?'))return;toast('Deleting…');await apiDelete(b.dataset.sheet,b.dataset.id);state.cache[b.dataset.sheet]=state.cache[b.dataset.sheet].filter(x=>x.id!==b.dataset.id);renderScreen()});$$('[data-role="mark-done"]',root).forEach(b=>b.onclick=async()=>{const l=state.cache.Learning.find(x=>x.id===b.dataset.id),dn=(l.doneDates||'').split(',').filter(Boolean);if(!dn.includes(b.dataset.date))dn.push(b.dataset.date);l.doneDates=dn.join(',');toast('Saving…');await apiUpdate('Learning',l.id,{doneDates:l.doneDates});toast('✅ Done');renderScreen()})}
+/* FAB + ADD FORMS */
+$('#fab').onclick=()=>{const t=state.tab,s=state.sub[t];if(t==='home')return openAddTask();if(t==='tasks'&&s==='projects')return openAddProj();if(t==='tasks')return openAddTask();if(t==='learn'&&s==='syllabus')return openAddSyl();if(t==='learn'&&s==='vocab')return toast('New words daily');if(t==='learn'&&s==='timer')return toast('Use timer above');if(t==='learn')return openAddLearn();if(t==='notes'&&s==='gallery')return openAddImg();if(t==='notes'&&s==='draw')return openDrawPad();if(t==='notes')return openAddNote();if(t==='money'&&s==='calc')return toast('Use calc');if(t==='money')return openAddFin();if(t==='body'&&s==='habits')return;if(t==='body'&&(s==='journal'||s==='focus'))return toast('Use form above');if(t==='body')return openAddHealth()};
+function openAddTask(){openSheet(`<h3>New task</h3><div class="field mt-8"><div class="col"><label>Title</label><input id="tT" placeholder="What needs doing?"></div></div><div class="grid-2 mt-8"><div class="field"><div class="col"><label>Due</label><input id="tD" type="date" value="${todayISO()}"></div></div><div class="field"><div class="col"><label>Priority</label><select id="tP"><option>low</option><option selected>normal</option><option>high</option></select></div></div></div><div class="field mt-8"><div class="col"><label>Notes</label><textarea id="tN"></textarea></div></div><button class="btn accent block mt-16" id="tS">Save</button>`);$('#tS').onclick=()=>withLoading($('#tS'),async()=>{const title=$('#tT').value.trim();if(!title)return;const r=await apiAdd('Tasks',{title,due:$('#tD').value,priority:$('#tP').value,notes:$('#tN').value,status:'open'});if(r.ok){state.cache.Tasks.push(r.data);toast('Saved');closeSheet();renderScreen()}})}
+function openAddProj(){openSheet(`<h3>New project</h3><div class="field mt-8"><div class="col"><label>Name</label><input id="pN"></div></div><div class="field mt-8"><div class="col"><label>Status</label><select id="pS"><option>Pending</option><option>In-Progress</option></select></div></div><div class="field mt-8"><div class="col"><label>Description</label><textarea id="pDe"></textarea></div></div><button class="btn accent block mt-16" id="pSv">Save</button>`);$('#pSv').onclick=()=>withLoading($('#pSv'),async()=>{const n=$('#pN').value.trim();if(!n)return;const r=await apiAdd('Projects',{name:n,status:$('#pS').value,description:$('#pDe').value,remarks:'[]'});if(r.ok){state.cache.Projects.push(r.data);closeSheet();renderScreen()}})}
+function openAddLearn(){const sub=optionsFrom(state.cache.Learning,'subject');openSheet(`<h3>New topic</h3><div class="field mt-8"><div class="col"><label>Topic</label><input id="lT"></div></div><div class="field mt-8"><div class="col"><label>Subject</label><input id="lS" list="sbj"></div></div><datalist id="sbj">${sub.map(s=>`<option value="${escapeHtml(s)}">`).join('')}</datalist><div class="field mt-8"><div class="col"><label>Notes</label><textarea id="lN"></textarea></div></div><button class="btn accent block mt-8" id="lSv">Add</button>`);$('#lSv').onclick=()=>withLoading($('#lSv'),async()=>{const t=$('#lT').value.trim();if(!t)return;const s=todayISO(),r=await apiAdd('Learning',{topic:t,subject:$('#lS').value,notes:$('#lN').value,startDate:s,reviewDates:compRev(s),doneDates:''});if(r.ok){state.cache.Learning.push(r.data);closeSheet();renderScreen();toast('Added')}})}
+function openAddSyl(){const sub=optionsFrom(state.cache.Syllabus,'subject');openSheet(`<h3>Add chapter</h3><div class="field mt-8"><div class="col"><label>Subject</label><input id="sS" list="sbs"></div></div><datalist id="sbs">${sub.map(s=>`<option value="${escapeHtml(s)}">`).join('')}</datalist><div class="field mt-8"><div class="col"><label>Chapter</label><input id="sC"></div></div><div class="field mt-8"><div class="col"><label>Sub-topic</label><input id="sSb"></div></div><button class="btn accent block mt-8" id="sSv">Save</button>`);$('#sSv').onclick=()=>withLoading($('#sSv'),async()=>{const s=$('#sS').value.trim(),c=$('#sC').value.trim();if(!s||!c)return;const r=await apiAdd('Syllabus',{subject:s,chapter:c,sub:$('#sSb').value,notes:'',status:'pending'});if(r.ok){state.cache.Syllabus.push(r.data);closeSheet();renderScreen()}})}
+function openAddNote(){openSheet(`<h3>New note</h3><div class="field mt-8"><div class="col"><label>Title</label><input id="nT"></div></div><div class="field mt-8"><div class="col"><label>Body</label><textarea id="nB" style="min-height:100px"></textarea></div></div><div class="field mt-8"><div class="col"><label>Tags</label><input id="nTg" placeholder="idea, work"></div></div><div style="display:flex;gap:6px;margin-top:10px"><label class="btn ghost sm"><i class="fa-solid fa-image"></i> Image <input type="file" accept="image/*" id="nAt" hidden></label><span id="nAN" class="chip hidden"></span></div><button class="btn accent block mt-16" id="nSv">Save</button>`);let pf=null;$('#nAt').onchange=e=>{pf=e.target.files[0];$('#nAN').textContent=pf.name;$('#nAN').classList.remove('hidden')};$('#nSv').onclick=()=>withLoading($('#nSv'),async()=>{const atts=[];if(pf){toast('Uploading…');const b=await fileToB64(pf),r=await apiUpload(b,pf.type,pf.name);if(r.ok)atts.push({...r.data,mimeType:pf.type})}const r=await apiAdd('Notes',{title:$('#nT').value,body:$('#nB').value,tags:$('#nTg').value,attachments:JSON.stringify(atts)});if(r.ok){state.cache.Notes.push(r.data);toast('Saved');closeSheet();renderScreen()}})}
+function openAddImg(){const groups=allGroups();openSheet(`<h3>Add to gallery</h3><label class="btn ghost sm mt-8"><i class="fa-solid fa-camera"></i> Camera <input type="file" accept="image/*" capture="environment" id="gI1" hidden></label><label class="btn ghost sm mt-8"><i class="fa-solid fa-folder-open"></i> Files <input type="file" accept="image/*" id="gI2" hidden></label><span id="gIN" class="chip hidden mt-8"></span><div class="field mt-8"><div class="col"><label>Group</label><select id="gGr">${groups.map(g=>`<option>${escapeHtml(g)}</option>`).join('')}<option value="__new">＋ New</option></select></div></div><div class="field mt-8"><div class="col"><label>Remarks</label><textarea id="gRm"></textarea></div></div><button class="btn accent block mt-16" id="gSv">Save</button>`);let file=null;const sf=f=>{file=f;$('#gIN').textContent=f.name;$('#gIN').classList.remove('hidden')};$('#gI1').onchange=e=>sf(e.target.files[0]);$('#gI2').onchange=e=>sf(e.target.files[0]);$('#gGr').onchange=e=>{if(e.target.value==='__new'){const g=prompt('Group?');if(g){const o=document.createElement('option');o.value=g;o.textContent=g;o.selected=true;e.target.insertBefore(o,e.target.querySelector('[value=__new]'))}else e.target.value=groups[0]||'Default'}};$('#gSv').onclick=()=>withLoading($('#gSv'),async()=>{if(!file)return toast('Choose image');const b=await fileToB64(file),u=await apiUpload(b,file.type,file.name);if(!u.ok)return toast('Failed');const r=await apiAdd('Images',{groupName:$('#gGr').value||'Default',url:u.data.url,fileId:u.data.fileId,remarks:$('#gRm').value,tags:''});if(r.ok){state.cache.Images.push(r.data);toast('Saved');closeSheet();renderScreen()}})}
+function openAddFin(){const cats=optionsFrom(state.cache.Finance,'category'),accs=[...DA,...optionsFrom(state.cache.Accounts,'name')].filter((v,i,a)=>a.indexOf(v)===i);openSheet(`<h3>New transaction</h3><div class="field mt-8"><div class="col"><label>Type</label><select id="fT"><option value="income">Income</option><option value="expense" selected>Expense</option><option value="savings-in">Savings in</option><option value="savings-out">Savings out</option></select></div></div><div class="grid-2 mt-8"><div class="field"><div class="col"><label>Amount</label><input id="fA" type="number" step="0.01"></div></div><div class="field"><div class="col"><label>Date</label><input id="fD" type="date" value="${todayISO()}"></div></div></div><div class="field mt-8"><div class="col"><label>Category</label><input id="fC" list="cl" placeholder="Groceries…"></div></div><datalist id="cl">${cats.map(c=>`<option value="${escapeHtml(c)}">`).join('')}</datalist><div class="field mt-8"><div class="col"><label>Account</label><select id="fAc">${accs.map(a=>`<option>${escapeHtml(a)}</option>`).join('')}</select></div></div><div class="field mt-8"><div class="col"><label>Note</label><input id="fN"></div></div><button class="btn accent block mt-16" id="fSv">Save</button>`);$('#fSv').onclick=()=>withLoading($('#fSv'),async()=>{const amt=+$('#fA').value;if(!amt)return;const r=await apiAdd('Finance',{type:$('#fT').value,category:$('#fC').value,amount:amt,account:$('#fAc').value,note:$('#fN').value,date:$('#fD').value});if(r.ok){state.cache.Finance.push(r.data);toast('Saved');closeSheet();renderScreen()}})}
+function openAddHealth(){const cats=['water','meal','exercise','sleep','wakeup','travel'],meals=['Breakfast','Lunch','Dinner','Snacks'];openSheet(`<h3>Log</h3><div class="field mt-8"><div class="col"><label>Type</label><select id="hT">${cats.map(c=>`<option>${c}</option>`).join('')}</select></div></div><div id="hMW" class="field mt-8 hidden"><div class="col"><label>Meal</label><select id="hM">${meals.map(m=>`<option>${m}</option>`).join('')}</select></div></div><div class="grid-2 mt-8"><div class="field"><div class="col"><label>Value</label><input id="hV"></div></div><div class="field"><div class="col"><label>Unit</label><input id="hU" placeholder="ml, min, hr"></div></div></div><div class="field mt-8"><div class="col"><label>Note</label><input id="hN"></div></div><button class="btn accent block mt-16" id="hSv">Save</button>`);const tog=()=>$('#hMW').classList.toggle('hidden',$('#hT').value!=='meal');$('#hT').onchange=tog;tog();$('#hSv').onclick=()=>withLoading($('#hSv'),async()=>{const r=await apiAdd('Health',{type:$('#hT').value,value:$('#hV').value,unit:$('#hU').value,meal:$('#hT').value==='meal'?$('#hM').value:'',note:$('#hN').value,date:todayISO()});if(r.ok){state.cache.Health.push(r.data);closeSheet();renderScreen();toast('Logged')}})}
+/* VOICE: "Ji Sir" */
+let voiceRec=null,voiceMR=null,voiceStr=null,voiceCh=[];
+function initVoice(){const SR=window.SpeechRecognition||window.webkitSpeechRecognition;if(!SR)return;voiceRec=new SR();voiceRec.continuous=true;voiceRec.interimResults=true;voiceRec.lang='hi-IN';voiceRec.onresult=e=>{for(let i=e.resultIndex;i<e.results.length;i++){const t=e.results[i][0].transcript.toLowerCase();if(t.includes('जी सर')||t.includes('ji sir'))startVR();if(t.includes('बस')||t.includes('stop')||t.includes('bas'))stopVR()}};voiceRec.onerror=()=>{};voiceRec.onend=()=>{if(state.voiceActive)voiceRec.start()}}
+$('#btnVoice').onclick=()=>{if(!voiceRec)initVoice();if(!voiceRec)return toast('Not supported');if(state.voiceActive){state.voiceActive=false;voiceRec.stop();stopVR();$('#btnVoice').innerHTML='<i class="fa-solid fa-microphone"></i>';toast('Voice off')}else{state.voiceActive=true;voiceRec.start();$('#btnVoice').innerHTML='<span class="voice-dot"></span>';toast('Listening… say "Ji Sir"')}};
+async function startVR(){if(voiceMR)return;try{voiceStr=await navigator.mediaDevices.getUserMedia({audio:true});voiceMR=new MediaRecorder(voiceStr);voiceCh=[];voiceMR.ondataavailable=e=>voiceCh.push(e.data);voiceMR.onstop=async()=>{const blob=new Blob(voiceCh,{type:'audio/webm'}),b=await blobToB64(blob);toast('Uploading…');const r=await apiUpload(b,'audio/webm','rec-'+Date.now()+'.webm');if(r.ok){await apiAdd('Recordings',{url:r.data.url,fileId:r.data.fileId,timestamp:new Date().toISOString()});toast('🎙️ Recording saved')}};voiceMR.start();toast('🔴 Recording… say "Stop"')}catch{toast('Mic denied')}}
+function stopVR(){if(voiceMR){voiceMR.stop();if(voiceStr)voiceStr.getTracks().forEach(t=>t.stop());voiceMR=null;voiceStr=null}}
+/* NOTIFICATIONS */
+function notify(t,b){if('Notification' in window&&Notification.permission==='granted')new Notification(t,{body:b})}
+$('#btnNotif').onclick=async()=>{if(!('Notification' in window))return toast('Not supported');await Notification.requestPermission();toast('Notifications '+Notification.permission);startHrQ()};
+function startHrQ(){if(Notification.permission!=='granted')return;setInterval(()=>{const q=MQ[Math.floor(Math.random()*MQ.length)];notify('💪 LifeOS',q[0]+' — '+q[1])},36e5)}
+/* RENDER */
+function renderScreen(){if(state.tab==='home')renderHome();if(state.tab==='learn')renderLearn();if(state.tab==='tasks')renderTasks();if(state.tab==='notes')renderNotes();if(state.tab==='money')renderMoney();if(state.tab==='body')renderBody()}
+/* BOOT */
+(async function(){renderSubnav();if(!getUrl())showSetup();else await sync();renderScreen();startHrQ();initDraw()})();
+</script></body></html>
