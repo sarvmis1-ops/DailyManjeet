@@ -1,0 +1,4 @@
+/* Supabase — project fjorrcxyrcgbbqnotelg. Base64-encoded (not encrypted); decoded at load. */
+const SUPABASE_PROJECT_ID = 'fjorrcxyrcgbbqnotelg';
+const SUPABASE_URL = atob('aHR0cHM6Ly9mam9ycmN4eXJjZ2JicW5vdGVsZy5zdXBhYmFzZS5jbw==');
+const SUPABASE_ANON_KEY = atob('ZXlKaGJHY2lPaUpJVXpJMU5pSXNJblI1Y0NJNklrcFhWQ0o5LmV5SnBjM01pT2lKemRYQmhZbUZ6WlNJc0luSmxaaUk2SW1acWIzSnlZM2g1Y21OblltSnhibTkwWld4bklpd2ljbTlzWlNJNkltRnViMjRpTENKcFlYUWlPakUzT1RVeU5UazNOalFzSW1WNGNDSTZNakV4TURnek5UYzJOSDAud0RIUnI4cERsV3dhTzNQUDZtOExfVUZQRXo3eFhpWEJGcUZQT0NHTF9Iaw==');
